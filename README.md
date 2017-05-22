@@ -1,4 +1,5 @@
-## Miniature Express Back End
+## WanderList
+An app to plan your dreams
 
 ### For use with Module 3 FE Personal Projects
 
