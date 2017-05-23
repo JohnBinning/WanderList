@@ -33,7 +33,7 @@ class Input extends Component {
           </input>
           <button
             className="save"
-            onClick={this.props.handleClick.bind(this)}>
+            onClick={this.props.handleClick.bind(this, {dreamLocation: this.state.dreamLocation, dreamTitle: this.state.dreamTitle})}>
             Save
           </button>
         </section>

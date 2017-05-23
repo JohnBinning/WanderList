@@ -16,7 +16,7 @@ class App extends Component {
   }
 
   handleClick(input) {
-    console.log('clicking')
+    console.log(input)
     let newList = [...this.state.bucketList]
     newList.push(input)
     this.setState({
