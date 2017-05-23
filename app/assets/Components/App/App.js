@@ -16,9 +16,22 @@ class App extends Component {
   }
 
   handleClick(input) {
-    console.log(input.dreamLocation)
+    fetch(`http://maps.google.com/maps/api/geocode/json?address=${input.dreamLocation}`)
+      .then( (response) => {
+        response.json()
+          .then( (resp) => {
+            const newDream = Object.assign({}, input, {coordinates: resp.results[0].geometry.location})
+            this.updateDream(newDream)
+            this.state.bucketList.forEach( dream => {
+              console.log(dream.coordinates, dream.dreamLocation)
+            })
+          })
+      })
+  }
+
+  updateDream(newDream) {
     let newList = [...this.state.bucketList]
-    newList.push(input)
+    newList.push(newDream)
     this.setState({
       bucketList: newList
     })
