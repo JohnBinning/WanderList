@@ -6,15 +6,15 @@ class Input extends Component {
     super()
     this.state = {
       dreamLocation: '',
-      dreamTitle: ''
+      dreamBody: ''
     }
   }
 
   render() {
     return(
-      <section>
+      <section className='inputs-container'>
         <input
-            className="input-location"
+            className="input-location user-inputs"
             placeholder="where do you want to go?"
             onChange={ (e) => {
               this.setState({
@@ -23,17 +23,17 @@ class Input extends Component {
             }}>
           </input>
         <input
-            className="input-body"
+            className="input-body user-inputs"
             placeholder="what do you want to do?"
             onChange={ (e) => {
               this.setState({
-                dreamTitle: e.target.value
+                dreamBody: e.target.value
                 })
             }}>
           </input>
           <button
             className="save"
-            onClick={this.props.handleClick.bind(this, {dreamLocation: this.state.dreamLocation, dreamTitle: this.state.dreamTitle})}>
+            onClick={this.props.handleClick.bind(this, {dreamLocation: this.state.dreamLocation, dreamBody: this.state.dreamBody})}>
             Save
           </button>
         </section>
