@@ -3,7 +3,6 @@ import React from 'react'
 import { withGoogleMap, GoogleMap, Marker } from 'react-google-maps'
 
 const GMap = withGoogleMap(() => {
-  console.log(GoogleMap)
   return (
     <div>
       <p>is it working</p>
