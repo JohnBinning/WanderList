@@ -10,7 +10,6 @@ class App extends Component {
   render() {
     return (
       <div>
-
         <h1 className='title-Wander'>Wander<span className='title-List'>List</span></h1>
         <GMap mapElement={ <div className='mapelement' style={{ height: "300px"}}/> }
               containerElement={ <div className='containerElement' style={{ height: "300px"}}/> }/>
