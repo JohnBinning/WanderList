@@ -16,3 +16,16 @@
 .map-container {
   width: 40%;
 }
+
+h1 {
+  background-color: rgba(0, 0, 0, 0.8);
+  border-radius: 25px;
+  width: 200px;
+  text-align: center;
+}
+
+header {
+  display: flex;
+  justify-content: center;
+
+}

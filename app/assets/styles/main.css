@@ -5,14 +5,14 @@
 @import url('../components/MapContainer/MapContainer.css');
 
 body {
-  background: #f4f4f4;
+  /*background: #978B7D;*/
+  background-image: url('http://www.publicdomainpictures.net/pictures/190000/velka/travel-background-1469438669rT1.jpg');
   font-family: sans-serif;
   font-weight: 100;
 }
 
 #main h1 {
   padding: 20px;
-  border-bottom: 1px dashed #aaa;
   font-weight: 100;
   font-family: sans-serif;
 }
