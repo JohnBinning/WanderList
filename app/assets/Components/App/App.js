@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
 
-
-
 import MapContainer from '../MapContainer/MapContainer'
+import List from '../List/List'
 import Input from '../Input/Input'
 
 class App extends Component {
@@ -41,13 +40,21 @@ class App extends Component {
 
   render() {
     return (
-      <section>
+      <main>
         <h1 className='title-Wander'>Wander<span className='title-List'>List</span></h1>
-        <Input handleClick={this.handleClick.bind(this)}/>
-        <MapContainer markers={this.state.bucketList} />
-      </section>
+        <section className="main-body">
+          <div className="input-list">
+            <Input handleClick={this.handleClick.bind(this)}/>
+            <List dreams={this.state.bucketList}/>
+          </div>
+          <MapContainer
+            className="map-container"
+            markers={this.state.bucketList} />
+        </section>
+      </main>
     )
   }
 }
 
+//<BucketList  />
 export default App
