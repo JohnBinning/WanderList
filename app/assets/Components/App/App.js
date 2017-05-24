@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 
-import GMap from '../Map/GMap'
+
+
+import MapContainer from '../MapContainer/MapContainer'
 import Input from '../Input/Input'
 
 class App extends Component {
@@ -30,7 +32,7 @@ class App extends Component {
   }
 
   updateDream(newDream) {
-    let newList = [...this.state.bucketList]
+    const newList = [...this.state.bucketList]
     newList.push(newDream)
     this.setState({
       bucketList: newList
@@ -42,8 +44,7 @@ class App extends Component {
       <section>
         <h1 className='title-Wander'>Wander<span className='title-List'>List</span></h1>
         <Input handleClick={this.handleClick.bind(this)}/>
-        <GMap mapElement={ <div className='mapelement' style={{ height: "300px"}}/> }
-              containerElement={ <div className='containerElement' style={{ height: "300px"}}/> }/>
+        <MapContainer markers={this.state.bucketList} />
       </section>
     )
   }
