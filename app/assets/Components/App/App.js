@@ -100,6 +100,11 @@ class App extends Component {
         </header>
         <section className="main-body">
           <div className="input-list">
+            <article className="filter-buttons-container">
+              <button className="filter-buttons">Show All</button>
+              <button className="filter-buttons">Show In progress</button>
+              <button className="filter-buttons">Show Completed</button>
+            </article>
             <Input handleClick={this.handleClick.bind(this)}/>
             <List
               completeItem={this.handleComplete.bind(this)}
