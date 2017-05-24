@@ -16,18 +16,33 @@ class App extends Component {
     // INSERT API CALL TO YOUR INTERNAL API
   }
 
+  handleDelete(id) {
+    const newList = this.state.bucketList.filter( dream => {
+      return dream.id !== id
+    })
+    this.setState({
+      bucketList: newList
+    })
+  }
+
   handleClick(input) {
     fetch(`http://maps.google.com/maps/api/geocode/json?address=${input.dreamLocation}`)
       .then( (response) => {
         response.json()
           .then( (resp) => {
-            const newDream = Object.assign({}, input, {coordinates: resp.results[0].geometry.location})
+            const newDream = Object.assign({}, input, {coordinates: resp.results[0].geometry.location, id: this.generateId()})
             this.updateDream(newDream)
             this.state.bucketList.forEach( dream => {
-              console.log(dream.coordinates, dream.dreamLocation)
+              //console.log(dream.coordinates, dream.dreamLocation, dream.id)
             })
           })
       })
+  }
+
+  generateId() {
+    let randOne = Math.floor(Math.random() * (10000000 - 1)) + 1
+    let randTwo = Math.floor(Math.random() * (10000000 - 1)) + 1
+    return randOne + randTwo
   }
 
   updateDream(newDream) {
@@ -45,7 +60,9 @@ class App extends Component {
         <section className="main-body">
           <div className="input-list">
             <Input handleClick={this.handleClick.bind(this)}/>
-            <List dreams={this.state.bucketList}/>
+            <List
+              deleteItem={this.handleDelete.bind(this)}
+              dreams={this.state.bucketList}/>
           </div>
           <MapContainer
             className="map-container"
