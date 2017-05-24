@@ -1,5 +1,5 @@
 .list-item {
   margin: 10px;
-  background-color: #66CDAA;
+  background-color: rgba(102, 205, 170, .75);
   border: 1px solid #FF8C00;
 }

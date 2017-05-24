@@ -75,8 +75,10 @@ class App extends Component {
 
   render() {
     return (
-      <main>
-        <h1 className='title-Wander'>Wander<span className='title-List'>List</span></h1>
+      <main className='main-app'>
+        <header>
+          <h1 className='title-Wander'>Wander<span className='title-List'>List</span></h1>
+        </header>
         <section className="main-body">
           <div className="input-list">
             <Input handleClick={this.handleClick.bind(this)}/>
