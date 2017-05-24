@@ -27,5 +27,13 @@ h1 {
 header {
   display: flex;
   justify-content: center;
+}
 
+.background-img {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: -1;
+  background-image: url('http://www.publicdomainpictures.net/pictures/190000/velka/travel-background-1469438669rT1.jpg');
+  filter: blur(3px);
 }

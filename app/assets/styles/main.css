@@ -5,8 +5,8 @@
 @import url('../components/MapContainer/MapContainer.css');
 
 body {
-  /*background: #978B7D;*/
-  background-image: url('http://www.publicdomainpictures.net/pictures/190000/velka/travel-background-1469438669rT1.jpg');
+  background-blend-mode: multiply;
+  background-color: gray;
   font-family: sans-serif;
   font-weight: 100;
 }

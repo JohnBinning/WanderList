@@ -67,7 +67,6 @@ class App extends Component {
     const newList = [...this.state.bucketList]
     newList.push(newDream)
     this.setListToLocal(newList)
-  //  localStorage.setItem('list', JSON.stringify(newList))
     this.setState({
       bucketList: newList
     })
@@ -76,6 +75,7 @@ class App extends Component {
   render() {
     return (
       <main className='main-app'>
+        <div className="background-img"></div>
         <header>
           <h1 className='title-Wander'>Wander<span className='title-List'>List</span></h1>
         </header>
