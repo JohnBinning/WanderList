@@ -4,23 +4,29 @@ import ListItem from '../ListItem/ListItem'
 
 class List extends Component {
 
-  createListItem(){
-    if(this.props.dreams.length){
-      let newArray = this.props.dreams
-      if(this.props.currentFilter === 'showInProgress' ) {
-        const inProg = this.props.dreams.filter( dream => {
-          return dream.completed === false
-        })
-        newArray = inProg
-      }
+  setFilter() {
+    let newArray = this.props.dreams
+    if(this.props.currentFilter === 'showInProgress' ) {
+      const inProg = this.props.dreams.filter( dream => {
+        return dream.completed === false
+      })
+      newArray = inProg
+    }
 
-      if(this.props.currentFilter === 'showCompleted' ) {
-        const inProg = this.props.dreams.filter( dream => {
-          return dream.completed === true 
-        })
-        newArray = inProg
-      }
-      return newArray.map( dream => {
+    if(this.props.currentFilter === 'showCompleted' ) {
+      const inProg = this.props.dreams.filter( dream => {
+        return dream.completed === true
+      })
+      newArray = inProg
+    }
+    return newArray
+  }
+
+  createListItem() {
+    if(this.props.dreams.length){
+      const filtered = this.setFilter()
+      
+      return filtered.map( dream => {
         return (
             <ListItem
               key={dream.id}
