@@ -1,5 +1,29 @@
 .list-item {
-  margin: 10px;
   background-color: rgba(102, 205, 170, .75);
   border: 1px solid #FF8C00;
+  margin: 10px;
+}
+
+.not-completed {
+  background-color: rgba(102, 205, 170, .75);
+}
+
+.completed {
+  background-color: rgba(128, 128, 128, .75);
+}
+
+.complete-btn-completed {
+  background-color: #FF8C00;
+  border: 1px solid white;
+  color: white;
+}
+
+.complete-btn-not-completed {
+  background-color: white;
+  border: 1px solid #ff8c00;
+}
+
+.list-btn {
+  margin: 5px;
+  padding: 5px;
 }

@@ -9,6 +9,8 @@ class List extends Component {
         return (
             <ListItem
               key={dream.id}
+              completeItem={this.props.completeItem}
+              completedStatus={dream.completed}
               deleteItem={this.props.deleteItem}
               location={dream.dreamLocation}
               id={dream.id}
