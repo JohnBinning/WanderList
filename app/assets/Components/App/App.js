@@ -8,7 +8,8 @@ class App extends Component {
   constructor() {
     super()
     this.state = {
-      bucketList: []
+      bucketList: [],
+      filter: 'showAll'
     }
   }
 
@@ -77,9 +78,7 @@ class App extends Component {
   }
 
   generateId() {
-    let randOne = Math.floor(Math.random() * (10000000 - 1)) + 1
-    let randTwo = Math.floor(Math.random() * (10000000 - 1)) + 1
-    return randOne + randTwo
+    return Date.now()
   }
 
   updateDream(newDream) {
