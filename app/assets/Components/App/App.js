@@ -12,8 +12,24 @@ class App extends Component {
     }
   }
 
+  getListFromLocal() {
+    let localData = localStorage.getItem('list')
+    const setData = localData !== null ? JSON.parse(localData) : ''
+    return setData
+  }
+
+  setListToLocal(list=null) {
+    localStorage.setItem('list', JSON.stringify(list))
+  }
+
   componentDidMount() {
     // INSERT API CALL TO YOUR INTERNAL API
+    const storedList = this.getListFromLocal()
+    if(storedList){
+      this.setState({
+        bucketList: storedList
+      })
+    }
   }
 
   handleDelete(id) {
@@ -23,6 +39,7 @@ class App extends Component {
     this.setState({
       bucketList: newList
     })
+    this.setListToLocal(newList)
   }
 
   handleClick(input) {
@@ -46,8 +63,11 @@ class App extends Component {
   }
 
   updateDream(newDream) {
+    const oldList = localStorage.getItem('list')
     const newList = [...this.state.bucketList]
     newList.push(newDream)
+    this.setListToLocal(newList)
+  //  localStorage.setItem('list', JSON.stringify(newList))
     this.setState({
       bucketList: newList
     })
