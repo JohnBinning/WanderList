@@ -5,3 +5,13 @@
 .title-List {
   color: #FF8C00;
 }
+
+.main-body {
+  display: flex;
+  width: 100%;
+}
+
+.input-list,
+.map-container {
+  width: 40%;
+}
