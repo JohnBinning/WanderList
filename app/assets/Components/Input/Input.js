@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 
-
 class Input extends Component {
   constructor() {
     super()
@@ -10,10 +9,19 @@ class Input extends Component {
     }
   }
 
+  clickSave() {
+    this.props.handleClick({dreamLocation: this.state.dreamLocation, dreamBody: this.state.dreamBody})
+    this.setState({
+      dreamLocation: '',
+      dreamBody: ''
+    })
+  }
+
   render() {
     return(
       <section className='inputs-container'>
         <input
+            value={this.state.dreamLocation}
             className="input-location user-inputs"
             placeholder="where do you want to go?"
             onChange={ (e) => {
@@ -23,6 +31,7 @@ class Input extends Component {
             }}>
           </input>
         <input
+            value={this.state.dreamBody}
             className="input-body user-inputs"
             placeholder="what do you want to do?"
             onChange={ (e) => {
@@ -33,7 +42,7 @@ class Input extends Component {
           </input>
           <button
             className="save"
-            onClick={this.props.handleClick.bind(this, {dreamLocation: this.state.dreamLocation, dreamBody: this.state.dreamBody})}>
+            onClick={this.clickSave.bind(this)}>
             Save
           </button>
         </section>
