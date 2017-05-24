@@ -7,7 +7,11 @@ class List extends Component {
     if(this.props.dreams.length){
       return this.props.dreams.map( dream => {
         return (
-            <ListItem location={dream.dreamLocation}
+            <ListItem
+              key={dream.id}
+              deleteItem={this.props.deleteItem}
+              location={dream.dreamLocation}
+              id={dream.id}
               body={dream.dreamBody}/>
         )
       })
