@@ -5,10 +5,11 @@ import GMap from '../Map/GMap'
 class MapContainer extends Component  {
 
   createMarkers(marker) {
-    let randOne = Math.floor(Math.random() * (1000000 - 1)) + 1
-    let randTwo = Math.floor(Math.random() * (1000000 - 1)) + 1
-    let newKey = randOne + randTwo
-    return <Marker position={marker.coordinates} key={`marker.dreamLocation ${newKey}`} />
+    return <Marker
+              position={marker.coordinates}
+              id={marker.id}
+              key={marker.id}
+            />
   }
 
   render() {

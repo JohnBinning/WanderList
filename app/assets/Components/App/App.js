@@ -9,7 +9,7 @@ class App extends Component {
     super()
     this.state = {
       bucketList: [],
-      filter: 'showAll'
+      currentFilter: 'showAll'
     }
   }
 
@@ -90,6 +90,12 @@ class App extends Component {
     this.setBucketList(newList)
   }
 
+  filterCompleted(filter) {
+    this.setState({
+      currentFilter: filter
+    })
+  }
+
   render() {
     return (
       <main className='main-app'>
@@ -100,17 +106,25 @@ class App extends Component {
         <section className="main-body">
           <div className="input-list">
             <article className="filter-buttons-container">
-              <button className="filter-buttons">Show All</button>
-              <button className="filter-buttons">Show In progress</button>
-              <button className="filter-buttons">Show Completed</button>
+              <button
+                onClick={this.filterCompleted.bind(this, 'showAll')}
+                className="filter-buttons">Show All</button>
+              <button
+                onClick={this.filterCompleted.bind(this, 'showInProgress')}
+                className="filter-buttons">Show In progress</button>
+              <button
+                onClick={this.filterCompleted.bind(this, 'showCompleted')}
+                className="filter-buttons">Show Completed</button>
             </article>
             <Input handleClick={this.handleClick.bind(this)}/>
             <List
+              currentFilter={this.state.currentFilter}
               completeItem={this.handleComplete.bind(this)}
               deleteItem={this.handleDelete.bind(this)}
               dreams={this.state.bucketList}/>
           </div>
           <MapContainer
+            currentFilter={this.state.currentFilter}
             className="map-container"
             markers={this.state.bucketList} />
         </section>
