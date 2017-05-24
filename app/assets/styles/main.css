@@ -1,5 +1,8 @@
 @import url('../components/App/App.css');
 @import url('../components/Input/Input.css');
+@import url('../components/ListItem/ListItem.css');
+@import url('../components/Map/GMap.css');
+@import url('../components/MapContainer/MapContainer.css');
 
 body {
   background: #f4f4f4;

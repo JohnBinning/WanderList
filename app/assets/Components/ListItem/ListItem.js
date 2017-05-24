@@ -3,8 +3,8 @@ import React, { Component } from 'react'
 const ListItem = ({ location, body}) => {
   return (
     <article className='list-item'>
-      <h3>{location}</h3>
-      <p>{body}</p>
+      <h3 className="list-item-location">{location}</h3>
+      <p className="list-ietm-body">{body}</p>
     </article>
   )
 }
