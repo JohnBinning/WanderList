@@ -32,14 +32,30 @@ class App extends Component {
     }
   }
 
+  setBucketList(list) {
+    this.setState({
+      bucketList: list
+    })
+  }
+
   handleDelete(id) {
     const newList = this.state.bucketList.filter( dream => {
       return dream.id !== id
     })
-    this.setState({
-      bucketList: newList
-    })
+    this.setBucketList(newList)
     this.setListToLocal(newList)
+  }
+
+  handleComplete(id) {
+    const newList = [...this.state.bucketList]
+    const foundItem = newList.forEach( dream => {
+      if (dream.id == id) {
+        dream.completed = !dream.completed
+      }
+
+    this.setBucketList(newList)
+    this.setListToLocal(newList)
+    })
   }
 
   handleClick(input) {
@@ -47,7 +63,11 @@ class App extends Component {
       .then( (response) => {
         response.json()
           .then( (resp) => {
-            const newDream = Object.assign({}, input, {coordinates: resp.results[0].geometry.location, id: this.generateId()})
+            const newDream = Object.assign({}, input, {
+              coordinates: resp.results[0].geometry.location,
+              id: this.generateId(),
+              completed: false
+            })
             this.updateDream(newDream)
             this.state.bucketList.forEach( dream => {
               //console.log(dream.coordinates, dream.dreamLocation, dream.id)
@@ -65,11 +85,10 @@ class App extends Component {
   updateDream(newDream) {
     const oldList = localStorage.getItem('list')
     const newList = [...this.state.bucketList]
+
     newList.push(newDream)
     this.setListToLocal(newList)
-    this.setState({
-      bucketList: newList
-    })
+    this.setBucketList(newList)
   }
 
   render() {
@@ -83,6 +102,7 @@ class App extends Component {
           <div className="input-list">
             <Input handleClick={this.handleClick.bind(this)}/>
             <List
+              completeItem={this.handleComplete.bind(this)}
               deleteItem={this.handleDelete.bind(this)}
               dreams={this.state.bucketList}/>
           </div>
@@ -95,5 +115,4 @@ class App extends Component {
   }
 }
 
-//<BucketList  />
 export default App
