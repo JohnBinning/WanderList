@@ -21,8 +21,8 @@ class ListItem extends Component {
   }
 
   weatherFetch() {
-    const url = `http://api.wunderground.com/api/2e519fe31304e9ee/history_${this.state.year}${this.state.month}${this.state.day}/q/${this.state.weatherLocationSuggestion}.json`
-    fetch(url)
+    const historyUrl = `http://api.wunderground.com/api/2e519fe31304e9ee/history_${this.state.year}${this.state.month}${this.state.day}/q/${this.state.weatherLocationSuggestion}.json`
+    fetch(historyUrl)
     .then( response  => {
       response.json()
       .then( res => {
@@ -53,7 +53,8 @@ class ListItem extends Component {
   weatherLocationFetch() {
     let lat = this.props.coordinates.lat
     let lng = this.props.coordinates.lng
-    $.getJSON(`http://api.wunderground.com/api/2e519fe31304e9ee/geolookup/q/${lat},${lng}.json`)
+    const locationToGetUrl = `http://api.wunderground.com/api/2e519fe31304e9ee/geolookup/q/${lat},${lng}.json`
+    $.getJSON(locationToGetUrl)
       .then((dataResponse) => {
        const locationUrl = dataResponse.location.l
        this.setState({
