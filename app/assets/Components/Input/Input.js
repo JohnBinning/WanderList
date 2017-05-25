@@ -5,7 +5,7 @@ class Input extends Component {
     super()
     this.state = {
       dreamLocation: '',
-      dreamBody: ''
+      dreamBody: '',
     }
   }
 
@@ -16,6 +16,8 @@ class Input extends Component {
       dreamBody: ''
     })
   }
+
+
 
   render() {
     return(

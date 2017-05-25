@@ -14,10 +14,10 @@ class MapContainer extends Component  {
     }
 
     if(this.props.currentFilter === 'showCompleted' ) {
-      const inProg = this.props.markers.filter( dream => {
+      const showComp = this.props.markers.filter( dream => {
         return dream.completed === true
       })
-      newArray = inProg
+      newArray = showComp
     }
     return newArray
   }
