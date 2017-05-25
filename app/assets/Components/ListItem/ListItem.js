@@ -17,7 +17,7 @@ class ListItem extends Component {
   }
 
   componentDidMount() {
-    this.weatherLocationFetch()
+    // this.weatherLocationFetch()
   }
 
   weatherFetch() {
@@ -50,7 +50,7 @@ class ListItem extends Component {
     })
   }
 
-  weatherLocationFetch(input) {
+  weatherLocationFetch() {
     let lat = this.props.coordinates.lat
     let lng = this.props.coordinates.lng
     $.getJSON(`http://api.wunderground.com/api/2e519fe31304e9ee/geolookup/q/${lat},${lng}.json`)
@@ -59,6 +59,7 @@ class ListItem extends Component {
        this.setState({
          weatherLocationSuggestion: locationUrl,
        })
+       this.weatherFetch()
      })
   }
 
@@ -132,7 +133,7 @@ class ListItem extends Component {
               }}>
             </input>
             <button
-              onClick={this.weatherFetch.bind(this)}
+              onClick={this.weatherLocationFetch.bind(this)}
               className={`complete-btn-${completedClass} weather-btn`}>submit</button>
           </section>
           <section className="weather-display">
