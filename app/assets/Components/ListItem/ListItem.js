@@ -7,7 +7,12 @@ class ListItem extends Component {
   constructor() {
     super()
     this.state = {
-      weatherLocationSuggestion: ''
+      weatherLocationSuggestion: '',
+      year: '',
+      month: '',
+      day: '',
+      dailyWeather: {},
+      weatherFetched: false
     }
   }
 
@@ -15,15 +20,62 @@ class ListItem extends Component {
     this.weatherLocationFetch()
   }
 
+  weatherFetch() {
+    const url = `http://api.wunderground.com/api/2e519fe31304e9ee/history_${this.state.year}${this.state.month}${this.state.day}/q/${this.state.weatherLocationSuggestion}.json`
+    fetch(url)
+    .then( response  => {
+      response.json()
+      .then( res => {
+        const weatherObj = this.createWeatherObj(res)
+        this.setWeatherFetch(weatherObj)
+      })
+    })
+  }
+
+  createWeatherObj(res) {
+    return {
+      conditions: res.history.observations[11].conds,
+      high: res.history.dailysummary[0].maxtempi,
+      low: res.history.dailysummary[0].mintempi,
+      precipitation: res.history.dailysummary[0].precipi,
+      windSpeed: res.history.dailysummary[0].meanwindspdi,
+      date: res.history.date.pretty
+    }
+  }
+
+  setWeatherFetch(weatherObj) {
+    this.setState({
+      dailyWeather: weatherObj,
+      weatherFetched: true
+    })
+  }
+
   weatherLocationFetch(input) {
     let lat = this.props.coordinates.lat
     let lng = this.props.coordinates.lng
-    $.getJSON(`http://api.wunderground.com/api/2e519fe31304e9ee/geolookup/q/${lat},${lng}.json`).then((dataResponse) => {
-     const locationUrl = dataResponse.location.l
-     this.setState({
-       weatherLocationSuggestion: locationUrl,
+    $.getJSON(`http://api.wunderground.com/api/2e519fe31304e9ee/geolookup/q/${lat},${lng}.json`)
+      .then((dataResponse) => {
+       const locationUrl = dataResponse.location.l
+       this.setState({
+         weatherLocationSuggestion: locationUrl,
+       })
      })
-   })
+  }
+
+  displayWeather() {
+    if(this.state.weatherFetched) {
+      return (
+        <section>
+          <h3>Weather for {this.state.dailyWeather.date} </h3>
+          <div>{this.state.dailyWeather.conditions}</div>
+          <div>High {this.state.dailyWeather.high}°F</div>
+          <div>Low {this.state.dailyWeather.low}°F</div>
+          <div>Precipitation {this.state.dailyWeather.precipitation}</div>
+          <div>Wind {this.state.dailyWeather.windSpeed} MPH</div>
+        </section>
+      )
+    }
+    return <div>Imput a date to see the weather</div>
   }
 
   render () {
@@ -45,6 +97,47 @@ class ListItem extends Component {
             onClick={this.props.completeItem.bind(this, this.props.id)}
             className={`list-btn complete-btn-${completedClass}`}>{completedText}
           </button>
+          <section className='date-info'>
+            <input
+              maxLength='4'
+              value={this.state.year}
+              className='year'
+              placeholder='YYYY'
+              onChange={ (e) => {
+                this.setState({
+                  year: e.target.value
+                  })
+              }}>
+            </input>
+            <input
+              maxLength='2'
+              value={this.state.month}
+              className='month'
+              placeholder='MM'
+              onChange={ (e) => {
+                this.setState({
+                  month: e.target.value
+                  })
+              }}>
+            </input>
+            <input
+              maxLength='2'
+              value={this.state.day}
+              className='day'
+              placeholder='DD'
+              onChange={ (e) => {
+                this.setState({
+                  day: e.target.value
+                  })
+              }}>
+            </input>
+            <button
+              onClick={this.weatherFetch.bind(this)}
+              className='weather-submit'>submit</button>
+          </section>
+          <section className="weather-display">
+            {this.displayWeather()}
+          </section>
         </section>
       </article>
     )
