@@ -93,11 +93,11 @@ class ListItem extends Component {
         <section className="list-item-bottom">
           <button
             onClick={this.props.deleteItem.bind(this, this.props.id)}
-            className={`complete-btn-${completedClass} list-btn`}>delete
+            className={`complete-btn-${completedClass} delete-btn list-btn`}>delete
           </button>
           <button
             onClick={this.props.completeItem.bind(this, this.props.id)}
-            className={`list-btn complete-btn-${completedClass}`}>{completedText}
+            className={`list-btn complete-button complete-btn-${completedClass}`}>{completedText}
           </button>
           <section className='date-info'>
             <input

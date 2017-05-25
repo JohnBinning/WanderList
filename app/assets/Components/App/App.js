@@ -31,7 +31,6 @@ class App extends Component {
         bucketList: storedList
       })
     }
-
   }
 
   setBucketList(list) {

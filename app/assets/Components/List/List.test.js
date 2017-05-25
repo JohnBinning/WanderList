@@ -7,9 +7,44 @@ import List from './List'
 import { googleTestLocation, weatherTestHistory, weatherTestLocation } from '../../TestData/TestData'
 
 
-describe('List instantiation', () => {
+// describe('List instantiation', () => {
+  //let mockList;
 
-  const mockFn = jest.fn()
+// beforeEach(() => {
+  // mockList = [{
+  //   completed: false,
+  //   coordinates: {lat: 39.7392358, lng: -104.990251},
+  //   dreamBody: "eat",
+  //   dreamLocation: "denver",
+  //   id: 1495678862553,
+  //   weatherLocation:  {local: "Denver", regional: "CO"}
+  // }]
+// })
+
+
+//
+
+
+
+describe('List instantiation', () => {
+  let mockFn
+  let mockList
+
+  beforeEach(() => {
+    mockFn = jest.fn()
+    mockList = [{
+      completed: false,
+      coordinates: {lat: 39.7392358, lng: -104.990251},
+      dreamBody: "eat",
+      dreamLocation: "denver",
+      id: 1495678862553,
+      weatherLocation:  {local: "Denver", regional: "CO"}
+    }]
+  })
+
+  const returnList = () => {
+    return mockList
+  }
 
   afterEach(() => {
     expect(fetchMock.calls().unmatched).toEqual([])
@@ -31,14 +66,6 @@ describe('List instantiation', () => {
     })
   })
 
-  const mockList = {
-    completed: false,
-    coordinates: {lat: 39.7392358, lng: -104.990251},
-    dreamBody: "eat",
-    dreamLocation: "denver",
-    id: 1495678862553,
-    weatherLocation:  {local: "Denver", regional: "CO"}
-  }
 
 
   it('renders without crashing', () => {
@@ -49,5 +76,60 @@ describe('List instantiation', () => {
                       dreams={mockList}
                       completeItem={mockFn}/>, div)
   })
+
+  it('receives a current filter', () => {
+    const wrapper = mount(<List
+                      currentFilter='showAll'
+                      deleteItem={mockFn}
+                      dreams={mockList}
+                      completeItem={mockFn}/>)
+
+    expect(wrapper.props().currentFilter).toEqual('showAll')
+  })
+
+  it('receives a list of dreams', () => {
+    const wrapper = mount(<List
+                      currentFilter='showAll'
+                      deleteItem={mockFn}
+                      dreams={mockList}
+                      completeItem={mockFn}/>)
+
+    expect(wrapper.props().dreams).toEqual(mockList)
+    expect(wrapper.props().dreams[0].completed).toEqual(false)
+  })
+
+  it('it should show list items', () => {
+    const wrapper = mount(<List
+                      currentFilter='showAll'
+                      deleteItem={mockFn}
+                      dreams={mockList}
+                      completeItem={mockFn}/>)
+
+    const listItem = wrapper.find('ListItem')
+    expect(listItem.length).toEqual(1)
+
+    //check for listitem text
+  })
+
+  it.skip('it should have a complete button', () => {
+    mockCalls()
+    let mockComplete = jest.fn()
+    const wrapper = mount(<List
+                      currentFilter='showAll'
+                      deleteItem={mockFn}
+                      dreams={mockList}
+                      completeItem={mockComplete}/>)
+
+    const completeBtn = wrapper.find('.complete-button')
+    expect(completeBtn.length).toEqual(1)
+    console.log(wrapper.props().completeItem, ' comp')
+    console.log(wrapper.props().currentFilter)
+
+    completeBtn.simulate('click')
+    expect(mockComplete).toHaveBeenCalledWith(1495678862553)
+
+    //test mockfn has been called with specific argument
+  })
+
 
 })
