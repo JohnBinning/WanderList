@@ -23,6 +23,7 @@ class List extends Component {
   }
 
   createListItem() {
+    console.log(this.props, ' pr');
     if(this.props.dreams.length){
       const filtered = this.setFilter()
 
