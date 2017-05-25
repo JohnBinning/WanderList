@@ -31,7 +31,10 @@ class App extends Component {
         bucketList: storedList
       })
     }
+
   }
+
+
 
   setBucketList(list) {
     this.setState({
@@ -63,11 +66,15 @@ class App extends Component {
     fetch(`http://maps.google.com/maps/api/geocode/json?address=${input.dreamLocation}`)
       .then( (response) => {
         response.json()
-          .then( (resp) => {
+          .then( (resp) => { 
             const newDream = Object.assign({}, input, {
               coordinates: resp.results[0].geometry.location,
               id: this.generateId(),
-              completed: false
+              completed: false,
+              weatherLocation: {
+                local: resp.results[0].address_components[0].short_name,
+                regional: resp.results[0].address_components[2].short_name
+              }
             })
             this.updateDream(newDream)
             this.state.bucketList.forEach( dream => {

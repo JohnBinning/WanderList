@@ -14,10 +14,10 @@ class List extends Component {
     }
 
     if(this.props.currentFilter === 'showCompleted' ) {
-      const inProg = this.props.dreams.filter( dream => {
+      const showComp = this.props.dreams.filter( dream => {
         return dream.completed === true
       })
-      newArray = inProg
+      newArray = showComp
     }
     return newArray
   }
@@ -25,10 +25,11 @@ class List extends Component {
   createListItem() {
     if(this.props.dreams.length){
       const filtered = this.setFilter()
-      
+
       return filtered.map( dream => {
         return (
             <ListItem
+              coordinates={dream.coordinates}
               key={dream.id}
               completeItem={this.props.completeItem}
               completedStatus={dream.completed}
