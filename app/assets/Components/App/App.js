@@ -34,8 +34,6 @@ class App extends Component {
 
   }
 
-
-
   setBucketList(list) {
     this.setState({
       bucketList: list
@@ -66,7 +64,7 @@ class App extends Component {
     fetch(`http://maps.google.com/maps/api/geocode/json?address=${input.dreamLocation}`)
       .then( (response) => {
         response.json()
-          .then( (resp) => { 
+          .then( (resp) => {
             const newDream = Object.assign({}, input, {
               coordinates: resp.results[0].geometry.location,
               id: this.generateId(),
@@ -115,7 +113,7 @@ class App extends Component {
             <article className="filter-buttons-container">
               <button
                 onClick={this.filterCompleted.bind(this, 'showAll')}
-                className="filter-buttons">Show All</button>
+                className="filter-buttons">Show All things</button>
               <button
                 onClick={this.filterCompleted.bind(this, 'showInProgress')}
                 className="filter-buttons">Show In progress</button>
