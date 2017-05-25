@@ -23,7 +23,8 @@
   border: 1px solid #ff8c00;
 }
 
-.list-btn {
+.list-btn,
+.weather-btn {
   margin: 5px;
   padding: 5px;
 }

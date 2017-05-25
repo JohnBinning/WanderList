@@ -133,7 +133,7 @@ class ListItem extends Component {
             </input>
             <button
               onClick={this.weatherFetch.bind(this)}
-              className='weather-submit'>submit</button>
+              className={`complete-btn-${completedClass} weather-btn`}>submit</button>
           </section>
           <section className="weather-display">
             {this.displayWeather()}
