@@ -3,6 +3,7 @@
 @import url('../components/ListItem/ListItem.css');
 @import url('../components/Map/GMap.css');
 @import url('../components/MapContainer/MapContainer.css');
+@import url('../components/List/List.css');
 
 body {
   background-blend-mode: multiply;

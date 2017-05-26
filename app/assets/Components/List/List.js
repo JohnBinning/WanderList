@@ -41,7 +41,7 @@ class List extends Component {
         )
       })
     }
-    return <div>Enter some Bucket List Items!</div>
+    return <div className="no-items">Input a dream to get started!</div>
   }
 
   render(){

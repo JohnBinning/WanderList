@@ -22,6 +22,7 @@ class Input extends Component {
   render() {
     return(
       <section className='inputs-container'>
+        <p className='instructions'>Add to your WanderList!</p>
         <input
             value={this.state.dreamLocation}
             className="input-location user-inputs"
