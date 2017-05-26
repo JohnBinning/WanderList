@@ -9,7 +9,8 @@ class App extends Component {
     super()
     this.state = {
       bucketList: [],
-      currentFilter: 'showAll'
+      currentFilter: 'showAll',
+      loggedIn: false
     }
   }
 
@@ -100,7 +101,29 @@ class App extends Component {
     })
   }
 
+  startApp() {
+    let started = !this.state.loggedIn
+    this.setState({
+      loggedIn: started
+    })
+  }
+
   render() {
+    if(!this.state.loggedIn) {
+      return (
+        <main>
+          <div className="background-img"></div>
+          <header>
+            <h1 className='title-Wander'>Wander<span className='title-List'>List</span></h1>
+          </header>
+          <button
+            className='start-btn'
+            onClick={this.startApp.bind(this)}>
+             Click to Start
+           </button>
+        </main>
+      )
+    }
     return (
       <main className='main-app'>
         <div className="background-img"></div>

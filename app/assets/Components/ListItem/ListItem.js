@@ -12,7 +12,8 @@ class ListItem extends Component {
       month: '',
       day: '',
       dailyWeather: {},
-      weatherFetched: false
+      weatherFetched: false,
+      showInput: false
     }
   }
 
@@ -77,7 +78,70 @@ class ListItem extends Component {
         </section>
       )
     }
-    return <div>Imput a date to see the weather</div>
+    return
+  }
+
+  toggleInput() {
+    let inputToggle = !this.state.showInput
+    this.setState({
+      showInput: inputToggle
+    })
+  }
+
+  displayInput() {
+    let completedClass = this.props.completedStatus ? 'completed' : 'not-completed'
+    let completedText = this.props.completedStatus ? 'Completed' : 'Mark Completed'
+    let status = this.props.completedStatus ? 'Already wandered!' : 'On the WanderList'
+    console.log(this.state.showInput, ' show input')
+    if(this.state.showInput){
+      return (
+        <div>
+          <input
+            maxLength='4'
+            value={this.state.year}
+            className='year'
+            placeholder='YYYY'
+            onChange={ (e) => {
+              this.setState({
+                year: e.target.value
+                })
+            }}>
+          </input>
+          <input
+            maxLength='2'
+            value={this.state.month}
+            className='month'
+            placeholder='MM'
+            onChange={ (e) => {
+              this.setState({
+                month: e.target.value
+                })
+            }}>
+          </input>
+          <input
+            maxLength='2'
+            value={this.state.day}
+            className='day'
+            placeholder='DD'
+            onChange={ (e) => {
+              this.setState({
+                day: e.target.value
+                })
+            }}>
+          </input>
+          <button
+            onClick={this.weatherLocationFetch.bind(this)}
+            className={`complete-btn-${completedClass} weather-btn`}>
+            submit
+          </button>
+          <section className="weather-display">
+            {this.displayWeather()}
+          </section>
+        </div>
+
+      )
+    }
+    return <div>Input a date to show the weather for that day</div>
   }
 
   render () {
@@ -100,46 +164,14 @@ class ListItem extends Component {
             className={`list-btn complete-button complete-btn-${completedClass}`}>{completedText}
           </button>
           <section className='date-info'>
-            <input
-              maxLength='4'
-              value={this.state.year}
-              className='year'
-              placeholder='YYYY'
-              onChange={ (e) => {
-                this.setState({
-                  year: e.target.value
-                  })
-              }}>
-            </input>
-            <input
-              maxLength='2'
-              value={this.state.month}
-              className='month'
-              placeholder='MM'
-              onChange={ (e) => {
-                this.setState({
-                  month: e.target.value
-                  })
-              }}>
-            </input>
-            <input
-              maxLength='2'
-              value={this.state.day}
-              className='day'
-              placeholder='DD'
-              onChange={ (e) => {
-                this.setState({
-                  day: e.target.value
-                  })
-              }}>
-            </input>
             <button
-              onClick={this.weatherLocationFetch.bind(this)}
-              className={`complete-btn-${completedClass} weather-btn`}>submit</button>
+              className={`list-btn complete-btn-${completedClass}`}
+              onClick={this.toggleInput.bind(this)}>
+              Show Weather Input
+            </button>
+            {this.displayInput()}
           </section>
-          <section className="weather-display">
-            {this.displayWeather()}
-          </section>
+
         </section>
       </article>
     )
