@@ -164,7 +164,11 @@ class ListItem extends Component {
             className={`list-btn complete-button complete-btn-${completedClass}`}>{completedText}
           </button>
           <section className='date-info'>
-            <button onClick={this.toggleInput.bind(this)}>Show Weather Input</button>
+            <button
+              className={`list-btn complete-btn-${completedClass}`}
+              onClick={this.toggleInput.bind(this)}>
+              Show Weather Input
+            </button>
             {this.displayInput()}
           </section>
 

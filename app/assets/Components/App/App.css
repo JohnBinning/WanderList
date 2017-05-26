@@ -37,3 +37,14 @@ header {
   background-image: url('http://www.publicdomainpictures.net/pictures/190000/velka/travel-background-1469438669rT1.jpg');
   filter: blur(3px);
 }
+
+.start-btn {
+  background-color: rgba(102, 205, 170, .75);
+  border: 1px solid #FF8C00;
+  color: rgba(0, 0, 0, 0.8);
+  font-size: 2em;
+  padding: 10px;
+  height: 100px;
+  width: 250px;
+  margin-top: 10%;
+}
