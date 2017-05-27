@@ -35,17 +35,11 @@ class App extends Component {
     }
   }
 
-  setBucketList(list) {
-    this.setState({
-      bucketList: list
-    })
-  }
-
   handleDelete(id) {
     const newList = this.state.bucketList.filter( dream => {
       return dream.id !== id
     })
-    this.setBucketList(newList)
+    setBucketList(newList, this)
     this.setListToLocal(newList)
   }
 
@@ -56,7 +50,7 @@ class App extends Component {
         dream.completed = !dream.completed
       }
 
-    this.setBucketList(newList)
+    setBucketList(newList, this)
     this.setListToLocal(newList)
     })
   }
@@ -93,7 +87,7 @@ class App extends Component {
 
     newList.push(newDream)
     this.setListToLocal(newList)
-    this.setBucketList(newList)
+    setBucketList(newList, this)
   }
 
   filterCompleted(filter) {
@@ -102,12 +96,7 @@ class App extends Component {
     })
   }
 
-  // startApp() {
-  //   let started = !this.state.loggedIn
-  //   this.setState({
-  //     loggedIn: started
-  //   })
-  // }
+
 
   render() {
     if(!this.state.loggedIn) {
