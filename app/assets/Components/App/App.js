@@ -5,7 +5,7 @@ import List from '../List/List'
 import Input from '../Input/Input'
 import { startApp, setBucketList } from '../../Helpers/App/AppState'
 import { handleDelete } from '../../Helpers/App/Handlers'
-import { setListToLocal } from '../../Helpers/App/localStorage'
+import { setListToLocal, getListFromLocal } from '../../Helpers/App/localStorage'
 
 class App extends Component {
   constructor() {
@@ -17,11 +17,11 @@ class App extends Component {
     }
   }
 
-  getListFromLocal() {
-    let localData = localStorage.getItem('list')
-    const setData = localData !== null ? JSON.parse(localData) : ''
-    return setData
-  }
+  // getListFromLocal() {
+  //   let localData = localStorage.getItem('list')
+  //   const setData = localData !== null ? JSON.parse(localData) : ''
+  //   return setData
+  // }
 
   // setListToLocal(list=null) {
   //   localStorage.setItem('list', JSON.stringify(list))
@@ -29,7 +29,7 @@ class App extends Component {
 
   componentDidMount() {
     // INSERT API CALL TO YOUR INTERNAL API
-    const storedList = this.getListFromLocal()
+    const storedList = getListFromLocal()
     if(storedList){
       this.setState({
         bucketList: storedList
