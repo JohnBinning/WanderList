@@ -3,6 +3,9 @@ import React, { Component } from 'react'
 import MapContainer from '../MapContainer/MapContainer'
 import List from '../List/List'
 import Input from '../Input/Input'
+import { startApp, setBucketList } from '../../Helpers/App/AppState'
+import { handleDelete } from '../../Helpers/App/Handlers'
+import { setListToLocal, getListFromLocal } from '../../Helpers/App/localStorage'
 
 class App extends Component {
   constructor() {
@@ -14,19 +17,19 @@ class App extends Component {
     }
   }
 
-  getListFromLocal() {
-    let localData = localStorage.getItem('list')
-    const setData = localData !== null ? JSON.parse(localData) : ''
-    return setData
-  }
+  // getListFromLocal() {
+  //   let localData = localStorage.getItem('list')
+  //   const setData = localData !== null ? JSON.parse(localData) : ''
+  //   return setData
+  // }
 
-  setListToLocal(list=null) {
-    localStorage.setItem('list', JSON.stringify(list))
-  }
+  // setListToLocal(list=null) {
+  //   localStorage.setItem('list', JSON.stringify(list))
+  // }
 
   componentDidMount() {
     // INSERT API CALL TO YOUR INTERNAL API
-    const storedList = this.getListFromLocal()
+    const storedList = getListFromLocal()
     if(storedList){
       this.setState({
         bucketList: storedList
@@ -34,19 +37,13 @@ class App extends Component {
     }
   }
 
-  setBucketList(list) {
-    this.setState({
-      bucketList: list
-    })
-  }
-
-  handleDelete(id) {
-    const newList = this.state.bucketList.filter( dream => {
-      return dream.id !== id
-    })
-    this.setBucketList(newList)
-    this.setListToLocal(newList)
-  }
+  // handleDelete(id) {
+  //   const newList = this.state.bucketList.filter( dream => {
+  //     return dream.id !== id
+  //   })
+  //   setBucketList(newList, this)
+  //   this.setListToLocal(newList)
+  // }
 
   handleComplete(id) {
     const newList = [...this.state.bucketList]
@@ -55,8 +52,8 @@ class App extends Component {
         dream.completed = !dream.completed
       }
 
-    this.setBucketList(newList)
-    this.setListToLocal(newList)
+    setBucketList(newList, this)
+    setListToLocal(newList)
     })
   }
 
@@ -91,8 +88,8 @@ class App extends Component {
     const newList = [...this.state.bucketList]
 
     newList.push(newDream)
-    this.setListToLocal(newList)
-    this.setBucketList(newList)
+    setListToLocal(newList)
+    setBucketList(newList, this)
   }
 
   filterCompleted(filter) {
@@ -101,12 +98,7 @@ class App extends Component {
     })
   }
 
-  startApp() {
-    let started = !this.state.loggedIn
-    this.setState({
-      loggedIn: started
-    })
-  }
+
 
   render() {
     if(!this.state.loggedIn) {
@@ -121,7 +113,7 @@ class App extends Component {
           </div>
           <button
             className='start-btn'
-            onClick={this.startApp.bind(this)}>
+            onClick={startApp.bind(this, this)}>
              Click to Start
            </button>
         </main>
@@ -152,7 +144,7 @@ class App extends Component {
             <List
               currentFilter={this.state.currentFilter}
               completeItem={this.handleComplete.bind(this)}
-              deleteItem={this.handleDelete.bind(this)}
+              deleteItem={handleDelete.bind(this, this, setBucketList, setListToLocal)}
               dreams={this.state.bucketList}/>
           </div>
           <MapContainer
