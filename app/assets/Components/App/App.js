@@ -114,8 +114,11 @@ class App extends Component {
         <main>
           <div className="background-img"></div>
           <header>
-            <h1 className='title-Wander'>Wander<span className='title-List'>List</span></h1>
+            <h1 className='title-Wander'>Wander<img className="logo" alt="main logo" src="https://res.cloudinary.com/crunchbase-production/image/upload/v1482176851/rtpxwpj5cfo654mpbolu.png"/><span className='title-List'>List</span></h1>
           </header>
+          <div className='load-description-container'>
+            <h2 className='load-description'>A Map to Visualize Your Bucket List</h2>
+          </div>
           <button
             className='start-btn'
             onClick={this.startApp.bind(this)}>
@@ -128,10 +131,12 @@ class App extends Component {
       <main className='main-app'>
         <div className="background-img"></div>
         <header>
-          <h1 className='title-Wander'>Wander<span className='title-List'>List</span></h1>
+          <h1 className='title-Wander'>Wander<img className="logo" alt="main logo" src="https://res.cloudinary.com/crunchbase-production/image/upload/v1482176851/rtpxwpj5cfo654mpbolu.png"/><span className='title-List'>List</span></h1>
         </header>
+
         <section className="main-body">
           <div className="input-list">
+            <h3>Filter Completed List Items</h3>
             <article className="filter-buttons-container">
               <button
                 onClick={this.filterCompleted.bind(this, 'showAll')}

@@ -92,56 +92,58 @@ class ListItem extends Component {
     let completedClass = this.props.completedStatus ? 'completed' : 'not-completed'
     let completedText = this.props.completedStatus ? 'Completed' : 'Mark Completed'
     let status = this.props.completedStatus ? 'Already wandered!' : 'On the WanderList'
-    console.log(this.state.showInput, ' show input')
     if(this.state.showInput){
       return (
         <div>
-          <input
-            maxLength='4'
-            value={this.state.year}
-            className='year'
-            placeholder='YYYY'
-            onChange={ (e) => {
-              this.setState({
-                year: e.target.value
-                })
-            }}>
-          </input>
-          <input
-            maxLength='2'
-            value={this.state.month}
-            className='month'
-            placeholder='MM'
-            onChange={ (e) => {
-              this.setState({
-                month: e.target.value
-                })
-            }}>
-          </input>
-          <input
-            maxLength='2'
-            value={this.state.day}
-            className='day'
-            placeholder='DD'
-            onChange={ (e) => {
-              this.setState({
-                day: e.target.value
-                })
-            }}>
-          </input>
-          <button
-            onClick={this.weatherLocationFetch.bind(this)}
-            className={`complete-btn-${completedClass} weather-btn`}>
-            submit
-          </button>
-          <section className="weather-display">
-            {this.displayWeather()}
+
+          <section className="item-input-container">
+            <input
+              maxLength='4'
+              value={this.state.year}
+              className='year'
+              placeholder='YYYY'
+              onChange={ (e) => {
+                this.setState({
+                  year: e.target.value
+                  })
+              }}>
+            </input>
+            <input
+              maxLength='2'
+              value={this.state.month}
+              className='month'
+              placeholder='MM'
+              onChange={ (e) => {
+                this.setState({
+                  month: e.target.value
+                  })
+              }}>
+            </input>
+            <input
+              maxLength='2'
+              value={this.state.day}
+              className='day'
+              placeholder='DD'
+              onChange={ (e) => {
+                this.setState({
+                  day: e.target.value
+                  })
+              }}>
+            </input>
+            <button
+              onClick={this.weatherLocationFetch.bind(this)}
+              className={`complete-btn-${completedClass} weather-btn`}>
+              submit
+            </button>
+            <section className="weather-display">
+              {this.displayWeather()}
+            </section>
           </section>
         </div>
 
       )
     }
-    return <div>Input a date to show the weather for that day</div>
+    return <div></div>
   }
 
   render () {
@@ -154,6 +156,7 @@ class ListItem extends Component {
         <div className='status'>Status: {status}</div>
         <h3 className="list-item-location">{this.props.location}</h3>
         <p className="list-item-body">{this.props.body}</p>
+        <p className='track-status'>Track the status of your items:</p>
         <section className="list-item-bottom">
           <button
             onClick={this.props.deleteItem.bind(this, this.props.id)}
@@ -164,10 +167,11 @@ class ListItem extends Component {
             className={`list-btn complete-button complete-btn-${completedClass}`}>{completedText}
           </button>
           <section className='date-info'>
+            <h4>Input a date to see historical weather info</h4>
             <button
               className={`list-btn complete-btn-${completedClass}`}
               onClick={this.toggleInput.bind(this)}>
-              Show Weather Input
+              Click to Show Weather Input
             </button>
             {this.displayInput()}
           </section>
