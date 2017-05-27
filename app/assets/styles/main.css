@@ -21,3 +21,7 @@ body {
 #main {
   text-align: center;
 }
+
+button {
+  cursor: pointer;
+}

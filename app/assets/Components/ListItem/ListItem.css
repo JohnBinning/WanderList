@@ -25,10 +25,15 @@
 
 .list-btn,
 .weather-btn {
-  margin: 5px;
+  margin: 0px, 5px, 5px, 5px;
   padding: 5px;
 }
 
 .status {
   margin-top: 10px;
+}
+
+.track-status {
+  color: white;
+  margin: 3px;
 }

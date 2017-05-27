@@ -48,3 +48,23 @@ header {
   width: 250px;
   margin-top: 10%;
 }
+
+.logo {
+  height: 26px;
+  margin: 0 5px;
+  display: none;
+}
+
+.load-description-container {
+  display: flex;
+  justify-content: center;
+}
+
+.load-description {
+  background-color: rgba(0, 0, 0, 0.8);
+  color: #ff8c00;
+  width: 35%;
+  padding: 3%;
+  text-align: center;
+  border-radius: 25px;
+}

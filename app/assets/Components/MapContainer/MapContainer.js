@@ -32,10 +32,11 @@ class MapContainer extends Component  {
   }
 
   render() {
+    console.log(' container props ', this.props)
     return (
       <GMap mapElement={ <div className='map-element' style={{ height: "500px", width: "600px"}}/> }
       containerElement={ <div className='container-element' style={{ height: "500px", width: "600px"}}/>}
-      markers={this.setFilter()}
+      markers={this.props.markers}
       createMarkers={(marker) => this.createMarkers(marker)}
       className="g-map"
       />
