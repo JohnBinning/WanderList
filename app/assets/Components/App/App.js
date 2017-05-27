@@ -5,6 +5,7 @@ import List from '../List/List'
 import Input from '../Input/Input'
 import { startApp, setBucketList } from '../../Helpers/App/AppState'
 import { handleDelete } from '../../Helpers/App/Handlers'
+import { setListToLocal } from '../../Helpers/App/localStorage'
 
 class App extends Component {
   constructor() {
@@ -22,9 +23,9 @@ class App extends Component {
     return setData
   }
 
-  setListToLocal(list=null) {
-    localStorage.setItem('list', JSON.stringify(list))
-  }
+  // setListToLocal(list=null) {
+  //   localStorage.setItem('list', JSON.stringify(list))
+  // }
 
   componentDidMount() {
     // INSERT API CALL TO YOUR INTERNAL API
@@ -52,7 +53,7 @@ class App extends Component {
       }
 
     setBucketList(newList, this)
-    this.setListToLocal(newList)
+    setListToLocal(newList)
     })
   }
 
@@ -87,7 +88,7 @@ class App extends Component {
     const newList = [...this.state.bucketList]
 
     newList.push(newDream)
-    this.setListToLocal(newList)
+    setListToLocal(newList)
     setBucketList(newList, this)
   }
 
@@ -143,7 +144,7 @@ class App extends Component {
             <List
               currentFilter={this.state.currentFilter}
               completeItem={this.handleComplete.bind(this)}
-              deleteItem={handleDelete.bind(this, this, setBucketList, this.setListToLocal)}
+              deleteItem={handleDelete.bind(this, this, setBucketList, setListToLocal)}
               dreams={this.state.bucketList}/>
           </div>
           <MapContainer
