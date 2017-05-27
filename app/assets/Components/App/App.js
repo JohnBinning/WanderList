@@ -4,6 +4,7 @@ import MapContainer from '../MapContainer/MapContainer'
 import List from '../List/List'
 import Input from '../Input/Input'
 import { startApp, setBucketList } from '../../Helpers/App/AppState'
+import { handleDelete } from '../../Helpers/App/Handlers'
 
 class App extends Component {
   constructor() {
@@ -35,13 +36,13 @@ class App extends Component {
     }
   }
 
-  handleDelete(id) {
-    const newList = this.state.bucketList.filter( dream => {
-      return dream.id !== id
-    })
-    setBucketList(newList, this)
-    this.setListToLocal(newList)
-  }
+  // handleDelete(id) {
+  //   const newList = this.state.bucketList.filter( dream => {
+  //     return dream.id !== id
+  //   })
+  //   setBucketList(newList, this)
+  //   this.setListToLocal(newList)
+  // }
 
   handleComplete(id) {
     const newList = [...this.state.bucketList]
@@ -142,7 +143,7 @@ class App extends Component {
             <List
               currentFilter={this.state.currentFilter}
               completeItem={this.handleComplete.bind(this)}
-              deleteItem={this.handleDelete.bind(this)}
+              deleteItem={handleDelete.bind(this, this, setBucketList, this.setListToLocal)}
               dreams={this.state.bucketList}/>
           </div>
           <MapContainer
