@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 import MapContainer from '../MapContainer/MapContainer'
 import List from '../List/List'
 import Input from '../Input/Input'
+import { startApp, setBucketList } from '../../Helpers/App/AppState'
 
 class App extends Component {
   constructor() {
@@ -101,12 +102,12 @@ class App extends Component {
     })
   }
 
-  startApp() {
-    let started = !this.state.loggedIn
-    this.setState({
-      loggedIn: started
-    })
-  }
+  // startApp() {
+  //   let started = !this.state.loggedIn
+  //   this.setState({
+  //     loggedIn: started
+  //   })
+  // }
 
   render() {
     if(!this.state.loggedIn) {
@@ -121,7 +122,7 @@ class App extends Component {
           </div>
           <button
             className='start-btn'
-            onClick={this.startApp.bind(this)}>
+            onClick={startApp.bind(this, this)}>
              Click to Start
            </button>
         </main>
