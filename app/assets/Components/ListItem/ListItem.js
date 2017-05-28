@@ -23,17 +23,17 @@ class ListItem extends Component {
     // this.weatherLocationFetch()
   }
 
-  weatherFetch() {
-    const historyUrl = `http://api.wunderground.com/api/2e519fe31304e9ee/history_${this.state.year}${this.state.month}${this.state.day}/q/${this.state.weatherLocationSuggestion}.json`
-    fetch(historyUrl)
-    .then( response  => {
-      response.json()
-      .then( res => {
-        const weatherObj = LIHelpers.createWeatherObj(res)
-        LIHelpers.setWeatherFetch(weatherObj, this)
-      })
-    })
-  }
+  // weatherFetch() {
+  //   const historyUrl = `http://api.wunderground.com/api/2e519fe31304e9ee/history_${this.state.year}${this.state.month}${this.state.day}/q/${this.state.weatherLocationSuggestion}.json`
+  //   fetch(historyUrl)
+  //   .then( response  => {
+  //     response.json()
+  //     .then( res => {
+  //       const weatherObj = LIHelpers.createWeatherObj(res)
+  //       LIHelpers.setWeatherFetch(weatherObj, this)
+  //     })
+  //   })
+  // }
 
   // createWeatherObj(res) {
   //   return {
@@ -63,7 +63,7 @@ class ListItem extends Component {
        this.setState({
          weatherLocationSuggestion: locationUrl,
        })
-       this.weatherFetch()
+       LIHelpers.weatherFetch(this)
      })
   }
 
