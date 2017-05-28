@@ -2,8 +2,7 @@ import React, { Component } from 'react'
 import * as $ from 'jquery'
 
 import * as LIHelpers from '../../Helpers/ListItem/ListItem'
-
-
+import { toggleInput } from '../../Helpers/ListItem/ListItemState'
 //location, body, id, deleteItem, completeItem, completedStatus
 class ListItem extends Component {
   constructor() {
@@ -17,54 +16,6 @@ class ListItem extends Component {
       weatherFetched: false,
       showInput: false
     }
-  }
-
-  componentDidMount() {
-    // this.weatherLocationFetch()
-  }
-
-  // weatherFetch() {
-  //   const historyUrl = `http://api.wunderground.com/api/2e519fe31304e9ee/history_${this.state.year}${this.state.month}${this.state.day}/q/${this.state.weatherLocationSuggestion}.json`
-  //   fetch(historyUrl)
-  //   .then( response  => {
-  //     response.json()
-  //     .then( res => {
-  //       const weatherObj = LIHelpers.createWeatherObj(res)
-  //       LIHelpers.setWeatherFetch(weatherObj, this)
-  //     })
-  //   })
-  // }
-
-  // createWeatherObj(res) {
-  //   return {
-  //     conditions: res.history.observations[11].conds,
-  //     high: res.history.dailysummary[0].maxtempi,
-  //     low: res.history.dailysummary[0].mintempi,
-  //     precipitation: res.history.dailysummary[0].precipi,
-  //     windSpeed: res.history.dailysummary[0].meanwindspdi,
-  //     date: res.history.date.pretty
-  //   }
-  // }
-
-  // setWeatherFetch(weatherObj) {
-  //   this.setState({
-  //     dailyWeather: weatherObj,
-  //     weatherFetched: true
-  //   })
-  // }
-
-  weatherLocationFetch() {
-    let lat = this.props.coordinates.lat
-    let lng = this.props.coordinates.lng
-    const locationToGetUrl = `http://api.wunderground.com/api/2e519fe31304e9ee/geolookup/q/${lat},${lng}.json`
-    $.getJSON(locationToGetUrl)
-      .then((dataResponse) => {
-       const locationUrl = dataResponse.location.l
-       this.setState({
-         weatherLocationSuggestion: locationUrl,
-       })
-       LIHelpers.weatherFetch(this)
-     })
   }
 
   displayWeather() {
@@ -81,13 +32,6 @@ class ListItem extends Component {
       )
     }
     return
-  }
-
-  toggleInput() {
-    let inputToggle = !this.state.showInput
-    this.setState({
-      showInput: inputToggle
-    })
   }
 
   displayInput() {
@@ -133,7 +77,7 @@ class ListItem extends Component {
               }}>
             </input>
             <button
-              onClick={this.weatherLocationFetch.bind(this)}
+              onClick={LIHelpers.weatherLocationFetch.bind(this, this)}
               className={`complete-btn-${completedClass} weather-btn`}>
               submit
             </button>
@@ -172,7 +116,7 @@ class ListItem extends Component {
             <h4>Input a date to see historical weather info</h4>
             <button
               className={`list-btn complete-btn-${completedClass}`}
-              onClick={this.toggleInput.bind(this)}>
+              onClick={toggleInput.bind(this, this)}>
               Click to Show Weather Input
             </button>
             {this.displayInput()}

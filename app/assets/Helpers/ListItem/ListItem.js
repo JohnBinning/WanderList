@@ -1,5 +1,7 @@
 import * as $ from 'jquery'
 
+import { setWeatherFetch } from './ListItemState'
+
 export const createWeatherObj = (res) => {
   return {
     conditions: res.history.observations[11].conds,
@@ -9,13 +11,6 @@ export const createWeatherObj = (res) => {
     windSpeed: res.history.dailysummary[0].meanwindspdi,
     date: res.history.date.pretty
   }
-}
-
-export const setWeatherFetch = (weatherObj, ListItem) => {
-  ListItem.setState({
-    dailyWeather: weatherObj,
-    weatherFetched: true
-  })
 }
 
 export const weatherFetch = (ListItem) => {
@@ -28,4 +23,18 @@ export const weatherFetch = (ListItem) => {
       setWeatherFetch(weatherObj, ListItem)
     })
   })
+}
+
+export const weatherLocationFetch = (ListItem) => {
+  let lat = ListItem.props.coordinates.lat
+  let lng = ListItem.props.coordinates.lng
+  const locationToGetUrl = `http://api.wunderground.com/api/2e519fe31304e9ee/geolookup/q/${lat},${lng}.json`
+  $.getJSON(locationToGetUrl)
+    .then((dataResponse) => {
+     const locationUrl = dataResponse.location.l
+     ListItem.setState({
+       weatherLocationSuggestion: locationUrl,
+     })
+     weatherFetch(ListItem)
+   })
 }
