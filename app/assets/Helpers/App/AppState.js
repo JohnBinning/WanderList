@@ -30,3 +30,9 @@ export const startFromLocal = (app) => {
     })
   }
 }
+
+export const filterCompleted = (app, filter) => {
+  app.setState({
+    currentFilter: filter
+  })
+}

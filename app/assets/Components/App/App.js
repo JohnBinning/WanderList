@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 import MapContainer from '../MapContainer/MapContainer'
 import List from '../List/List'
 import Input from '../Input/Input'
-import { startApp, setBucketList, updateDream, startFromLocal } from '../../Helpers/App/AppState'
+import { startApp, setBucketList, updateDream, startFromLocal, filterCompleted } from '../../Helpers/App/AppState'
 import { handleDelete, handleComplete, generateId } from '../../Helpers/App/Handlers'
 import { setListToLocal, getListFromLocal } from '../../Helpers/App/localStorage'
 
@@ -94,11 +94,11 @@ class App extends Component {
   //   setBucketList(newList, this)
   // }
 
-  filterCompleted(filter) {
-    this.setState({
-      currentFilter: filter
-    })
-  }
+  // filterCompleted(filter) {
+  //   this.setState({
+  //     currentFilter: filter
+  //   })
+  // }
 
 
 
@@ -133,13 +133,13 @@ class App extends Component {
             <h3>Filter Completed List Items</h3>
             <article className="filter-buttons-container">
               <button
-                onClick={this.filterCompleted.bind(this, 'showAll')}
+                onClick={filterCompleted.bind(this, this, 'showAll')}
                 className="filter-buttons">Show All things</button>
               <button
-                onClick={this.filterCompleted.bind(this, 'showInProgress')}
+                onClick={filterCompleted.bind(this, this, 'showInProgress')}
                 className="filter-buttons">Show In progress</button>
               <button
-                onClick={this.filterCompleted.bind(this, 'showCompleted')}
+                onClick={filterCompleted.bind(this, this, 'showCompleted')}
                 className="filter-buttons">Show Completed</button>
             </article>
             <Input handleClick={this.handleClick.bind(this)}/>
