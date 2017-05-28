@@ -2,9 +2,9 @@ import React, { Component } from 'react'
 import * as $ from 'jquery'
 
 import * as LIHelpers from '../../Helpers/ListItem/ListItem'
+import { toggleInput } from '../../Helpers/ListItem/ListItemState'
+import { displayWeather, displayInput } from '../../Helpers/ListItem/displays'
 
-
-//location, body, id, deleteItem, completeItem, completedStatus
 class ListItem extends Component {
   constructor() {
     super()
@@ -17,135 +17,6 @@ class ListItem extends Component {
       weatherFetched: false,
       showInput: false
     }
-  }
-
-  componentDidMount() {
-    // this.weatherLocationFetch()
-  }
-
-  weatherFetch() {
-    const historyUrl = `http://api.wunderground.com/api/2e519fe31304e9ee/history_${this.state.year}${this.state.month}${this.state.day}/q/${this.state.weatherLocationSuggestion}.json`
-    fetch(historyUrl)
-    .then( response  => {
-      response.json()
-      .then( res => {
-        const weatherObj = LIHelpers.createWeatherObj(res)
-        LIHelpers.setWeatherFetch(weatherObj, this)
-      })
-    })
-  }
-
-  // createWeatherObj(res) {
-  //   return {
-  //     conditions: res.history.observations[11].conds,
-  //     high: res.history.dailysummary[0].maxtempi,
-  //     low: res.history.dailysummary[0].mintempi,
-  //     precipitation: res.history.dailysummary[0].precipi,
-  //     windSpeed: res.history.dailysummary[0].meanwindspdi,
-  //     date: res.history.date.pretty
-  //   }
-  // }
-
-  // setWeatherFetch(weatherObj) {
-  //   this.setState({
-  //     dailyWeather: weatherObj,
-  //     weatherFetched: true
-  //   })
-  // }
-
-  weatherLocationFetch() {
-    let lat = this.props.coordinates.lat
-    let lng = this.props.coordinates.lng
-    const locationToGetUrl = `http://api.wunderground.com/api/2e519fe31304e9ee/geolookup/q/${lat},${lng}.json`
-    $.getJSON(locationToGetUrl)
-      .then((dataResponse) => {
-       const locationUrl = dataResponse.location.l
-       this.setState({
-         weatherLocationSuggestion: locationUrl,
-       })
-       this.weatherFetch()
-     })
-  }
-
-  displayWeather() {
-    if(this.state.weatherFetched) {
-      return (
-        <section>
-          <h3>Weather for {this.state.dailyWeather.date} </h3>
-          <div>{this.state.dailyWeather.conditions}</div>
-          <div>High {this.state.dailyWeather.high}°F</div>
-          <div>Low {this.state.dailyWeather.low}°F</div>
-          <div>Precipitation {this.state.dailyWeather.precipitation}</div>
-          <div>Wind {this.state.dailyWeather.windSpeed} MPH</div>
-        </section>
-      )
-    }
-    return
-  }
-
-  toggleInput() {
-    let inputToggle = !this.state.showInput
-    this.setState({
-      showInput: inputToggle
-    })
-  }
-
-  displayInput() {
-    let completedClass = this.props.completedStatus ? 'completed' : 'not-completed'
-    let completedText = this.props.completedStatus ? 'Completed' : 'Mark Completed'
-    let status = this.props.completedStatus ? 'Already wandered!' : 'On the WanderList'
-    if(this.state.showInput){
-      return (
-        <div>
-
-          <section className="item-input-container">
-            <input
-              maxLength='4'
-              value={this.state.year}
-              className='year'
-              placeholder='YYYY'
-              onChange={ (e) => {
-                this.setState({
-                  year: e.target.value
-                  })
-              }}>
-            </input>
-            <input
-              maxLength='2'
-              value={this.state.month}
-              className='month'
-              placeholder='MM'
-              onChange={ (e) => {
-                this.setState({
-                  month: e.target.value
-                  })
-              }}>
-            </input>
-            <input
-              maxLength='2'
-              value={this.state.day}
-              className='day'
-              placeholder='DD'
-              onChange={ (e) => {
-                this.setState({
-                  day: e.target.value
-                  })
-              }}>
-            </input>
-            <button
-              onClick={this.weatherLocationFetch.bind(this)}
-              className={`complete-btn-${completedClass} weather-btn`}>
-              submit
-            </button>
-            <section className="weather-display">
-              {this.displayWeather()}
-            </section>
-          </section>
-        </div>
-
-      )
-    }
-    return <div></div>
   }
 
   render () {
@@ -172,10 +43,10 @@ class ListItem extends Component {
             <h4>Input a date to see historical weather info</h4>
             <button
               className={`list-btn complete-btn-${completedClass}`}
-              onClick={this.toggleInput.bind(this)}>
+              onClick={toggleInput.bind(this, this)}>
               Click to Show Weather Input
             </button>
-            {this.displayInput()}
+            {displayInput(this)}
           </section>
 
         </section>
