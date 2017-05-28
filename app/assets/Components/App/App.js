@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 import MapContainer from '../MapContainer/MapContainer'
 import List from '../List/List'
 import Input from '../Input/Input'
-import { startApp, setBucketList } from '../../Helpers/App/AppState'
+import { startApp, setBucketList, updateDream } from '../../Helpers/App/AppState'
 import { handleDelete, handleComplete, generateId } from '../../Helpers/App/Handlers'
 import { setListToLocal, getListFromLocal } from '../../Helpers/App/localStorage'
 
@@ -71,7 +71,7 @@ class App extends Component {
                 regional: resp.results[0].address_components[2].short_name
               }
             })
-            this.updateDream(newDream)
+            updateDream(this, newDream)
             this.state.bucketList.forEach( dream => {
               //console.log(dream.coordinates, dream.dreamLocation, dream.id)
             })
@@ -83,14 +83,14 @@ class App extends Component {
   //   return Date.now()
   // }
 
-  updateDream(newDream) {
-    const oldList = localStorage.getItem('list')
-    const newList = [...this.state.bucketList]
-
-    newList.push(newDream)
-    setListToLocal(newList)
-    setBucketList(newList, this)
-  }
+  // updateDream(newDream) {
+  //   const oldList = localStorage.getItem('list')
+  //   const newList = [...this.state.bucketList]
+  //
+  //   newList.push(newDream)
+  //   setListToLocal(newList)
+  //   setBucketList(newList, this)
+  // }
 
   filterCompleted(filter) {
     this.setState({
