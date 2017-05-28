@@ -4,7 +4,7 @@ import MapContainer from '../MapContainer/MapContainer'
 import List from '../List/List'
 import Input from '../Input/Input'
 import { startApp, setBucketList } from '../../Helpers/App/AppState'
-import { handleDelete } from '../../Helpers/App/Handlers'
+import { handleDelete, generateId } from '../../Helpers/App/Handlers'
 import { setListToLocal, getListFromLocal } from '../../Helpers/App/localStorage'
 
 class App extends Component {
@@ -64,7 +64,7 @@ class App extends Component {
           .then( (resp) => {
             const newDream = Object.assign({}, input, {
               coordinates: resp.results[0].geometry.location,
-              id: this.generateId(),
+              id: generateId(),
               completed: false,
               weatherLocation: {
                 local: resp.results[0].address_components[0].short_name,
@@ -79,9 +79,9 @@ class App extends Component {
       })
   }
 
-  generateId() {
-    return Date.now()
-  }
+  // generateId() {
+  //   return Date.now()
+  // }
 
   updateDream(newDream) {
     const oldList = localStorage.getItem('list')

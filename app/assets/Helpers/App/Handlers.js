@@ -5,3 +5,5 @@ export const handleDelete = (app, setBucketList, setListToLocal, id ) => {
   setBucketList(newList, app)
   setListToLocal(newList)
 }
+
+export const generateId = () => Date.now()
