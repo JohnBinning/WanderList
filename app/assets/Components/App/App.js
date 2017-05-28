@@ -4,7 +4,7 @@ import MapContainer from '../MapContainer/MapContainer'
 import List from '../List/List'
 import Input from '../Input/Input'
 import { startApp, setBucketList } from '../../Helpers/App/AppState'
-import { handleDelete, generateId } from '../../Helpers/App/Handlers'
+import { handleDelete, handleComplete, generateId } from '../../Helpers/App/Handlers'
 import { setListToLocal, getListFromLocal } from '../../Helpers/App/localStorage'
 
 class App extends Component {
@@ -45,17 +45,17 @@ class App extends Component {
   //   this.setListToLocal(newList)
   // }
 
-  handleComplete(id) {
-    const newList = [...this.state.bucketList]
-    const foundItem = newList.forEach( dream => {
-      if (dream.id == id) {
-        dream.completed = !dream.completed
-      }
-
-    setBucketList(newList, this)
-    setListToLocal(newList)
-    })
-  }
+  // handleComplete(id) {
+  //   const newList = [...this.state.bucketList]
+  //   const foundItem = newList.forEach( dream => {
+  //     if (dream.id == id) {
+  //       dream.completed = !dream.completed
+  //     }
+  //
+  //   setBucketList(newList, this)
+  //   setListToLocal(newList)
+  //   })
+  // }
 
   handleClick(input) {
     fetch(`http://maps.google.com/maps/api/geocode/json?address=${input.dreamLocation}`)
@@ -143,8 +143,8 @@ class App extends Component {
             <Input handleClick={this.handleClick.bind(this)}/>
             <List
               currentFilter={this.state.currentFilter}
-              completeItem={this.handleComplete.bind(this)}
-              deleteItem={handleDelete.bind(this, this, setBucketList, setListToLocal)}
+              completeItem={handleComplete.bind(this, this)}
+              deleteItem={handleDelete.bind(this, this)}
               dreams={this.state.bucketList}/>
           </div>
           <MapContainer

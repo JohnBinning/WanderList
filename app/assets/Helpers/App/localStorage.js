@@ -5,6 +5,5 @@ export const getListFromLocal = () => {
 }
 
 export const setListToLocal = (list=null) => {
-  console.log('local');
   localStorage.setItem('list', JSON.stringify(list))
 }
