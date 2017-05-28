@@ -3,9 +3,8 @@ import React, { Component } from 'react'
 import MapContainer from '../MapContainer/MapContainer'
 import List from '../List/List'
 import Input from '../Input/Input'
-import { startApp, setBucketList, updateDream } from '../../Helpers/App/AppState'
-import { handleDelete, handleComplete, generateId } from '../../Helpers/App/Handlers'
-import { setListToLocal, getListFromLocal } from '../../Helpers/App/localStorage'
+import * as stateHelpers from '../../Helpers/App/AppState'
+import * as handlers from '../../Helpers/App/Handlers'
 
 class App extends Component {
   constructor() {
@@ -17,45 +16,11 @@ class App extends Component {
     }
   }
 
-  // getListFromLocal() {
-  //   let localData = localStorage.getItem('list')
-  //   const setData = localData !== null ? JSON.parse(localData) : ''
-  //   return setData
-  // }
-
-  // setListToLocal(list=null) {
-  //   localStorage.setItem('list', JSON.stringify(list))
-  // }
-
   componentDidMount() {
     // INSERT API CALL TO YOUR INTERNAL API
-    const storedList = getListFromLocal()
-    if(storedList){
-      this.setState({
-        bucketList: storedList
-      })
-    }
+
+    stateHelpers.startFromLocal(this)
   }
-
-  // handleDelete(id) {
-  //   const newList = this.state.bucketList.filter( dream => {
-  //     return dream.id !== id
-  //   })
-  //   setBucketList(newList, this)
-  //   this.setListToLocal(newList)
-  // }
-
-  // handleComplete(id) {
-  //   const newList = [...this.state.bucketList]
-  //   const foundItem = newList.forEach( dream => {
-  //     if (dream.id == id) {
-  //       dream.completed = !dream.completed
-  //     }
-  //
-  //   setBucketList(newList, this)
-  //   setListToLocal(newList)
-  //   })
-  // }
 
   handleClick(input) {
     fetch(`http://maps.google.com/maps/api/geocode/json?address=${input.dreamLocation}`)
@@ -64,41 +29,20 @@ class App extends Component {
           .then( (resp) => {
             const newDream = Object.assign({}, input, {
               coordinates: resp.results[0].geometry.location,
-              id: generateId(),
+              id: handlers.generateId(),
               completed: false,
               weatherLocation: {
                 local: resp.results[0].address_components[0].short_name,
                 regional: resp.results[0].address_components[2].short_name
               }
             })
-            updateDream(this, newDream)
+            stateHelpers.updateDream(this, newDream)
             this.state.bucketList.forEach( dream => {
               //console.log(dream.coordinates, dream.dreamLocation, dream.id)
             })
           })
       })
   }
-
-  // generateId() {
-  //   return Date.now()
-  // }
-
-  // updateDream(newDream) {
-  //   const oldList = localStorage.getItem('list')
-  //   const newList = [...this.state.bucketList]
-  //
-  //   newList.push(newDream)
-  //   setListToLocal(newList)
-  //   setBucketList(newList, this)
-  // }
-
-  filterCompleted(filter) {
-    this.setState({
-      currentFilter: filter
-    })
-  }
-
-
 
   render() {
     if(!this.state.loggedIn) {
@@ -113,7 +57,7 @@ class App extends Component {
           </div>
           <button
             className='start-btn'
-            onClick={startApp.bind(this, this)}>
+            onClick={stateHelpers.startApp.bind(this, this)}>
              Click to Start
            </button>
         </main>
@@ -131,20 +75,20 @@ class App extends Component {
             <h3>Filter Completed List Items</h3>
             <article className="filter-buttons-container">
               <button
-                onClick={this.filterCompleted.bind(this, 'showAll')}
+                onClick={stateHelpers.filterCompleted.bind(this, this, 'showAll')}
                 className="filter-buttons">Show All things</button>
               <button
-                onClick={this.filterCompleted.bind(this, 'showInProgress')}
+                onClick={stateHelpers.filterCompleted.bind(this, this, 'showInProgress')}
                 className="filter-buttons">Show In progress</button>
               <button
-                onClick={this.filterCompleted.bind(this, 'showCompleted')}
+                onClick={stateHelpers.filterCompleted.bind(this, this, 'showCompleted')}
                 className="filter-buttons">Show Completed</button>
             </article>
             <Input handleClick={this.handleClick.bind(this)}/>
             <List
               currentFilter={this.state.currentFilter}
-              completeItem={handleComplete.bind(this, this)}
-              deleteItem={handleDelete.bind(this, this)}
+              completeItem={handlers.handleComplete.bind(this, this)}
+              deleteItem={handlers.handleDelete.bind(this, this)}
               dreams={this.state.bucketList}/>
           </div>
           <MapContainer
