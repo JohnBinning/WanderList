@@ -19,11 +19,11 @@ class MapContainer extends Component  {
       })
       newArray = showComp
     }
+    console.log(newArray, ' new array on filter');
     return newArray
   }
 
   createMarkers(marker) {
-
     return <Marker
               position={marker.coordinates}
               id={marker.id}
@@ -35,7 +35,7 @@ class MapContainer extends Component  {
     return (
       <GMap mapElement={ <div className='map-element' style={{ height: "500px", width: "600px"}}/> }
       containerElement={ <div className='container-element' style={{ height: "500px", width: "600px"}}/>}
-      markers={this.props.markers}
+      markers={this.setFilter()}
       createMarkers={(marker) => this.createMarkers(marker)}
       className="g-map"
       />
