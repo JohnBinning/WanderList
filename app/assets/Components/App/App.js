@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 import MapContainer from '../MapContainer/MapContainer'
 import List from '../List/List'
 import Input from '../Input/Input'
-import { startApp, setBucketList, updateDream } from '../../Helpers/App/AppState'
+import { startApp, setBucketList, updateDream, startFromLocal } from '../../Helpers/App/AppState'
 import { handleDelete, handleComplete, generateId } from '../../Helpers/App/Handlers'
 import { setListToLocal, getListFromLocal } from '../../Helpers/App/localStorage'
 
@@ -29,12 +29,14 @@ class App extends Component {
 
   componentDidMount() {
     // INSERT API CALL TO YOUR INTERNAL API
-    const storedList = getListFromLocal()
-    if(storedList){
-      this.setState({
-        bucketList: storedList
-      })
-    }
+
+    startFromLocal(this)
+    // const storedList = getListFromLocal()
+    // if(storedList){
+    //   this.setState({
+    //     bucketList: storedList
+    //   })
+    // }
   }
 
   // handleDelete(id) {

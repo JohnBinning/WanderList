@@ -1,4 +1,4 @@
-import { setListToLocal } from './localStorage'
+import { setListToLocal, getListFromLocal } from './localStorage'
 
 export const setBucketList = (list, app) => {
   app.setState({
@@ -16,8 +16,17 @@ export const startApp = (app) => {
 export const updateDream = (app, newDream) => {
   const oldList = localStorage.getItem('list')
   const newList = [...app.state.bucketList]
-  
+
   newList.push(newDream)
   setListToLocal(newList)
   setBucketList(newList, app)
+}
+
+export const startFromLocal = (app) => {
+  const storedList = getListFromLocal()
+  if(storedList){
+    app.setState({
+      bucketList: storedList
+    })
+  }
 }
