@@ -1,27 +1,29 @@
 import React, { Component } from 'react'
 import { Marker } from 'react-google-maps'
+
 import GMap from '../Map/GMap'
+import { setFilter } from '../../Helpers/MapContainer/ContainerHelper'
+
 
 class MapContainer extends Component  {
 
-  setFilter() {
-    let newArray = this.props.markers
-    if(this.props.currentFilter === 'showInProgress' ) {
-      const inProg = this.props.markers.filter( dream => {
-        return dream.completed === false
-      })
-      newArray = inProg
-    }
-
-    if(this.props.currentFilter === 'showCompleted' ) {
-      const showComp = this.props.markers.filter( dream => {
-        return dream.completed === true
-      })
-      newArray = showComp
-    }
-    console.log(newArray, ' new array on filter');
-    return newArray
-  }
+  // setFilter() {
+  //   let newArray = this.props.markers
+  //   if(this.props.currentFilter === 'showInProgress' ) {
+  //     const inProg = this.props.markers.filter( dream => {
+  //       return dream.completed === false
+  //     })
+  //     newArray = inProg
+  //   }
+  //
+  //   if(this.props.currentFilter === 'showCompleted' ) {
+  //     const showComp = this.props.markers.filter( dream => {
+  //       return dream.completed === true
+  //     })
+  //     newArray = showComp
+  //   }
+  //   return newArray
+  // }
 
   createMarkers(marker) {
     return <Marker
@@ -35,7 +37,7 @@ class MapContainer extends Component  {
     return (
       <GMap mapElement={ <div className='map-element' style={{ height: "500px", width: "600px"}}/> }
       containerElement={ <div className='container-element' style={{ height: "500px", width: "600px"}}/>}
-      markers={this.setFilter()}
+      markers={setFilter(this)}
       createMarkers={(marker) => this.createMarkers(marker)}
       className="g-map"
       />
