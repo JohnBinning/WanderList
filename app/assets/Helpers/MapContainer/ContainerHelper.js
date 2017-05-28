@@ -20,9 +20,16 @@ export const setFilter = (app) => {
 }
 
 export const createMarkers = (marker) => {
+  let url = 'http://media-dmg.assets-cdk.com/websites/widgetsv/5.0-113/widgets/Interactive%20Map/customized/cblt-ms-gmps/pin.png'
+  
+  if (marker.completed) {
+    url = 'https://www.icc.illinois.gov/images/markers/marker_grey.png'
+  }
+
   return <Marker
             position={marker.coordinates}
             id={marker.id}
             key={marker.id}
+            icon={url}
           />
 }
