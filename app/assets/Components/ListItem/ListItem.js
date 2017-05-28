@@ -3,6 +3,7 @@ import * as $ from 'jquery'
 
 import * as LIHelpers from '../../Helpers/ListItem/ListItem'
 import { toggleInput } from '../../Helpers/ListItem/ListItemState'
+import { displayWeather } from '../../Helpers/ListItem/displays'
 //location, body, id, deleteItem, completeItem, completedStatus
 class ListItem extends Component {
   constructor() {
@@ -16,22 +17,6 @@ class ListItem extends Component {
       weatherFetched: false,
       showInput: false
     }
-  }
-
-  displayWeather() {
-    if(this.state.weatherFetched) {
-      return (
-        <section>
-          <h3>Weather for {this.state.dailyWeather.date} </h3>
-          <div>{this.state.dailyWeather.conditions}</div>
-          <div>High {this.state.dailyWeather.high}°F</div>
-          <div>Low {this.state.dailyWeather.low}°F</div>
-          <div>Precipitation {this.state.dailyWeather.precipitation}</div>
-          <div>Wind {this.state.dailyWeather.windSpeed} MPH</div>
-        </section>
-      )
-    }
-    return
   }
 
   displayInput() {
@@ -82,7 +67,7 @@ class ListItem extends Component {
               submit
             </button>
             <section className="weather-display">
-              {this.displayWeather()}
+              {displayWeather(this)}
             </section>
           </section>
         </div>
