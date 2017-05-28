@@ -3,8 +3,8 @@ import * as $ from 'jquery'
 
 import * as LIHelpers from '../../Helpers/ListItem/ListItem'
 import { toggleInput } from '../../Helpers/ListItem/ListItemState'
-import { displayWeather } from '../../Helpers/ListItem/displays'
-//location, body, id, deleteItem, completeItem, completedStatus
+import { displayWeather, displayInput } from '../../Helpers/ListItem/displays'
+
 class ListItem extends Component {
   constructor() {
     super()
@@ -17,64 +17,6 @@ class ListItem extends Component {
       weatherFetched: false,
       showInput: false
     }
-  }
-
-  displayInput() {
-    let completedClass = this.props.completedStatus ? 'completed' : 'not-completed'
-    let completedText = this.props.completedStatus ? 'Completed' : 'Mark Completed'
-    let status = this.props.completedStatus ? 'Already wandered!' : 'On the WanderList'
-    if(this.state.showInput){
-      return (
-        <div>
-
-          <section className="item-input-container">
-            <input
-              maxLength='4'
-              value={this.state.year}
-              className='year'
-              placeholder='YYYY'
-              onChange={ (e) => {
-                this.setState({
-                  year: e.target.value
-                  })
-              }}>
-            </input>
-            <input
-              maxLength='2'
-              value={this.state.month}
-              className='month'
-              placeholder='MM'
-              onChange={ (e) => {
-                this.setState({
-                  month: e.target.value
-                  })
-              }}>
-            </input>
-            <input
-              maxLength='2'
-              value={this.state.day}
-              className='day'
-              placeholder='DD'
-              onChange={ (e) => {
-                this.setState({
-                  day: e.target.value
-                  })
-              }}>
-            </input>
-            <button
-              onClick={LIHelpers.weatherLocationFetch.bind(this, this)}
-              className={`complete-btn-${completedClass} weather-btn`}>
-              submit
-            </button>
-            <section className="weather-display">
-              {displayWeather(this)}
-            </section>
-          </section>
-        </div>
-
-      )
-    }
-    return <div></div>
   }
 
   render () {
@@ -104,7 +46,7 @@ class ListItem extends Component {
               onClick={toggleInput.bind(this, this)}>
               Click to Show Weather Input
             </button>
-            {this.displayInput()}
+            {displayInput(this)}
           </section>
 
         </section>
