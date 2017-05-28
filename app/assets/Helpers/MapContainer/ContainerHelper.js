@@ -1,3 +1,6 @@
+import React, { Component } from 'react'
+import { Marker } from 'react-google-maps'
+
 export const setFilter = (app) => {
   let newArray = app.props.markers
   if(app.props.currentFilter === 'showInProgress' ) {
@@ -14,4 +17,12 @@ export const setFilter = (app) => {
     newArray = showComp
   }
   return newArray
+}
+
+export const createMarkers = (marker) => {
+  return <Marker
+            position={marker.coordinates}
+            id={marker.id}
+            key={marker.id}
+          />
 }
