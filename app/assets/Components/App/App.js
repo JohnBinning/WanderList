@@ -3,8 +3,8 @@ import React, { Component } from 'react'
 import MapContainer from '../MapContainer/MapContainer'
 import List from '../List/List'
 import Input from '../Input/Input'
-import { startApp, setBucketList } from '../../Helpers/App/AppState'
-import { handleDelete } from '../../Helpers/App/Handlers'
+import { startApp, setBucketList, updateDream } from '../../Helpers/App/AppState'
+import { handleDelete, handleComplete, generateId } from '../../Helpers/App/Handlers'
 import { setListToLocal, getListFromLocal } from '../../Helpers/App/localStorage'
 
 class App extends Component {
@@ -45,17 +45,17 @@ class App extends Component {
   //   this.setListToLocal(newList)
   // }
 
-  handleComplete(id) {
-    const newList = [...this.state.bucketList]
-    const foundItem = newList.forEach( dream => {
-      if (dream.id == id) {
-        dream.completed = !dream.completed
-      }
-
-    setBucketList(newList, this)
-    setListToLocal(newList)
-    })
-  }
+  // handleComplete(id) {
+  //   const newList = [...this.state.bucketList]
+  //   const foundItem = newList.forEach( dream => {
+  //     if (dream.id == id) {
+  //       dream.completed = !dream.completed
+  //     }
+  //
+  //   setBucketList(newList, this)
+  //   setListToLocal(newList)
+  //   })
+  // }
 
   handleClick(input) {
     fetch(`http://maps.google.com/maps/api/geocode/json?address=${input.dreamLocation}`)
@@ -64,14 +64,14 @@ class App extends Component {
           .then( (resp) => {
             const newDream = Object.assign({}, input, {
               coordinates: resp.results[0].geometry.location,
-              id: this.generateId(),
+              id: generateId(),
               completed: false,
               weatherLocation: {
                 local: resp.results[0].address_components[0].short_name,
                 regional: resp.results[0].address_components[2].short_name
               }
             })
-            this.updateDream(newDream)
+            updateDream(this, newDream)
             this.state.bucketList.forEach( dream => {
               //console.log(dream.coordinates, dream.dreamLocation, dream.id)
             })
@@ -79,18 +79,18 @@ class App extends Component {
       })
   }
 
-  generateId() {
-    return Date.now()
-  }
+  // generateId() {
+  //   return Date.now()
+  // }
 
-  updateDream(newDream) {
-    const oldList = localStorage.getItem('list')
-    const newList = [...this.state.bucketList]
-
-    newList.push(newDream)
-    setListToLocal(newList)
-    setBucketList(newList, this)
-  }
+  // updateDream(newDream) {
+  //   const oldList = localStorage.getItem('list')
+  //   const newList = [...this.state.bucketList]
+  //
+  //   newList.push(newDream)
+  //   setListToLocal(newList)
+  //   setBucketList(newList, this)
+  // }
 
   filterCompleted(filter) {
     this.setState({
@@ -143,8 +143,8 @@ class App extends Component {
             <Input handleClick={this.handleClick.bind(this)}/>
             <List
               currentFilter={this.state.currentFilter}
-              completeItem={this.handleComplete.bind(this)}
-              deleteItem={handleDelete.bind(this, this, setBucketList, setListToLocal)}
+              completeItem={handleComplete.bind(this, this)}
+              deleteItem={handleDelete.bind(this, this)}
               dreams={this.state.bucketList}/>
           </div>
           <MapContainer
