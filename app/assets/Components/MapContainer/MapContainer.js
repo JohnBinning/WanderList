@@ -4,9 +4,7 @@ import { Marker } from 'react-google-maps'
 import GMap from '../Map/GMap'
 import * as helper  from '../../Helpers/MapContainer/ContainerHelper'
 
-
 class MapContainer extends Component  {
-
 
   render() {
     return (
