@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import * as $ from 'jquery'
 
+import * as LIHelpers from '../../Helpers/ListItem/ListItem'
+
 
 //location, body, id, deleteItem, completeItem, completedStatus
 class ListItem extends Component {
@@ -27,29 +29,29 @@ class ListItem extends Component {
     .then( response  => {
       response.json()
       .then( res => {
-        const weatherObj = this.createWeatherObj(res)
-        this.setWeatherFetch(weatherObj)
+        const weatherObj = LIHelpers.createWeatherObj(res)
+        LIHelpers.setWeatherFetch(weatherObj, this)
       })
     })
   }
 
-  createWeatherObj(res) {
-    return {
-      conditions: res.history.observations[11].conds,
-      high: res.history.dailysummary[0].maxtempi,
-      low: res.history.dailysummary[0].mintempi,
-      precipitation: res.history.dailysummary[0].precipi,
-      windSpeed: res.history.dailysummary[0].meanwindspdi,
-      date: res.history.date.pretty
-    }
-  }
+  // createWeatherObj(res) {
+  //   return {
+  //     conditions: res.history.observations[11].conds,
+  //     high: res.history.dailysummary[0].maxtempi,
+  //     low: res.history.dailysummary[0].mintempi,
+  //     precipitation: res.history.dailysummary[0].precipi,
+  //     windSpeed: res.history.dailysummary[0].meanwindspdi,
+  //     date: res.history.date.pretty
+  //   }
+  // }
 
-  setWeatherFetch(weatherObj) {
-    this.setState({
-      dailyWeather: weatherObj,
-      weatherFetched: true
-    })
-  }
+  // setWeatherFetch(weatherObj) {
+  //   this.setState({
+  //     dailyWeather: weatherObj,
+  //     weatherFetched: true
+  //   })
+  // }
 
   weatherLocationFetch() {
     let lat = this.props.coordinates.lat
