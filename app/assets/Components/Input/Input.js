@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 
+import { clickSave } from '../../Helpers/Input/input'
+
 class Input extends Component {
   constructor() {
     super()
@@ -8,16 +10,6 @@ class Input extends Component {
       dreamBody: '',
     }
   }
-
-  clickSave() {
-    this.props.handleClick({dreamLocation: this.state.dreamLocation, dreamBody: this.state.dreamBody})
-    this.setState({
-      dreamLocation: '',
-      dreamBody: ''
-    })
-  }
-
-
 
   render() {
     return(
@@ -45,7 +37,7 @@ class Input extends Component {
           </input>
           <button
             className="save"
-            onClick={this.clickSave.bind(this)}>
+            onClick={clickSave.bind(this, this)}>
             Save
           </button>
         </section>
