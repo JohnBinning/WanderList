@@ -80,17 +80,17 @@ class App extends Component {
 
         <section className="main-body">
           <div className="input-list">
-            <h3>Filter Completed List Items</h3>
+            <h3 className='filter-instructions'>Filter Completed List Items</h3>
             <article className="filter-buttons-container">
               <button
                 onClick={stateHelpers.filterCompleted.bind(this, this, 'showAll')}
                 className="filter-buttons">Show All things</button>
               <button
                 onClick={stateHelpers.filterCompleted.bind(this, this, 'showInProgress')}
-                className="filter-buttons">Show In progress</button>
+                className="filter-buttons in-prog-btn">Show In progress</button>
               <button
                 onClick={stateHelpers.filterCompleted.bind(this, this, 'showCompleted')}
-                className="filter-buttons">Show Completed</button>
+                className="filter-buttons completed-btn">Show Completed</button>
             </article>
             <Input handleClick={this.handleClick.bind(this)}/>
             <List
