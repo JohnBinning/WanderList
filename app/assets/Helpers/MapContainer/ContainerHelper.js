@@ -20,10 +20,17 @@ export const setFilter = (app) => {
 }
 
 export const createMarkers = (marker) => {
-  let url = 'http://media-dmg.assets-cdk.com/websites/widgetsv/5.0-113/widgets/Interactive%20Map/customized/cblt-ms-gmps/pin.png'
-  
+  // const grey = 'http://i.imgur.com/UHMI1DB.png'
+  // const grey = 'http://i.imgur.com/vDLT4S8.png'
+  const completePin = 'http://i.imgur.com/CndqrAo.png'
+  const inCompletePin = 'http://i.imgur.com/LRhkx2v.png'
+
+  let url = inCompletePin
+
   if (marker.completed) {
-    url = 'https://www.icc.illinois.gov/images/markers/marker_grey.png'
+    url = completePin
+    //url = 'https://www.icc.illinois.gov/images/markers/marker_grey.png'
+    // url = './greyPin.png'
   }
 
   return <Marker
@@ -31,5 +38,7 @@ export const createMarkers = (marker) => {
             id={marker.id}
             key={marker.id}
             icon={url}
+            style={{height: "5xpx", width: "5px"}}
+            className={'marker'}
           />
 }
