@@ -23,11 +23,16 @@ export const createHeatMap = () => {
   if(window.google) {
     var latLngA = new google.maps.LatLng(37.782551, -122.445368)
     var latLngB = new google.maps.LatLng(37.782745, -122.444586)
+    var latLngDenver = new google.maps.LatLng(39.7392358, -104.990251)
+    var boCo = new google.maps.LatLng(40.0149856, -105.2705456)
+    var casper = new google.maps.LatLng(42.866632, -106.313081)
+    var yellowSt = new google.maps.LatLng(44.427963, -110.588455)
+    var foCo = new google.maps.LatLng(40.5852602, -105.084423)
 
   }
 
   return (
-    <HeatmapLayer data = {[latLngA, latLngB]} />
+    <HeatmapLayer data = {[latLngA, latLngB, latLngDenver, boCo, casper, yellowSt, foCo]} />
   )
 }
 
