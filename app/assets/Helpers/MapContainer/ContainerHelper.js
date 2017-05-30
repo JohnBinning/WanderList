@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Marker } from 'react-google-maps'
+import { Marker, HeatmapLayer } from 'react-google-maps'
 
 export const setFilter = (app) => {
   let newArray = app.props.markers
@@ -17,6 +17,18 @@ export const setFilter = (app) => {
     newArray = showComp
   }
   return newArray
+}
+
+export const createHeatMap = () => {
+  if(window.google) {
+    var latLngA = new google.maps.LatLng(37.782551, -122.445368)
+    var latLngB = new google.maps.LatLng(37.782745, -122.444586)
+
+  }
+
+  return (
+    <HeatmapLayer data = {[latLngA, latLngB]} />
+  )
 }
 
 export const createMarkers = (marker) => {
