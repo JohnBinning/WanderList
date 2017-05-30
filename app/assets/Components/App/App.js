@@ -27,14 +27,22 @@ class App extends Component {
       .then( (response) => {
         response.json()
           .then( (resp) => {
+            let weatherLocat
+            if(resp.results[0].address_components[2]) {
+              weatherLocat = {
+                local: resp.results[0].address_components[0].short_name,
+                regional: resp.results[0].address_components[2].short_name
+              }
+            } else {
+              weatherLocat = {
+                local: resp.results[0].address_components[0].short_name
+              }
+            }
             const newDream = Object.assign({}, input, {
               coordinates: resp.results[0].geometry.location,
               id: handlers.generateId(),
               completed: false,
-              weatherLocation: {
-                local: resp.results[0].address_components[0].short_name,
-                regional: resp.results[0].address_components[2].short_name
-              }
+              weatherLocation: weatherLocat
             })
             stateHelpers.updateDream(this, newDream)
             this.state.bucketList.forEach( dream => {
