@@ -7,6 +7,22 @@ import * as localS from './localStorage'
 
 describe('App Handler Helpers', () => {
 
+  const storageMock = () => {
+    let storage = {}
+    return {
+      list: 'bob',
+      clear: function() {
+        return this.user = ''
+      },
+      setItem: function(key, value) {
+        storage[key] = value || '';
+      },
+      getItem: function(key) {
+        return key in storage ? storage[key] : null;
+      },
+    }
+  }
+
   const mockCalls = (() => {
     fetchMock.get(`http://maps.google.com/maps/api/geocode/json?address=denver`, {
       status: 200,
@@ -22,11 +38,32 @@ describe('App Handler Helpers', () => {
     })
   })
 
+  const mockAppGenerator = () => {
+    return {
+      state: {
+        loggedIn: true,
+        currentFilter: 'showAll',
+        bucketList: [
+          {completed: true, coordinates: {lat: 39.7392358, lng: -104.990251}, dreamBody: 'eat', dreamLocation: 'Denver', id: 1496169687545, weatherLocation: {local: "Denver", regional: "CO"}},
+          {completed: false, coordinates: {lat: 60.124167, lng: 6.74}, dreamBody: 'hike', dreamLocation: 'Trolltunga', id: 1496169692648, weatherLocation: {local: "Trolltunga", regional: "Hordaland"}},
+        ]
+      }
+    }
+  }
 
-  it('should generate a date.now', () => {
+
+  it('generateID should generate a date.now id', () => {
     mockCalls()
 
     expect(typeof handlers.generateId()).toBe('number')
+  })
+
+  it.skip('should delete an item', () => {
+    window.localStorage = storageMock()
+    let newMockApp = mockAppGenerator()
+    handlers.handleDelete(newMockApp, 1496169687545 )
+
+    expect(newMockApp.state.bucketList.length).toEqual(1)
   })
 
 })
@@ -64,7 +101,6 @@ describe('localStorage for App', () => {
 
   it('should retrieve locally stored data as an array of objects', () => {
     window.localStorage = storageMock()
-
     const list = [{location: 'Trolltunga'}, {location: 'Denver'}]
 
     localS.setListToLocal(list)
