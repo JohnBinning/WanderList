@@ -5,6 +5,7 @@ import { shallow, mount } from 'enzyme'
 
 import List from './List'
 import { googleTestLocation, weatherTestHistory, weatherTestLocation } from '../../TestData/TestData'
+import * as handlers from '../../Helpers/App/Handlers'
 
 
 // describe('List instantiation', () => {
@@ -106,12 +107,32 @@ describe('List instantiation', () => {
                       completeItem={mockFn}/>)
 
     const listItem = wrapper.find('ListItem')
-    expect(listItem.length).toEqual(1)
+    const itemLocation = wrapper.find('.list-item-location')
+    const itemBody = wrapper.find('.list-item-body')
 
-    //check for listitem text
+    expect(listItem.length).toEqual(1)
+    expect(itemLocation.text()).toEqual('denver')
+    expect(itemBody.text()).toEqual('eat')
   })
 
-  it.skip('it should have a complete button', () => {
+  it('it should delete items', () => {
+    mockCalls()
+    let deleteMock = jest.fn()
+    const wrapper = mount(<List
+                      currentFilter='showAll'
+                      deleteItem={deleteMock}
+                      dreams={mockList}
+                      completeItem={mockFn}/>)
+
+    let listItem = wrapper.find('ListItem')
+    expect(listItem.length).toEqual(1)
+    const deleteBtn = wrapper.find('.delete-btn')
+    deleteBtn.simulate('click')
+    expect(deleteMock.mock.calls[0][0]).toEqual(1495678862553)
+
+  })
+
+  it('it should complete items when the complete button is clicked', () => {
     mockCalls()
     let mockComplete = jest.fn()
     const wrapper = mount(<List
@@ -122,13 +143,9 @@ describe('List instantiation', () => {
 
     const completeBtn = wrapper.find('.complete-button')
     expect(completeBtn.length).toEqual(1)
-    console.log(wrapper.props().completeItem, ' comp')
-    console.log(wrapper.props().currentFilter)
 
     completeBtn.simulate('click')
-    expect(mockComplete).toHaveBeenCalledWith(1495678862553)
-
-    //test mockfn has been called with specific argument
+    expect(mockComplete.mock.calls[0][0]).toEqual(1495678862553)
   })
 
 

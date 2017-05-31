@@ -53,7 +53,6 @@ describe('Input instantiation', () => {
     window.localStorage = storageMock()
     let mockHc = jest.fn()
     const wrapper = mount(<Input handleClick={mockHc} />)
-    console.log(wrapper.debug(), ' wrap');
 
     expect(wrapper.state().dreamLocation).toEqual('')
     expect(wrapper.state().dreamBody).toEqual('')

@@ -58,14 +58,6 @@ describe('App Handler Helpers', () => {
     expect(typeof handlers.generateId()).toBe('number')
   })
 
-  it.skip('should delete an item', () => {
-    window.localStorage = storageMock()
-    let newMockApp = mockAppGenerator()
-    handlers.handleDelete(newMockApp, 1496169687545 )
-
-    expect(newMockApp.state.bucketList.length).toEqual(1)
-  })
-
 })
 
 describe('localStorage for App', () => {
