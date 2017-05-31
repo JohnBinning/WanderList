@@ -90,7 +90,6 @@ describe('App instantiation', () => {
     expect(wrapper.state().bucketList.length).toEqual(1)
     expect(wrapper.state().bucketList[0].dreamLocation).toEqual("Denver")
 
-    console.log(wrapper.debug(), ' wrap');
   })
 
   it('should update currentFilter state when the filter buttons are clicked', () => {
