@@ -28,11 +28,12 @@ export const createHeatMap = () => {
     var casper = new google.maps.LatLng(42.866632, -106.313081)
     var yellowSt = new google.maps.LatLng(44.427963, -110.588455)
     var foCo = new google.maps.LatLng(40.5852602, -105.084423)
+    var glendale = new google.maps.LatLng(39.7049873, -104.9335904)
 
   }
 
   return (
-    <HeatmapLayer data = {[latLngA, latLngB, latLngDenver, boCo, casper, yellowSt, foCo]} />
+    <HeatmapLayer data = {[latLngA, latLngB, latLngDenver, boCo, casper, yellowSt, foCo, glendale]} />
   )
 }
 

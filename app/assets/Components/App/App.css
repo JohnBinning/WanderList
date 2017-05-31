@@ -68,3 +68,22 @@ header {
   text-align: center;
   border-radius: 25px;
 }
+
+.filter-instructions {
+  background-color: rgba(0, 0, 0, 0.8);
+  color: #ff8c00;
+  padding: 10px 0;
+}
+
+.filter-buttons {
+  padding: 2%;
+  margin: 1%;
+}
+
+.in-prog-btn {
+  background-color: rgba(102, 205, 170, .75)
+}
+
+.completed-btn {
+  background-color: rgba(128, 128, 128, .75);
+}
