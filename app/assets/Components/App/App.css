@@ -25,6 +25,7 @@ h1 {
 }
 
 header {
+  font-family: 'Pacifico', cursive;
   display: flex;
   justify-content: center;
 }
