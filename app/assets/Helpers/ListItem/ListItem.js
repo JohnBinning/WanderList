@@ -6,7 +6,9 @@ export const createWeatherObj = (res) => {
   return {
     conditions: res.history.observations[11].conds,
     high: res.history.dailysummary[0].maxtempi,
+    highC: res.history.dailysummary[0].maxtempm,
     low: res.history.dailysummary[0].mintempi,
+    lowC: res.history.dailysummary[0].mintempm,
     precipitation: res.history.dailysummary[0].precipi,
     windSpeed: res.history.dailysummary[0].meanwindspdi,
     date: res.history.date.pretty
