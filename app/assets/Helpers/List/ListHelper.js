@@ -3,16 +3,18 @@ import React from 'react'
 import ListItem from '../../Components/ListItem/ListItem'
 
 export const setFilter = (list) => {
-  let newArray = list.props.dreams
-  if(list.props.currentFilter === 'showInProgress' ) {
+  let { dreams, currentFilter } = list.props
+  let newArray = dreams
+  
+  if(currentFilter === 'showInProgress' ) {
     const inProg = list.props.dreams.filter( dream => {
       return dream.completed === false
     })
     newArray = inProg
   }
 
-  if(list.props.currentFilter === 'showCompleted' ) {
-    const showComp = list.props.dreams.filter( dream => {
+  if(currentFilter === 'showCompleted' ) {
+    const showComp = dreams.filter( dream => {
       return dream.completed === true
     })
     newArray = showComp

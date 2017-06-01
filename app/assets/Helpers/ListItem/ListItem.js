@@ -28,8 +28,9 @@ export const weatherFetch = (ListItem) => {
 }
 
 export const weatherLocationFetch = (ListItem) => {
-  let lat = ListItem.props.coordinates.lat
-  let lng = ListItem.props.coordinates.lng
+  // let lat = ListItem.props.coordinates.lat
+  // let lng = ListItem.props.coordinates.lng
+  let { lat, lng } = ListItem.props.coordinates
   const locationToGetUrl = `http://api.wunderground.com/api/2e519fe31304e9ee/geolookup/q/${lat},${lng}.json`
   $.getJSON(locationToGetUrl)
     .then((dataResponse) => {

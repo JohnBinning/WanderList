@@ -20,6 +20,7 @@ class ListItem extends Component {
   }
 
   render () {
+    let { completedStatus, location, body, id } = this.props
     let completedClass = this.props.completedStatus ? 'completed' : 'not-completed'
     let completedText = this.props.completedStatus ? 'Completed' : 'Mark Completed'
     let status = this.props.completedStatus ? 'Already wandered!' : 'On the WanderList'
