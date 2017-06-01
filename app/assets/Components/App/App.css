@@ -1,9 +1,10 @@
 .title-Wander {
-  color: #66CDAA;
+  color: rgba(37, 173, 135, .75);
 }
 
 .title-List {
-  color: #FF8C00;
+  /*color: #FF8C00;*/
+  color: rgba(233, 132, 99, .75);
 }
 
 .main-body {
@@ -40,8 +41,10 @@ header {
 }
 
 .start-btn {
-  background-color: rgba(102, 205, 170, .75);
-  border: 1px solid #FF8C00;
+  /*background-color: rgba(102, 205, 170, .75);*/
+  background-color: rgba(37, 173, 135, .75);
+  border: 1px solid rgb(233, 132, 99);
+  /*border: 1px solid #FF8C00;*/
   color: rgba(0, 0, 0, 0.8);
   font-size: 2em;
   padding: 10px;
@@ -63,7 +66,8 @@ header {
 
 .load-description {
   background-color: rgba(0, 0, 0, 0.8);
-  color: #ff8c00;
+  /*color: #ff8c00;*/
+  color: rgba(233, 132, 99, .75);
   width: 35%;
   padding: 3%;
   text-align: center;
@@ -72,7 +76,8 @@ header {
 
 .filter-instructions {
   background-color: rgba(0, 0, 0, 0.8);
-  color: #ff8c00;
+  /*color: #ff8c00;*/
+  color: rgb(233, 132, 99);
   padding: 10px 0;
 }
 
@@ -82,9 +87,14 @@ header {
 }
 
 .in-prog-btn {
-  background-color: rgba(102, 205, 170, .75)
+  /*background-color: rgba(102, 205, 170, .75)*/
+  background-color: rgba(233, 132, 99, .75);
 }
 
 .completed-btn {
+  background-color: rgba(37, 173, 135, .75);
+}
+
+.show-all-btn {
   background-color: rgba(128, 128, 128, .75);
 }

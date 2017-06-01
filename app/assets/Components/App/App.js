@@ -62,7 +62,7 @@ class App extends Component {
             <h1 className='title-Wander'>Wander<img className="logo" alt="main logo" src="https://res.cloudinary.com/crunchbase-production/image/upload/v1482176851/rtpxwpj5cfo654mpbolu.png"/><span className='title-List'>List</span></h1>
           </header>
           <div className='load-description-container'>
-            <h2 className='load-description'>A Map to Visualize Your Bucket List</h2>
+            <h2 className='load-description'>Map Out Your Bucket List</h2>
           </div>
           <button
             className='start-btn'
@@ -85,7 +85,7 @@ class App extends Component {
             <article className="filter-buttons-container">
               <button
                 onClick={stateHelpers.filterCompleted.bind(this, this, 'showAll')}
-                className="filter-buttons">Show All things</button>
+                className="filter-buttons show-all-btn">Show All things</button>
               <button
                 onClick={stateHelpers.filterCompleted.bind(this, this, 'showInProgress')}
                 className="filter-buttons in-prog-btn">Show In progress</button>
