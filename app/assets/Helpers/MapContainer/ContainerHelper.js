@@ -2,16 +2,18 @@ import React, { Component } from 'react'
 import { Marker, HeatmapLayer } from 'react-google-maps'
 
 export const setFilter = (app) => {
-  let newArray = app.props.markers
-  if(app.props.currentFilter === 'showInProgress' ) {
-    const inProg = app.props.markers.filter( dream => {
+  let { markers, currentFilter } = app.props
+  let newArray = markers
+
+  if(currentFilter === 'showInProgress' ) {
+    const inProg = markers.filter( dream => {
       return dream.completed === false
     })
     newArray = inProg
   }
 
-  if(app.props.currentFilter === 'showCompleted' ) {
-    const showComp = app.props.markers.filter( dream => {
+  if(currentFilter === 'showCompleted' ) {
+    const showComp = markers.filter( dream => {
       return dream.completed === true
     })
     newArray = showComp

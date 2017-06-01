@@ -10,7 +10,7 @@ export const displayWeather = (ListItem) => {
         <div>{ListItem.state.dailyWeather.conditions}</div>
         <div>High {ListItem.state.dailyWeather.high}°F/{ListItem.state.dailyWeather.highC}°C</div>
         <div>Low {ListItem.state.dailyWeather.low}°F/{ListItem.state.dailyWeather.lowC}°C</div>
-        <div>Precipitation {ListItem.state.dailyWeather.precipitation}</div>
+        <div>Precipitation {ListItem.state.dailyWeather.precipitation} in.</div>
         <div>Wind {ListItem.state.dailyWeather.windSpeed} MPH</div>
       </section>
     )
