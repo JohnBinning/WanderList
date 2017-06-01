@@ -19,14 +19,21 @@ class ListItem extends Component {
     }
   }
 
+  // handleHover(){
+  //   console.log(this.props.id);
+  // }
+
   render () {
-    let { completedStatus, location, body, id } = this.props
+    let { completedStatus, location, body, id, handleUnHover, handleHover } = this.props
     let completedClass = completedStatus ? 'completed' : 'not-completed'
     let completedText = completedStatus ? 'Completed' : 'Mark Completed'
     let status = completedStatus ? 'Already wandered!' : 'On the WanderList'
 
     return (
-      <article className={`list-item ${completedClass}`}>
+      <article
+        onMouseLeave={() => handleUnHover()}
+        onMouseEnter={() => handleHover(id)}
+        className={`list-item ${completedClass}`}>
         <div className='status'>Status: {status}</div>
         <h3 className="list-item-location">{location}</h3>
         <p className="list-item-body">{body}</p>

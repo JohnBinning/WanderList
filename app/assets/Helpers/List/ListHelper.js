@@ -5,7 +5,7 @@ import ListItem from '../../Components/ListItem/ListItem'
 export const setFilter = (list) => {
   let { dreams, currentFilter } = list.props
   let newArray = dreams
-  
+
   if(currentFilter === 'showInProgress' ) {
     const inProg = list.props.dreams.filter( dream => {
       return dream.completed === false
@@ -22,13 +22,15 @@ export const setFilter = (list) => {
   return newArray
 }
 
-export const createListItem = (list) => {
+export const createListItem = (list, handleHov, handleUnHov) => {
   if(list.props.dreams.length){
     const filtered = setFilter(list)
 
     return filtered.map( dream => {
       return (
           <ListItem
+            handleUnHover={handleUnHov}
+            handleHover={handleHov}
             coordinates={dream.coordinates}
             key={dream.id}
             completeItem={list.props.completeItem}

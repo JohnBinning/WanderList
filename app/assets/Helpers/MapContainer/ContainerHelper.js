@@ -42,15 +42,19 @@ export const createHeatMap = () => {
 export const createMarkers = (marker) => {
   // const grey = 'http://i.imgur.com/UHMI1DB.png'
   // const grey = 'http://i.imgur.com/vDLT4S8.png'
+  const incompHover = 'http://i.imgur.com/r8EACEq.png'
+  const compHover = 'http://i.imgur.com/euFP0wD.png'
   const completePin = 'http://i.imgur.com/CndqrAo.png'
   const inCompletePin = 'http://i.imgur.com/LRhkx2v.png'
 
   let url = inCompletePin
-
-  if (marker.completed) {
+  if (marker.completed && !marker.selected) {
     url = completePin
-    //url = 'https://www.icc.illinois.gov/images/markers/marker_grey.png'
     // url = './greyPin.png'
+  } else if (marker.completed && marker.selected) {
+    url = compHover
+  } else if (!marker.completed && marker.selected) {
+    url = incompHover
   }
 
   return <Marker
