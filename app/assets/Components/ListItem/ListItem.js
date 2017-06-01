@@ -21,23 +21,23 @@ class ListItem extends Component {
 
   render () {
     let { completedStatus, location, body, id } = this.props
-    let completedClass = this.props.completedStatus ? 'completed' : 'not-completed'
-    let completedText = this.props.completedStatus ? 'Completed' : 'Mark Completed'
-    let status = this.props.completedStatus ? 'Already wandered!' : 'On the WanderList'
+    let completedClass = completedStatus ? 'completed' : 'not-completed'
+    let completedText = completedStatus ? 'Completed' : 'Mark Completed'
+    let status = completedStatus ? 'Already wandered!' : 'On the WanderList'
 
     return (
       <article className={`list-item ${completedClass}`}>
         <div className='status'>Status: {status}</div>
-        <h3 className="list-item-location">{this.props.location}</h3>
-        <p className="list-item-body">{this.props.body}</p>
+        <h3 className="list-item-location">{location}</h3>
+        <p className="list-item-body">{body}</p>
         <p className='track-status'>Track the status of your items:</p>
         <section className="list-item-bottom">
           <button
-            onClick={this.props.deleteItem.bind(this, this.props.id)}
+            onClick={this.props.deleteItem.bind(this, id)}
             className={`complete-btn-${completedClass} delete-btn list-btn`}>delete
           </button>
           <button
-            onClick={this.props.completeItem.bind(this, this.props.id)}
+            onClick={this.props.completeItem.bind(this, id)}
             className={`list-btn complete-button complete-btn-${completedClass}`}>{completedText}
           </button>
           <section className='date-info'>
