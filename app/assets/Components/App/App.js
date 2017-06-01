@@ -27,44 +27,9 @@ class App extends Component {
       .then( (response) => {
         response.json()
           .then( (resp) => {
-            let weatherLocat = this.weatherLocat(resp)
-            // if(resp.results[0].address_components[2]) {
-            //   weatherLocat = {
-            //     local: resp.results[0].address_components[0].short_name,
-            //     regional: resp.results[0].address_components[2].short_name
-            //   }
-            // } else {
-            //   weatherLocat = {
-            //     local: resp.results[0].address_components[0].short_name
-            //   }
-            // }
-            const newDream = Object.assign({}, input, {
-              coordinates: resp.results[0].geometry.location,
-              id: handlers.generateId(),
-              completed: false,
-              weatherLocation: weatherLocat
-            })
-            stateHelpers.updateDream(this, newDream)
-            this.state.bucketList.forEach( dream => {
-              //console.log(dream.coordinates, dream.dreamLocation, dream.id)
-            })
+            handlers.handleDreamCreation(this, resp, input)
           })
       })
-  }
-
-  makeLocat(resp) {
-    let weatherLocat
-    if(resp.results[0].address_components[2]) {
-      weatherLocat = {
-        local: resp.results[0].address_components[0].short_name,
-        regional: resp.results[0].address_components[2].short_name
-      }
-    } else {
-      weatherLocat = {
-        local: resp.results[0].address_components[0].short_name
-      }
-    }
-    return weatherLocat
   }
 
   render() {
