@@ -32,6 +32,27 @@ class App extends Component {
       })
   }
 
+  handleHover(id){
+    const totalList = [...this.state.bucketList]
+    totalList.forEach( dream => {
+      id === dream.id ? dream.selected =! dream.selected : null
+    })
+    this.setState({
+      bucketList: totalList
+    })
+
+  }
+
+  handleUnHover(){
+    const totalList = [...this.state.bucketList]
+    totalList.forEach( dream => {
+      dream.selected = false
+    })
+    this.setState({
+      bucketList: totalList
+    })
+  }
+
   render() {
     if(!this.state.loggedIn) {
       return (
@@ -74,6 +95,8 @@ class App extends Component {
             </article>
             <Input handleClick={this.handleClick.bind(this)}/>
             <List
+              handleUnHover={this.handleUnHover.bind(this)}
+              handleHover={this.handleHover.bind(this)}
               currentFilter={this.state.currentFilter}
               completeItem={handlers.handleComplete.bind(this, this)}
               deleteItem={handlers.handleDelete.bind(this, this)}

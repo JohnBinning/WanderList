@@ -5,8 +5,10 @@ import { createListItem } from '../../Helpers/List/ListHelper'
 class List extends Component {
 
   render(){
+    const { handleHover, handleUnHover } = this.props
+    
     return(
-      <section className="list-grid">{createListItem(this)}</section>
+      <section className="list-grid">{createListItem(this, handleHover, handleUnHover)}</section>
     )
   }
 }

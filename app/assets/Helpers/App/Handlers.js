@@ -2,7 +2,6 @@ import { setListToLocal } from './localStorage'
 import { setBucketList, updateDream } from './AppState'
 
 export const handleDelete = (app, id ) => {
-  console.log(app, ' app for test of delete , id > ', id);
   const newList = app.state.bucketList.filter( dream => {
     return dream.id !== id
   })
@@ -44,6 +43,7 @@ export const makeDream = (resp, input, weatherLocat) => {
     coordinates: resp.results[0].geometry.location,
     id: generateId(),
     completed: false,
+    selected: false,
     weatherLocation: weatherLocat
   })
 }
