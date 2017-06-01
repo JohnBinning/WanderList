@@ -27,17 +27,17 @@ class App extends Component {
       .then( (response) => {
         response.json()
           .then( (resp) => {
-            let weatherLocat
-            if(resp.results[0].address_components[2]) {
-              weatherLocat = {
-                local: resp.results[0].address_components[0].short_name,
-                regional: resp.results[0].address_components[2].short_name
-              }
-            } else {
-              weatherLocat = {
-                local: resp.results[0].address_components[0].short_name
-              }
-            }
+            let weatherLocat = this.weatherLocat(resp)
+            // if(resp.results[0].address_components[2]) {
+            //   weatherLocat = {
+            //     local: resp.results[0].address_components[0].short_name,
+            //     regional: resp.results[0].address_components[2].short_name
+            //   }
+            // } else {
+            //   weatherLocat = {
+            //     local: resp.results[0].address_components[0].short_name
+            //   }
+            // }
             const newDream = Object.assign({}, input, {
               coordinates: resp.results[0].geometry.location,
               id: handlers.generateId(),
@@ -50,6 +50,21 @@ class App extends Component {
             })
           })
       })
+  }
+
+  makeLocat(resp) {
+    let weatherLocat
+    if(resp.results[0].address_components[2]) {
+      weatherLocat = {
+        local: resp.results[0].address_components[0].short_name,
+        regional: resp.results[0].address_components[2].short_name
+      }
+    } else {
+      weatherLocat = {
+        local: resp.results[0].address_components[0].short_name
+      }
+    }
+    return weatherLocat
   }
 
   render() {
