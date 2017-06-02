@@ -58,8 +58,8 @@ class App extends Component {
       return (
         <main>
           <div className="background-img"></div>
-          <header>
-            <h1 className='title-Wander'>Wander<img className="logo" alt="main logo" src="https://res.cloudinary.com/crunchbase-production/image/upload/v1482176851/rtpxwpj5cfo654mpbolu.png"/><span className='title-List'>List</span></h1>
+          <header className='loading-header'>
+            <h1 className='title-Wander main-title loading-title'>Wander<img className="logo" alt="main logo" src="https://res.cloudinary.com/crunchbase-production/image/upload/v1482176851/rtpxwpj5cfo654mpbolu.png"/><span className='title-List'>List</span></h1>
           </header>
           <div className='load-description-container'>
             <h2 className='load-description'>Map Out Your Bucket List</h2>
@@ -76,10 +76,14 @@ class App extends Component {
       <main className='main-app'>
         <div className="background-img"></div>
         <header>
-          <h1 className='title-Wander'>Wander<img className="logo" alt="main logo" src="https://res.cloudinary.com/crunchbase-production/image/upload/v1482176851/rtpxwpj5cfo654mpbolu.png"/><span className='title-List'>List</span></h1>
+          <h1 className='title-Wander loaded-title'>Wander<img className="logo" alt="main logo" src="https://res.cloudinary.com/crunchbase-production/image/upload/v1482176851/rtpxwpj5cfo654mpbolu.png"/><span className='title-List'>List</span></h1>
         </header>
 
         <section className="main-body">
+          <MapContainer
+            currentFilter={this.state.currentFilter}
+            className="map-container"
+            markers={this.state.bucketList} />
           <div className="input-list">
             <h3 className='filter-instructions'>Filter Completed List Items</h3>
             <article className="filter-buttons-container">
@@ -102,10 +106,6 @@ class App extends Component {
               deleteItem={handlers.handleDelete.bind(this, this)}
               dreams={this.state.bucketList}/>
           </div>
-          <MapContainer
-            currentFilter={this.state.currentFilter}
-            className="map-container"
-            markers={this.state.bucketList} />
         </section>
       </main>
     )
