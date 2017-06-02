@@ -27,8 +27,6 @@
   z-index: 1;
 }
 
-
-
 .loading-title {
   border-radius: 25px;
   width: 200px;
@@ -55,7 +53,8 @@ header {
 }
 
 .loaded-header {
-
+  display: flex;
+  justify-content: space-between;
 }
 
 .background-img {
@@ -120,4 +119,17 @@ header {
 
 .show-all-btn {
   background-color: rgba(128, 128, 128, .75);
+}
+
+.menu-toggle-btn {
+  /*background-color: rgba(0, 0, 0, 0.8);*/
+  background: linear-gradient(to bottom, #77CCB4 0%, #25AD87 40%, #176C54 65%, #0E4133 100%  );
+  color: black;
+  /*color: rgba(233, 132, 99, .75);*/
+  font-size: 1.5em;
+  height: 40px;
+  margin: 5px;
+  border-radius: 15px;
+  box-shadow: 1px 1px 2px rgb(233, 132, 99);
+  border: 1px solid rgb(37, 173, 135);
 }

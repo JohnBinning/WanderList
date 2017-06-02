@@ -85,7 +85,7 @@ class App extends Component {
             <h1 className='title-Wander loaded-title'>Wander<img className="logo" alt="main logo" src="https://res.cloudinary.com/crunchbase-production/image/upload/v1482176851/rtpxwpj5cfo654mpbolu.png"/><span className='title-List'>List</span></h1>
             <button
               onClick={() => this.toggleMenu()}
-              className="menu-toggle">
+              className="menu-toggle-btn">
               Track Your Travels
             </button>
           </header>
@@ -106,7 +106,7 @@ class App extends Component {
           <h1 className='title-Wander loaded-title'>Wander<img className="logo" alt="main logo" src="https://res.cloudinary.com/crunchbase-production/image/upload/v1482176851/rtpxwpj5cfo654mpbolu.png"/><span className='title-List'>List</span></h1>
           <button
             onClick={() => this.toggleMenu()}
-            className="menu-toggle">
+            className="menu-toggle-btn">
             Track Your Travels
           </button>
         </header>

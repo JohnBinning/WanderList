@@ -68,12 +68,17 @@ describe('App instantiation', () => {
 
   it('should start on click of the button', () => {
     const wrapper = shallow(<App />)
+
     expect(wrapper.state().loggedIn).toEqual(false)
+
     const start = wrapper.find('.start-btn')
     let beforeClick = wrapper.find('.main-body')
+
     expect(beforeClick.length).toEqual(0)
+
     start.simulate('click')
     let afterClick = wrapper.find('.main-body')
+
     expect(afterClick.length).toEqual(1)
     expect(wrapper.state().loggedIn).toEqual(true)
 
@@ -105,11 +110,17 @@ describe('App instantiation', () => {
     const completed = wrapper.find('.completed-btn')
 
     expect(wrapper.state().currentFilter).toEqual("showAll")
+
     inProg.simulate('click')
+
     expect(wrapper.state().currentFilter).toEqual("showInProgress")
+
     completed.simulate('click')
+
     expect(wrapper.state().currentFilter).toEqual("showCompleted")
+
     showAll.simulate('click')
+    
     expect(wrapper.state().currentFilter).toEqual("showAll")
   })
 

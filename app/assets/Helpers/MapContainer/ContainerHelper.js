@@ -49,8 +49,8 @@ export const createMarkers = (marker) => {
 
   let url = inCompletePin
   if (marker.completed && !marker.selected) {
-    url = completePin
-    // url = './greyPin.png'
+    // url = completePin
+    url = '/app/assets/Components/Helpers/MapContainer/greyPin.png'
   } else if (marker.completed && marker.selected) {
     url = compHover
   } else if (!marker.completed && marker.selected) {
