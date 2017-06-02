@@ -12,7 +12,8 @@ class App extends Component {
     this.state = {
       bucketList: [],
       currentFilter: 'showAll',
-      loggedIn: false
+      loggedIn: false,
+      showMenu: false
     }
   }
 
@@ -40,7 +41,6 @@ class App extends Component {
     this.setState({
       bucketList: totalList
     })
-
   }
 
   handleUnHover(){
@@ -51,6 +51,11 @@ class App extends Component {
     this.setState({
       bucketList: totalList
     })
+  }
+
+  toggleMenu(){
+    let menuStatus = !this.state.showMenu
+    this.setState({showMenu: menuStatus})
   }
 
   render() {
@@ -72,18 +77,47 @@ class App extends Component {
         </main>
       )
     }
+    if(!this.state.showMenu) {
+      return (
+        <main className='main-app'>
+          <div className="background-img"></div>
+          <header className='loaded-header'>
+            <h1 className='title-Wander loaded-title'>Wander<img className="logo" alt="main logo" src="https://res.cloudinary.com/crunchbase-production/image/upload/v1482176851/rtpxwpj5cfo654mpbolu.png"/><span className='title-List'>List</span></h1>
+            <button
+              onClick={() => this.toggleMenu()}
+              className="menu-toggle">
+              Track Your Travels
+            </button>
+          </header>
+          <section className="main-body">
+            <MapContainer
+              toggleSize={this.state.showMenu}
+              currentFilter={this.state.currentFilter}
+              className="map-container"
+              markers={this.state.bucketList} />
+          </section>
+        </main>
+      )
+    }
     return (
       <main className='main-app'>
         <div className="background-img"></div>
-        <header>
+        <header className='loaded-header'>
           <h1 className='title-Wander loaded-title'>Wander<img className="logo" alt="main logo" src="https://res.cloudinary.com/crunchbase-production/image/upload/v1482176851/rtpxwpj5cfo654mpbolu.png"/><span className='title-List'>List</span></h1>
+          <button
+            onClick={() => this.toggleMenu()}
+            className="menu-toggle">
+            Track Your Travels
+          </button>
         </header>
-
         <section className="main-body">
-          <MapContainer
-            currentFilter={this.state.currentFilter}
-            className="map-container"
-            markers={this.state.bucketList} />
+          <article className='map-container-wrapper'>
+            <MapContainer
+              toggleSize={this.state.showMenu}
+              currentFilter={this.state.currentFilter}
+              className="map-container"
+              markers={this.state.bucketList} />
+          </article>
           <div className="input-list">
             <h3 className='filter-instructions'>Filter Completed List Items</h3>
             <article className="filter-buttons-container">

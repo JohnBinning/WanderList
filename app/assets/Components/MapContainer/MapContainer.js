@@ -7,10 +7,16 @@ import * as helper  from '../../Helpers/MapContainer/ContainerHelper'
 class MapContainer extends Component  {
 
   render() {
+    console.log(this.props, ' cont props');
+    let mapWidth = "600px"
+    const mapHeight = "600px"
+    if(!this.props.toggleSize) {
+      mapWidth = "800px"
+    }
     return (
       <div>
-        <GMap mapElement={ <div className='map-element' style={{ height: "500px", width: "600px"}}/> }
-        containerElement={ <div className='container-element' style={{ height: "500px", width: "600px"}}/>}
+        <GMap mapElement={ <div className='map-element' style={{ height: mapHeight, width: mapWidth}}/> }
+        containerElement={ <div className='container-element' style={{ height: mapHeight, width: mapWidth}}/>}
         markers={helper.setFilter(this)}
         createMarkers={(marker) => helper.createMarkers(marker)}
         className="g-map"

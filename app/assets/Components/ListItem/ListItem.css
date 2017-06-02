@@ -1,13 +1,10 @@
 .list-item {
-  /*background-color: rgba(102, 205, 170, .75);*/
   background-color: rgba(37, 173, 135, .75);
   border: 1px solid rgb(233, 132, 99);
-  /*border: 1px solid #FF8C00;*/
   margin: 10px;
 }
 
 .not-completed {
-  /*background-color: rgba(102, 205, 170, .75);*/
   background-color: rgba(37, 173, 135, .75);
 }
 
@@ -17,14 +14,12 @@
 
 .complete-btn-completed {
   background-color: rgb(233, 132, 99);
-  /*background-color: #FF8C00;*/
   border: 1px solid white;
   color: white;
 }
 
 .complete-btn-not-completed {
   background-color: white;
-  /*border: 1px solid #ff8c00;*/
   border: 1px solid rgb(233, 132, 99);
 }
 
