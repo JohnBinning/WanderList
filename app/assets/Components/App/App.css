@@ -18,17 +18,28 @@
   width: 40%;
 }
 
-h1 {
-  background-color: rgba(0, 0, 0, 0.8);
+.loading-title {
   border-radius: 25px;
   width: 200px;
-  text-align: center;
+}
+
+.loaded-title {
+  padding: 2%;
+  border-radius: 10px;
+}
+
+h1 {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.loading-header {
+  justify-content: center;
 }
 
 header {
   font-family: 'Pacifico', cursive;
   display: flex;
-  justify-content: center;
+  /*justify-content: center;*/
 }
 
 .background-img {
