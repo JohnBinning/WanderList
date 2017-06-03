@@ -19,16 +19,11 @@ class ListItem extends Component {
     }
   }
 
-  // handleHover(){
-  //   console.log(this.props.id);
-  // }
-
   render () {
     let { completedStatus, location, body, id, handleUnHover, handleHover } = this.props
     let completedClass = completedStatus ? 'completed' : 'not-completed'
     let completedText = completedStatus ? 'Completed' : 'Mark Completed'
     let status = completedStatus ? 'Already wandered!' : 'On the WanderList'
-
     return (
       <article
         onMouseLeave={() => handleUnHover()}
@@ -50,7 +45,7 @@ class ListItem extends Component {
           <section className='date-info'>
             <h4>Input a date to see historical weather info</h4>
             <button
-              className={`list-btn complete-btn-${completedClass}`}
+              className={`list-btn show-weather-btn complete-btn-${completedClass}`}
               onClick={toggleInput.bind(this, this)}>
               Click to Show Weather Input
             </button>
