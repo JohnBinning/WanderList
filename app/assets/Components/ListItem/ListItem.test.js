@@ -44,6 +44,7 @@ describe('ListItem instantiation', () => {
   })
 
   it('renders without crashing', () => {
+    mockCalls()
     const div = document.createElement('div')
     ReactDOM.render(<ListItem
                       body='eat'
@@ -55,7 +56,146 @@ describe('ListItem instantiation', () => {
   })
 
   it('should have a complete button', () => {
+    mockCalls()
+    const wrapper = shallow(<ListItem
+                      body='eat'
+                      location='denver'
+                      coordinates={{lat: 39.7392358, lng: -104.990251}}
+                      deleteItem={mockFn}
+                      completeItem={mockFn}
+                      id={1495678862553}/>)
 
+    const completeBtn = wrapper.find('.complete-button')
+    expect(completeBtn.length).toEqual(1)
   })
 
+  it('should update completed status', () => {
+    mockCalls()
+    const ideaId = 1495678862553
+    const completeFn = jest.fn()
+    const wrapper = shallow(<ListItem
+                      body='eat'
+                      location='denver'
+                      coordinates={{lat: 39.7392358, lng: -104.990251}}
+                      deleteItem={mockFn}
+                      completeItem={completeFn}
+                      id={ideaId}/>)
+
+    const completeBtn = wrapper.find('.complete-button')
+    completeBtn.simulate('click')
+
+    expect(completeFn).toHaveBeenCalledWith(ideaId)
+  })
+
+  it('should have a delete button', () => {
+    mockCalls()
+    const wrapper = shallow(<ListItem
+                      body='eat'
+                      location='denver'
+                      coordinates={{lat: 39.7392358, lng: -104.990251}}
+                      deleteItem={mockFn}
+                      completeItem={mockFn}
+                      id={1495678862553}/>)
+
+    const deleteBtn = wrapper.find('.delete-btn')
+
+    expect(deleteBtn.length).toEqual(1)
+  })
+
+  it('should delete items', () => {
+    mockCalls()
+    const ideaId = 1495678862553
+    const deleteFn = jest.fn()
+    const wrapper = shallow(<ListItem
+                      body='eat'
+                      location='denver'
+                      coordinates={{lat: 39.7392358, lng: -104.990251}}
+                      deleteItem={deleteFn}
+                      completeItem={mockFn}
+                      id={ideaId}/>)
+
+    const deleteBtn = wrapper.find('.delete-btn')
+    deleteBtn.simulate('click')
+
+    expect(deleteFn).toHaveBeenCalledWith(ideaId)
+  })
+
+  it('should have a show weather button', () => {
+    mockCalls()
+    const wrapper = shallow(<ListItem
+                      body='eat'
+                      location='denver'
+                      coordinates={{lat: 39.7392358, lng: -104.990251}}
+                      deleteItem={mockFn}
+                      completeItem={mockFn}
+                      id={1495678862553}/>)
+
+    const showBtn = wrapper.find('.show-weather-btn')
+
+    expect(showBtn.length).toEqual(1)
+  })
+
+  it('should have a show weather inputs when clicking the weather button', () => {
+    mockCalls()
+    const wrapper = shallow(<ListItem
+                      body='eat'
+                      location='denver'
+                      coordinates={{lat: 39.7392358, lng: -104.990251}}
+                      deleteItem={mockFn}
+                      completeItem={mockFn}
+                      id={1495678862553}/>)
+
+    const showBtn = wrapper.find('.show-weather-btn')
+    showBtn.simulate('click')
+    const year = wrapper.find('.year')
+    const month = wrapper.find('.month')
+    const day = wrapper.find('.day')
+
+    expect(year.length).toEqual(1)
+    expect(month.length).toEqual(1)
+    expect(day.length).toEqual(1)
+  })
+
+  it('should update state with time values', () => {
+    mockCalls()
+    const wrapper = shallow(<ListItem
+                      body='eat'
+                      location='denver'
+                      coordinates={{lat: 39.7392358, lng: -104.990251}}
+                      deleteItem={mockFn}
+                      completeItem={mockFn}
+                      id={1495678862553}/>)
+
+    const showBtn = wrapper.find('.show-weather-btn')
+    showBtn.simulate('click')
+    const year = wrapper.find('.year')
+    const month = wrapper.find('.month')
+    const day = wrapper.find('.day')
+    year.simulate('change', { target: { value: '2005'}})
+    month.simulate('change', { target: { value: '08'}})
+    day.simulate('change', { target: { value: '08'}})
+
+    expect(wrapper.state().year).toEqual('2005')
+    expect(wrapper.state().month).toEqual('08')
+    expect(wrapper.state().day).toEqual('08')
+  })
+
+  it('should have the right location and thing to do', () => {
+    mockCalls()
+    const clickFn = jest.fn()
+    const wrapper = shallow(<ListItem
+                      body='eat'
+                      location='denver'
+                      coordinates={{lat: 39.7392358, lng: -104.990251}}
+                      deleteItem={mockFn}
+                      completeItem={mockFn}
+                      id={1495678862553}/>)
+
+    const itemLocation = wrapper.find('.list-item-location')
+    const itemBody = wrapper.find('.list-item-body')
+    console.log(wrapper.debug())
+
+    expect(itemLocation.text()).toEqual('denver')
+    expect(itemBody.text()).toEqual('eat')
+  })
 })

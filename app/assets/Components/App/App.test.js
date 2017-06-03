@@ -105,7 +105,14 @@ describe('App instantiation', () => {
       bucketList: mockApp.state.bucketList
     })
 
-    const showAll = wrapper.find('button').first()
+    expect(wrapper.state().showMenu).toEqual(false)
+
+    const togBtn = wrapper.find('.menu-toggle-btn')
+    togBtn.simulate('click')
+
+    expect(wrapper.state().showMenu).toEqual(true)
+
+    const showAll = wrapper.find('.show-all-btn')
     const inProg = wrapper.find('.in-prog-btn')
     const completed = wrapper.find('.completed-btn')
 
@@ -120,7 +127,7 @@ describe('App instantiation', () => {
     expect(wrapper.state().currentFilter).toEqual("showCompleted")
 
     showAll.simulate('click')
-    
+
     expect(wrapper.state().currentFilter).toEqual("showAll")
   })
 
