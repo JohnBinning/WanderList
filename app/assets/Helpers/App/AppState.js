@@ -36,3 +36,8 @@ export const filterCompleted = (app, filter) => {
     currentFilter: filter
   })
 }
+
+export const toggleMenu = (app) => {
+  let menuStatus = !app.state.showMenu
+  app.setState({showMenu: menuStatus})
+}

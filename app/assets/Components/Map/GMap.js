@@ -1,7 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-
 import { withScriptJs, withGoogleMap, HeatmapLayer, GoogleMap, Marker } from 'react-google-maps'
 import * as helper  from '../../Helpers/MapContainer/ContainerHelper'
 
@@ -20,7 +19,6 @@ const GMap = withGoogleMap((props) => {
           {helper.createHeatMap()}
         </div>
     </GoogleMap>
-
   </div>
   )
 })

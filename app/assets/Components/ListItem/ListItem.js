@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import * as $ from 'jquery'
 import PropTypes from 'prop-types'
 
-
 import * as LIHelpers from '../../Helpers/ListItem/ListItem'
 import { toggleInput } from '../../Helpers/ListItem/ListItemState'
 import { displayWeather, displayInput } from '../../Helpers/ListItem/displays'
@@ -26,6 +25,7 @@ class ListItem extends Component {
     let completedClass = completedStatus ? 'completed' : 'not-completed'
     let completedText = completedStatus ? 'Completed' : 'Mark Completed'
     let status = completedStatus ? 'Already wandered!' : 'On the WanderList'
+
     return (
       <article
         onMouseLeave={() => handleUnHover()}
@@ -53,7 +53,6 @@ class ListItem extends Component {
             </button>
             {displayInput(this)}
           </section>
-
         </section>
       </article>
     )
