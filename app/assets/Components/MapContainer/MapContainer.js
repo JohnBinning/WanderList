@@ -6,6 +6,12 @@ import GMap from '../Map/GMap'
 import * as helper  from '../../Helpers/MapContainer/ContainerHelper'
 
 class MapContainer extends Component  {
+  constructor() {
+    super()
+    this.state = {
+      clickedMarker: 0
+    }
+  }
 
   render() {
     let mapWidth = "100%"
@@ -16,7 +22,7 @@ class MapContainer extends Component  {
         <GMap mapElement={ <div className='map-element' style={{ height: mapHeight, width: mapWidth}}/> }
         containerElement={ <div className='container-element' style={{ height: mapHeight, width: mapWidth}}/>}
         markers={helper.setFilter(this)}
-        createMarkers={(marker) => helper.createMarkers(marker)}
+        createMarkers={(marker) => helper.createMarkers(marker, this)}
         className="g-map"
       />
 

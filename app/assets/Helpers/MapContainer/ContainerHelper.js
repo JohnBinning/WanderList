@@ -39,13 +39,19 @@ export const createHeatMap = () => {
   )
 }
 
-export const createMarkers = (marker) => {
-  // const grey = 'http://i.imgur.com/UHMI1DB.png'
-  // const grey = 'http://i.imgur.com/vDLT4S8.png'
+
+export const createMarkers = (marker, app) => {
   const incompHover = 'http://i.imgur.com/r8EACEq.png'
   const compHover = 'http://i.imgur.com/euFP0wD.png'
   const completePin = 'http://i.imgur.com/CndqrAo.png'
   const inCompletePin = 'http://i.imgur.com/LRhkx2v.png'
+
+  const toggleWindow = () => {
+    app.setState({
+      clickedMarker: marker.id
+    })
+    console.log('toggling')
+  }
 
   let url = inCompletePin
   if (marker.completed && !marker.selected) {
@@ -53,19 +59,34 @@ export const createMarkers = (marker) => {
     url = '/assets/images/greyPin.png'
   } else if (marker.completed && marker.selected) {
     url = compHover
-    console.log('hovering on comp')
+    // console.log('hovering on comp')
   } else if (!marker.completed && marker.selected) {
-    console.log('hovering on incomp');
+    // console.log('hovering on incomp');
     url = incompHover
   }
 
-  if (marker.showInfoWindow) {
+  if (marker.id === app.state.clickedMarker) {
+    let windowKey = marker.id*2
     return (
-      <InfoWindow
-        onClick={() => {marker.showInfoWindow = !marker.showInfoWindow}}
-        position={marker.coordinates}>
-          <p>{marker.dreamLocation}</p>
-      </InfoWindow>
+      <div key={windowKey}>
+        <InfoWindow
+          onClick={() => {console.log('x');}}
+          position={marker.coordinates}>
+          <div>
+            <h4>{marker.dreamLocation}</h4>
+            <p>{marker.dreamBody}</p>
+          </div>
+        </InfoWindow>
+        <Marker
+          position={marker.coordinates}
+          id={marker.id}
+          key={marker.id}
+          icon={url}
+          style={{height: "5xpx", width: "5px"}}
+          className={'marker'}
+          onClick={() => {toggleWindow()}}
+        />
+      </div>
     )
   } else {
     return (
@@ -76,7 +97,7 @@ export const createMarkers = (marker) => {
         icon={url}
         style={{height: "5xpx", width: "5px"}}
         className={'marker'}
-        onClick={() => {marker.showInfoWindow = !marker.showInfoWindow}}
+        onClick={() => {toggleWindow()}}
       />
     )
   }
