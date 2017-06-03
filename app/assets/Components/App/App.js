@@ -33,31 +33,6 @@ class App extends Component {
       })
   }
 
-  handleHover(id){
-    const totalList = [...this.state.bucketList]
-    totalList.forEach( dream => {
-      id === dream.id ? dream.selected =! dream.selected : null
-    })
-    this.setState({
-      bucketList: totalList
-    })
-  }
-
-  handleUnHover(){
-    const totalList = [...this.state.bucketList]
-    totalList.forEach( dream => {
-      dream.selected = false
-    })
-    this.setState({
-      bucketList: totalList
-    })
-  }
-
-  toggleMenu(){
-    let menuStatus = !this.state.showMenu
-    this.setState({showMenu: menuStatus})
-  }
-
   render() {
     if(!this.state.loggedIn) {
       return (
@@ -84,7 +59,7 @@ class App extends Component {
           <header className='loaded-header'>
             <h1 className='title-Wander loaded-title'>Wander<img className="logo" alt="main logo" src="https://res.cloudinary.com/crunchbase-production/image/upload/v1482176851/rtpxwpj5cfo654mpbolu.png"/><span className='title-List'>List</span></h1>
             <button
-              onClick={() => this.toggleMenu()}
+              onClick={() => stateHelpers.toggleMenu(this)}
               className="menu-toggle-btn">
               Track Your Travels
             </button>
@@ -105,7 +80,7 @@ class App extends Component {
         <header className='loaded-header'>
           <h1 className='title-Wander loaded-title'>Wander<img className="logo" alt="main logo" src="https://res.cloudinary.com/crunchbase-production/image/upload/v1482176851/rtpxwpj5cfo654mpbolu.png"/><span className='title-List'>List</span></h1>
           <button
-            onClick={() => this.toggleMenu()}
+            onClick={() => stateHelpers.toggleMenu(this)}
             className="menu-toggle-btn">
             Track Your Travels
           </button>
@@ -133,8 +108,8 @@ class App extends Component {
             </article>
             <Input handleClick={this.handleClick.bind(this)}/>
             <List
-              handleUnHover={this.handleUnHover.bind(this)}
-              handleHover={this.handleHover.bind(this)}
+              handleUnHover={handlers.handleUnHover.bind(this, this)}
+              handleHover={handlers.handleHover.bind(this, this)}
               currentFilter={this.state.currentFilter}
               completeItem={handlers.handleComplete.bind(this, this)}
               deleteItem={handlers.handleDelete.bind(this, this)}

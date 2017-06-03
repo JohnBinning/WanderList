@@ -53,3 +53,23 @@ export const handleDreamCreation = (that, resp, input) => {
   const newDream = makeDream(resp, input, weatherLocat)
   updateDream(that, newDream)
 }
+
+export const handleHover = (app, id) => {
+  const totalList = [...app.state.bucketList]
+  totalList.forEach( dream => {
+    id === dream.id ? dream.selected =! dream.selected : null
+  })
+  app.setState({
+    bucketList: totalList
+  })
+}
+
+export const handleUnHover = (app) => {
+    const totalList = [...app.state.bucketList]
+    totalList.forEach( dream => {
+      dream.selected = false
+    })
+    app.setState({
+      bucketList: totalList
+    })
+  }

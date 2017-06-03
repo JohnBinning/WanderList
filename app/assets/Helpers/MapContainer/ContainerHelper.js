@@ -53,7 +53,9 @@ export const createMarkers = (marker) => {
     // url = '/app/assets/Components/Helpers/MapContainer/greyPin.png'
   } else if (marker.completed && marker.selected) {
     url = compHover
+    console.log('hovering on comp')
   } else if (!marker.completed && marker.selected) {
+    console.log('hovering on incomp');
     url = incompHover
   }
 
