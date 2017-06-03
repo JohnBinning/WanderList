@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import * as $ from 'jquery'
+import PropTypes from 'prop-types'
+
 
 import * as LIHelpers from '../../Helpers/ListItem/ListItem'
 import { toggleInput } from '../../Helpers/ListItem/ListItemState'
@@ -56,6 +58,18 @@ class ListItem extends Component {
       </article>
     )
   }
+}
+
+ListItem.propTypes = {
+  coordinates: PropTypes.object,
+  body: PropTypes.string,
+  location: PropTypes.string,
+  id: PropTypes.number,
+  deleteItem: PropTypes.func,
+  completedStatus: PropTypes.bool,
+  completeItem: PropTypes.func,
+  handleHover: PropTypes.func,
+  handleUnHover: PropTypes.func,
 }
 
 export default ListItem
