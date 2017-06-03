@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 
 import { clickSave } from '../../Helpers/Input/input'
 
@@ -43,6 +44,10 @@ class Input extends Component {
         </section>
     )
   }
+}
+
+Input.propTypes = {
+  handleClick: PropTypes.func
 }
 
 export default Input

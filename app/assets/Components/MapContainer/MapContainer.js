@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Marker, HeatmapLayer } from 'react-google-maps'
+import PropTypes from 'prop-types'
 
 import GMap from '../Map/GMap'
 import * as helper  from '../../Helpers/MapContainer/ContainerHelper'
@@ -7,7 +8,6 @@ import * as helper  from '../../Helpers/MapContainer/ContainerHelper'
 class MapContainer extends Component  {
 
   render() {
-    console.log(this.props, ' cont props');
     let mapWidth = "600px"
     const mapHeight = "600px"
     if(!this.props.toggleSize) {
@@ -25,6 +25,12 @@ class MapContainer extends Component  {
       </div>
     )
   }
+}
+
+MapContainer.propTypes = {
+  toggleSize: PropTypes.bool,
+  currentFilter: PropTypes.string,
+  markers: PropTypes.array,
 }
 
 export default MapContainer
