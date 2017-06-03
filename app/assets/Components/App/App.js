@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import Drawer from 'react-motion-drawer';
 
 import MapContainer from '../MapContainer/MapContainer'
 import List from '../List/List'
@@ -52,28 +53,28 @@ class App extends Component {
         </main>
       )
     }
-    if(!this.state.showMenu) {
-      return (
-        <main className='main-app'>
-          <div className="background-img"></div>
-          <header className='loaded-header'>
-            <h1 className='title-Wander loaded-title'>Wander<img className="logo" alt="main logo" src="https://res.cloudinary.com/crunchbase-production/image/upload/v1482176851/rtpxwpj5cfo654mpbolu.png"/><span className='title-List'>List</span></h1>
-            <button
-              onClick={() => stateHelpers.toggleMenu(this)}
-              className="menu-toggle-btn">
-              Track Your Travels
-            </button>
-          </header>
-          <section className="main-body">
-            <MapContainer
-              toggleSize={this.state.showMenu}
-              currentFilter={this.state.currentFilter}
-              className="map-container"
-              markers={this.state.bucketList} />
-          </section>
-        </main>
-      )
-    }
+    // if(!this.state.showMenu) {
+    //   return (
+    //     <main className='main-app'>
+    //       <div className="background-img"></div>
+    //       <header className='loaded-header'>
+    //         <h1 className='title-Wander loaded-title'>Wander<img className="logo" alt="main logo" src="https://res.cloudinary.com/crunchbase-production/image/upload/v1482176851/rtpxwpj5cfo654mpbolu.png"/><span className='title-List'>List</span></h1>
+    //         <button
+    //           onClick={() => stateHelpers.toggleMenu(this)}
+    //           className="menu-toggle-btn">
+    //           Track Your Travels
+    //         </button>
+    //       </header>
+    //       <section className="main-body">
+    //         <MapContainer
+    //           toggleSize={this.state.showMenu}
+    //           currentFilter={this.state.currentFilter}
+    //           className="map-container"
+    //           markers={this.state.bucketList} />
+    //       </section>
+    //     </main>
+    //   )
+    // }
     return (
       <main className='main-app'>
         <div className="background-img"></div>
@@ -93,28 +94,34 @@ class App extends Component {
               className="map-container"
               markers={this.state.bucketList} />
           </article>
-          <div className="input-list">
-            <h3 className='filter-instructions'>Filter Completed List Items</h3>
-            <article className="filter-buttons-container">
-              <button
-                onClick={stateHelpers.filterCompleted.bind(this, this, 'showAll')}
-                className="filter-buttons show-all-btn">Show All things</button>
-              <button
-                onClick={stateHelpers.filterCompleted.bind(this, this, 'showInProgress')}
-                className="filter-buttons in-prog-btn">Show In progress</button>
-              <button
-                onClick={stateHelpers.filterCompleted.bind(this, this, 'showCompleted')}
-                className="filter-buttons completed-btn">Show Completed</button>
-            </article>
-            <Input handleClick={this.handleClick.bind(this)}/>
-            <List
-              handleUnHover={handlers.handleUnHover.bind(this, this)}
-              handleHover={handlers.handleHover.bind(this, this)}
-              currentFilter={this.state.currentFilter}
-              completeItem={handlers.handleComplete.bind(this, this)}
-              deleteItem={handlers.handleDelete.bind(this, this)}
-              dreams={this.state.bucketList}/>
-          </div>
+          <Drawer
+            open={this.state.showMenu}
+            overlayClassName='overlay'
+            className='drawer'>
+
+            <div className="input-list">
+              <h3 className='filter-instructions'>Filter Completed List Items</h3>
+              <article className="filter-buttons-container">
+                <button
+                  onClick={stateHelpers.filterCompleted.bind(this, this, 'showAll')}
+                  className="filter-buttons show-all-btn">Show All things</button>
+                <button
+                  onClick={stateHelpers.filterCompleted.bind(this, this, 'showInProgress')}
+                  className="filter-buttons in-prog-btn">Show In progress</button>
+                <button
+                  onClick={stateHelpers.filterCompleted.bind(this, this, 'showCompleted')}
+                  className="filter-buttons completed-btn">Show Completed</button>
+              </article>
+              <Input handleClick={this.handleClick.bind(this)}/>
+              <List
+                handleUnHover={handlers.handleUnHover.bind(this, this)}
+                handleHover={handlers.handleHover.bind(this, this)}
+                currentFilter={this.state.currentFilter}
+                completeItem={handlers.handleComplete.bind(this, this)}
+                deleteItem={handlers.handleDelete.bind(this, this)}
+                dreams={this.state.bucketList}/>
+            </div>
+        </Drawer>
         </section>
       </main>
     )

@@ -8,11 +8,9 @@ import * as helper  from '../../Helpers/MapContainer/ContainerHelper'
 class MapContainer extends Component  {
 
   render() {
-    let mapWidth = "600px"
+    let mapWidth = "100%"
     const mapHeight = "600px"
-    if(!this.props.toggleSize) {
-      mapWidth = "800px"
-    }
+
     return (
       <div>
         <GMap mapElement={ <div className='map-element' style={{ height: mapHeight, width: mapWidth}}/> }

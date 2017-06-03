@@ -44,6 +44,7 @@ export const makeDream = (resp, input, weatherLocat) => {
     id: generateId(),
     completed: false,
     selected: false,
+    showInfoWindow: false,
     weatherLocation: weatherLocat
   })
 }

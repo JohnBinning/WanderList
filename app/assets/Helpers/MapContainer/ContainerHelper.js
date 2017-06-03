@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Marker, HeatmapLayer } from 'react-google-maps'
+import { InfoWindow, Marker, HeatmapLayer } from 'react-google-maps'
 
 export const setFilter = (app) => {
   let { markers, currentFilter } = app.props
@@ -49,8 +49,8 @@ export const createMarkers = (marker) => {
 
   let url = inCompletePin
   if (marker.completed && !marker.selected) {
-    url = completePin
-    // url = '/app/assets/Components/Helpers/MapContainer/greyPin.png'
+    // url = completePin
+    url = '/assets/images/greyPin.png'
   } else if (marker.completed && marker.selected) {
     url = compHover
     console.log('hovering on comp')
@@ -59,12 +59,25 @@ export const createMarkers = (marker) => {
     url = incompHover
   }
 
-  return <Marker
-            position={marker.coordinates}
-            id={marker.id}
-            key={marker.id}
-            icon={url}
-            style={{height: "5xpx", width: "5px"}}
-            className={'marker'}
-          />
+  if (marker.showInfoWindow) {
+    return (
+      <InfoWindow
+        onClick={() => {marker.showInfoWindow = !marker.showInfoWindow}}
+        position={marker.coordinates}>
+          <p>{marker.dreamLocation}</p>
+      </InfoWindow>
+    )
+  } else {
+    return (
+      <Marker
+        position={marker.coordinates}
+        id={marker.id}
+        key={marker.id}
+        icon={url}
+        style={{height: "5xpx", width: "5px"}}
+        className={'marker'}
+        onClick={() => {marker.showInfoWindow = !marker.showInfoWindow}}
+      />
+    )
+  }
 }
