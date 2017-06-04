@@ -21,7 +21,7 @@ export const displayWeather = (ListItem) => {
 export const displayInput = (ListItem) => {
   let completedClass = ListItem.props.completedStatus ? 'completed' : 'not-completed'
   let completedText = ListItem.props.completedStatus ? 'Completed' : 'Mark Completed'
-  let status = ListItem.props.completedStatus ? 'Already wandered!' : 'On the WanderList'
+  let status = ListItem.props.completedStatus ? 'Great Memory!' : 'Some Day Soon'
   if(ListItem.state.showInput){
     return (
       <div>

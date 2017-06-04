@@ -146,32 +146,42 @@ header {
   box-shadow: 0px 3px 0px 0px #c96f54;
 }
 
+.filter-buttons {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 1.2em;
+  color: white;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.75);
+  outline: none;
+  border: none;
+  border-radius: 15px;
+  margin-top: 10px;
+}
+
+.show-all-btn {
+  background: linear-gradient(to bottom, #9e9999 0%, #adabab 40%, #bab6b6 100% );
+	box-shadow:
+		inset 1px 1px 0px rgba(255,255,255,0.45)
+}
+
+.in-prog-btn {
+  background: linear-gradient(to bottom, #bf6852 0%, #d3775b 40%, #e98463 100%);
+  box-shadow: inset 1px 1px 0px rgba(255,255,255,0.45)
+}
+
+.completed-btn {
+  background: linear-gradient(to bottom, #1b8766 0%, #20a07a 40%, #25AD87 100%);
+  box-shadow: inset 1px 1px 0px rgba(255,255,255,0.45);
+  margin-bottom: 15px;
+}
+
 .list-display-btn {
   box-shadow: 0px 3px 0px 0px #939292;
 }
 
 .add-display-btn {
-  background-color: rgb(102, 205, 170);
+  background-color: #25AD87;
   box-shadow: 0px 3px 0px 0px #1e755b;
-}
-
-
-.filter-buttons {
-  padding: 2%;
-  margin: 1%;
-}
-
-.in-prog-btn {
-  /*background-color: rgba(102, 205, 170, .75)*/
-  background-color: rgba(233, 132, 99, .75);
-}
-
-.completed-btn {
-  background-color: rgba(37, 173, 135, .75);
-}
-
-.show-all-btn {
-  background-color: rgba(128, 128, 128, .75);
 }
 
 .menu-toggle-btn {
@@ -193,5 +203,16 @@ header {
   /*border: 1px solid #25AD87;*/
   box-shadow: 0px 5px 0px 0px rgba(0, 0, 0, .8);
   border: none;
+}
 
+.filter-description {
+  color: white;
+  font-size: 1.3em;
+  margin: 10px 0;
+}
+
+.filter-buttons-container {
+  margin: 30px;
+  background-color: black;
+  border: 2px solid gray;
 }

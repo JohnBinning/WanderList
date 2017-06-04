@@ -87,16 +87,23 @@ export const menuDisplays = (app) => {
   if(app.state.navFilter === 'filter') {
     return (
       <article className="filter-buttons-container">
+        <h4 className='filter-description'>What do you want to see?</h4>
         <button
           onClick={filterCompleted.bind(app, app, 'showAll')}
-          className="filter-buttons show-all-btn">Show All things</button>
-          <button
-            onClick={filterCompleted.bind(app, app, 'showInProgress')}
-            className="filter-buttons in-prog-btn">Show In progress</button>
-            <button
-              onClick={filterCompleted.bind(app, app, 'showCompleted')}
-              className="filter-buttons completed-btn">Show Completed</button>
-            </article>
+          className="filter-buttons show-all-btn">
+          All Dreams
+        </button>
+        <button
+          onClick={filterCompleted.bind(app, app, 'showInProgress')}
+          className="filter-buttons in-prog-btn">
+          In progress
+        </button>
+        <button
+          onClick={filterCompleted.bind(app, app, 'showCompleted')}
+          className="filter-buttons completed-btn">
+          Completed
+        </button>
+      </article>
           )
   }
   return (

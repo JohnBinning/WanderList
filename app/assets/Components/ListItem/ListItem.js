@@ -24,7 +24,7 @@ class ListItem extends Component {
     let { completedStatus, location, body, id, handleUnHover, handleHover } = this.props
     let completedClass = completedStatus ? 'completed' : 'not-completed'
     let completedText = completedStatus ? 'Completed' : 'Mark Completed'
-    let status = completedStatus ? 'Already wandered!' : 'On the WanderList'
+    let status = completedStatus ? 'Great Memory' : 'Some Day Soon'
 
     return (
       <article

@@ -69,9 +69,10 @@ export const createMarkers = (marker, app) => {
     url = '/assets/images/da.png'
   }
 
-
   if (marker.id === app.state.clickedMarker) {
-    let windowKey = marker.id*2
+    const windowKey = marker.id*2
+    const completedStatus = marker.completed ? 'Great Memory' : 'Some Day Soon'
+
     return (
       <div key={windowKey}>
         <InfoWindow
@@ -80,6 +81,7 @@ export const createMarkers = (marker, app) => {
           <div>
             <h4>{marker.dreamLocation}</h4>
             <p>{marker.dreamBody}</p>
+            <p>Status: {completedStatus}</p>
           </div>
         </InfoWindow>
         <Marker
