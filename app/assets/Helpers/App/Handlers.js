@@ -39,12 +39,18 @@ export const makeLocat = (resp) => {
 }
 
 export const makeDream = (resp, input, weatherLocat) => {
+  let region = 'no region returned'
+  if(resp.results[0].address_components[2]) {
+    region = resp.results[0].address_components[2].long_name
+  }
+
   return Object.assign({}, input, {
     coordinates: resp.results[0].geometry.location,
     id: generateId(),
     completed: false,
     selected: false,
     showInfoWindow: false,
+    region: region,
     weatherLocation: weatherLocat
   })
 }

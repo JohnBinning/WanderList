@@ -18,6 +18,8 @@
 
 .drawer {
   background-color: rgba(0, 0, 0, .8);
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 10px, rgba(0, 0, 0, 0.23) 0px 3px 10px;
+  border-radius: 0px;
 }
 
 .info-window {
@@ -133,14 +135,19 @@ header {
 }
 
 .menu-toggle-btn {
-  /*background-color: rgba(0, 0, 0, 0.8);*/
-  background: linear-gradient(to bottom, #77CCB4 0%, #25AD87 40%, #176C54 65%, #0E4133 100%  );
-  color: black;
+  background-color: rgba(0, 0, 0, 0.8);
+  /*background: linear-gradient(to bottom, #25AD87 0%, #176C54 100%  );*/
+  /*background-color: black;*/
+  /*background-color: #25AD87;*/
+  color: #25AD87;
+  /*color: black;*/
   /*color: rgba(233, 132, 99, .75);*/
   font-size: 1.5em;
   height: 40px;
   margin: 5px;
-  border-radius: 15px;
-  box-shadow: 1px 1px 2px rgb(233, 132, 99);
-  border: 1px solid rgb(37, 173, 135);
+  border-radius: 5px;
+  box-shadow: 2px 2px 2px gray;
+  /*border: 1px solid #25AD87;*/
+  border: none;
+
 }
