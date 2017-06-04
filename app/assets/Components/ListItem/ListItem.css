@@ -61,3 +61,9 @@
 .weather-low {
   color: dodgerblue;
 }
+
+.weather-btn {
+  margin-top: 5px;
+  margin-left: 95px;
+  display: block;
+}
