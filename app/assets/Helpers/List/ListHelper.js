@@ -42,5 +42,10 @@ export const createListItem = (list, handleHov, handleUnHov) => {
       )
     })
   }
-  return <div className="no-items">Input a dream and location to get started!</div>
+  return (
+    <div>
+      <div className="no-items no-items-top">Input a dream and</div>
+      <div className="no-items">location to get started!</div>
+    </div>
+  )
 }

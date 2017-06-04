@@ -23,14 +23,17 @@
   border: 1px solid rgb(233, 132, 99);
 }
 
-.list-btn,
-.weather-btn {
-  margin: 0px, 5px, 5px, 5px;
+.list-btn {
+  margin: 5px;
   padding: 5px;
 }
 
 .status {
   margin-top: 10px;
+}
+
+.show-weather-btn {
+  margin-bottom: 10px;
 }
 
 .track-status {

@@ -41,3 +41,9 @@ export const toggleMenu = (app) => {
   let menuStatus = !app.state.showMenu
   app.setState({showMenu: menuStatus})
 }
+
+export const filterMenu = (app, filter) => {
+  app.setState({
+    navFilter: filter
+  })
+}

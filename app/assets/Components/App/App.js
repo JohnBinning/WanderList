@@ -15,7 +15,8 @@ class App extends Component {
       bucketList: [],
       currentFilter: 'showAll',
       loggedIn: false,
-      showMenu: false
+      showMenu: false,
+      navFilter: 'add'
     }
   }
 
@@ -49,33 +50,12 @@ class App extends Component {
           <button
             className='start-btn'
             onClick={stateHelpers.startApp.bind(this, this)}>
-             Click to Start
+             Start Wandering
            </button>
         </main>
       )
     }
-    // if(!this.state.showMenu) {
-    //   return (
-    //     <main className='main-app'>
-    //       <div className="background-img"></div>
-    //       <header className='loaded-header'>
-    //         <h1 className='title-Wander loaded-title'>Wander<img className="logo" alt="main logo" src="https://res.cloudinary.com/crunchbase-production/image/upload/v1482176851/rtpxwpj5cfo654mpbolu.png"/><span className='title-List'>List</span></h1>
-    //         <button
-    //           onClick={() => stateHelpers.toggleMenu(this)}
-    //           className="menu-toggle-btn">
-    //           Track Your Travels
-    //         </button>
-    //       </header>
-    //       <section className="main-body">
-    //         <MapContainer
-    //           toggleSize={this.state.showMenu}
-    //           currentFilter={this.state.currentFilter}
-    //           className="map-container"
-    //           markers={this.state.bucketList} />
-    //       </section>
-    //     </main>
-    //   )
-    // }
+
     return (
       <main className='main-app'>
         <div className="background-img"></div>
@@ -84,7 +64,11 @@ class App extends Component {
           <button
             onClick={() => stateHelpers.toggleMenu(this)}
             className="menu-toggle-btn">
-            Track Your Travels
+
+            <img
+              className='tracking-logo'
+              src='/assets/images/Walking-logo-border.png'/>
+             Track Your Travels
           </button>
         </header>
         <section className="main-body">
@@ -101,19 +85,24 @@ class App extends Component {
             className='drawer'>
 
             <div className="input-list">
-              <h3 className='filter-instructions'>Filter Completed List Items</h3>
-              <article className="filter-buttons-container">
+              <section className='menu-nav'>
                 <button
-                  onClick={stateHelpers.filterCompleted.bind(this, this, 'showAll')}
-                  className="filter-buttons show-all-btn">Show All things</button>
+                  onClick={() => stateHelpers.filterMenu(this, 'filter')}
+                  className="filter-display-btn nav-btns">Filter</button>
                 <button
-                  onClick={stateHelpers.filterCompleted.bind(this, this, 'showInProgress')}
-                  className="filter-buttons in-prog-btn">Show In progress</button>
+                  onClick={() => stateHelpers.filterMenu(this, 'add')}
+                  className="add-display-btn nav-btns">Add</button>
                 <button
-                  onClick={stateHelpers.filterCompleted.bind(this, this, 'showCompleted')}
-                  className="filter-buttons completed-btn">Show Completed</button>
-              </article>
-              <Input handleClick={this.handleClick.bind(this)}/>
+                  onClick={() => stateHelpers.filterMenu(this, 'list')}
+                  className="list-display-btn nav-btns">List</button>
+              </section>
+              <section>
+                {handlers.menuDisplays(this)}
+              </section>
+
+              <Input
+                visibility={this.state.navFilter}
+                handleClick={this.handleClick.bind(this)}/>
               <List
                 handleUnHover={handlers.handleUnHover.bind(this, this)}
                 handleHover={handlers.handleHover.bind(this, this)}
@@ -128,5 +117,15 @@ class App extends Component {
     )
   }
 }
-
+{/* <article className="filter-buttons-container">
+  <button
+    onClick={stateHelpers.filterCompleted.bind(this, this, 'showAll')}
+    className="filter-buttons show-all-btn">Show All things</button>
+  <button
+    onClick={stateHelpers.filterCompleted.bind(this, this, 'showInProgress')}
+    className="filter-buttons in-prog-btn">Show In progress</button>
+  <button
+    onClick={stateHelpers.filterCompleted.bind(this, this, 'showCompleted')}
+    className="filter-buttons completed-btn">Show Completed</button>
+</article> */}
 export default App

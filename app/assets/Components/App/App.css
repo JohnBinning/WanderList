@@ -25,10 +25,14 @@
 .info-window {
   top: -32px;
 }
-/*.input-list,
-.map-container {
-  width: 40%;
-}*/
+
+.tracking-logo {
+  height: 18px;
+}
+
+.invisible {
+  display: none;
+}
 
 .input-list {
   /*z-index: 20;*/
@@ -116,6 +120,42 @@ header {
   padding: 10px 0;
 }
 
+.nav-btns {
+  border-radius: 5px;
+  padding: 5px 10px;
+  font-size: 22px;
+  text-decoration: none;
+  margin: 10px;
+  color: #fff;
+  position: relative;
+  display: inline-block;
+  border: none;
+}
+
+.nav-btns:focus{
+  /*outline: 2px solid white;*/
+  box-shadow: 3px 4px 4px 0px #c1bfbf;
+}
+
+.menu-nav {
+  background-color: black;
+}
+
+.filter-display-btn {
+  background-color: rgb(233, 132, 99);
+  box-shadow: 0px 3px 0px 0px #c96f54;
+}
+
+.list-display-btn {
+  box-shadow: 0px 3px 0px 0px #939292;
+}
+
+.add-display-btn {
+  background-color: rgb(102, 205, 170);
+  box-shadow: 0px 3px 0px 0px #1e755b;
+}
+
+
 .filter-buttons {
   padding: 2%;
   margin: 1%;
@@ -135,19 +175,23 @@ header {
 }
 
 .menu-toggle-btn {
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: #444343;
   /*background: linear-gradient(to bottom, #25AD87 0%, #176C54 100%  );*/
   /*background-color: black;*/
   /*background-color: #25AD87;*/
   color: #25AD87;
+  padding: 5px 10px;
+
   /*color: black;*/
   /*color: rgba(233, 132, 99, .75);*/
   font-size: 1.5em;
+  /*font-family: 'Pacifico', cursive;*/
   height: 40px;
   margin: 5px;
   border-radius: 5px;
-  box-shadow: 2px 2px 2px gray;
+  /*box-shadow: 2px 2px 2px gray;*/
   /*border: 1px solid #25AD87;*/
+  box-shadow: 0px 5px 0px 0px rgba(0, 0, 0, .8);
   border: none;
 
 }
