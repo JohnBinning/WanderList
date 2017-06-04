@@ -56,7 +56,6 @@ export const createMarkers = (marker, app) => {
     })
     console.log('toggling')
   }
-  console.log(marker, 'marker');
   let url = '/assets/images/inCompletePin.png'
   if (marker.completed && !marker.selected) {
     url = '/assets/images/completePin.png'

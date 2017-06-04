@@ -5,13 +5,13 @@ import { weatherLocationFetch } from './ListItem'
 export const displayWeather = (ListItem) => {
   if(ListItem.state.weatherFetched) {
     return (
-      <section>
+      <section className="weather-details">
         <h3>Weather for {ListItem.state.dailyWeather.date} </h3>
         <div>{ListItem.state.dailyWeather.conditions}</div>
-        <div>High {ListItem.state.dailyWeather.high}°F/{ListItem.state.dailyWeather.highC}°C</div>
-        <div>Low {ListItem.state.dailyWeather.low}°F/{ListItem.state.dailyWeather.lowC}°C</div>
-        <div>Precipitation {ListItem.state.dailyWeather.precipitation} in.</div>
-        <div>Wind {ListItem.state.dailyWeather.windSpeed} MPH</div>
+        <div className='weather-high'>High: {ListItem.state.dailyWeather.high}°F/{ListItem.state.dailyWeather.highC}°C</div>
+        <div className='weather-low'>Low: {ListItem.state.dailyWeather.low}°F/{ListItem.state.dailyWeather.lowC}°C</div>
+        <div>Precipitation: {ListItem.state.dailyWeather.precipitation} in.</div>
+        <div>Wind: {ListItem.state.dailyWeather.windSpeed} MPH</div>
       </section>
     )
   }
@@ -25,7 +25,7 @@ export const displayInput = (ListItem) => {
   if(ListItem.state.showInput){
     return (
       <div>
-
+        <h5>Pick a year, month, and date to see weather</h5>
         <section className="item-input-container">
           <input
             maxLength='4'
