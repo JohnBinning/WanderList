@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Drawer from 'react-motion-drawer';
+import axios from 'axios';
 
 import MapContainer from '../MapContainer/MapContainer'
 import List from '../List/List'
@@ -18,6 +19,14 @@ class App extends Component {
       showMenu: false,
       navFilter: 'add'
     }
+    this.api = axios.create({
+      headers: {
+        "Accept": "application/json",
+        "Content-Type": "application/json",
+        "X-Requested-With": "XMLhttpRequest",
+        "Access-Control-Allow-Origin": "*"
+      }
+    })
   }
 
   componentDidMount() {
@@ -26,11 +35,17 @@ class App extends Component {
     stateHelpers.startFromLocal(this)
   }
 
-  handleClick(input) {
+  handleClick (app, input){
     fetch(`http://maps.google.com/maps/api/geocode/json?address=${input.dreamLocation}`)
       .then( (response) => {
         response.json()
           .then( (resp) => {
+            const {lat, lng} = resp.results[0].geometry.location
+            debugger
+            app.api.get(`https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${lat},${lng}&radius=500&key=AIzaSyAN5WGAqVFALQxz41OhpMMGvRgwBxVV_hU`)
+              .then((places) => {
+                console.log(places);
+              })
             handlers.handleDreamCreation(this, resp, input)
           })
       })
@@ -102,7 +117,7 @@ class App extends Component {
 
               <Input
                 visibility={this.state.navFilter}
-                handleClick={this.handleClick.bind(this)}/>
+                handleClick={this.handleClick.bind(this, this)}/>
               <List
                 handleUnHover={handlers.handleUnHover.bind(this, this)}
                 handleHover={handlers.handleHover.bind(this, this)}
