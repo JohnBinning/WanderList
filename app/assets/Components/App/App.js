@@ -90,7 +90,6 @@ class App extends Component {
         <section className="main-body">
           <article className='map-container-wrapper'>
             <MapContainer
-
               toggleSize={this.state.showMenu}
               currentFilter={this.state.currentFilter}
               className="map-container"
