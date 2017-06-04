@@ -40,3 +40,12 @@
   color: white;
   margin: 3px;
 }
+
+.item-input-container {
+  margin: 10px;
+  padding: 10px;
+  background-color: rgba(0,0,0,0.8);
+  border: 2px solid #e98463;
+  border-radius: 10px;
+  box-shadow: 2px 2px 2px black;
+}
