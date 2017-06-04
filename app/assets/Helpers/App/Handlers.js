@@ -1,5 +1,7 @@
+import React from 'react'
+
 import { setListToLocal } from './localStorage'
-import { setBucketList, updateDream } from './AppState'
+import { setBucketList, updateDream, filterCompleted } from './AppState'
 
 export const handleDelete = (app, id ) => {
   const newList = app.state.bucketList.filter( dream => {
@@ -80,3 +82,24 @@ export const handleUnHover = (app) => {
       bucketList: totalList
     })
   }
+
+export const menuDisplays = (app) => {
+  if(app.state.navFilter === 'filter') {
+    return (
+      <article className="filter-buttons-container">
+        <button
+          onClick={filterCompleted.bind(app, app, 'showAll')}
+          className="filter-buttons show-all-btn">Show All things</button>
+          <button
+            onClick={filterCompleted.bind(app, app, 'showInProgress')}
+            className="filter-buttons in-prog-btn">Show In progress</button>
+            <button
+              onClick={filterCompleted.bind(app, app, 'showCompleted')}
+              className="filter-buttons completed-btn">Show Completed</button>
+            </article>
+          )
+  }
+  return (
+    <div></div>
+  )
+}

@@ -13,8 +13,12 @@ class Input extends Component {
   }
 
   render() {
+    let inputVis = 'invisible'
+    if(this.props.visibility === 'add') {
+      inputVis = 'inputs-container'
+    }
     return(
-      <section className='inputs-container'>
+      <section className={inputVis}>
         <p className='instructions'>Add to your WanderList!</p>
         <input
             value={this.state.dreamLocation}
