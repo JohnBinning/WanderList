@@ -8,7 +8,6 @@ import Input from './Input'
 
 describe('Input instantiation', () => {
 
-
   const mockCalls = (() => {
     fetchMock.get(`http://maps.google.com/maps/api/geocode/json?address=denver`, {
       status: 200,
@@ -86,5 +85,4 @@ describe('Input instantiation', () => {
 
     expect(mockHc).toHaveBeenCalledWith({"dreamBody": "Eat", "dreamLocation": "Denver"})
   })
-
 })

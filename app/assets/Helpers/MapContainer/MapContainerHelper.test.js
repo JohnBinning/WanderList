@@ -16,8 +16,8 @@ describe('MapContainer helpers', () => {
     }
   }
 
-  it('should filter', () => {
-    
+  it.skip('should filter', () => {
+
   })
 
 })

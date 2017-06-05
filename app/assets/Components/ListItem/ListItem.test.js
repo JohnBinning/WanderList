@@ -24,7 +24,9 @@ describe('ListItem instantiation', () => {
   }
 
   afterEach(() => {
+
     expect(fetchMock.calls().unmatched).toEqual([])
+
     fetchMock.restore()
   })
 
@@ -66,6 +68,7 @@ describe('ListItem instantiation', () => {
                       id={1495678862553}/>)
 
     const completeBtn = wrapper.find('.complete-button')
+    
     expect(completeBtn.length).toEqual(1)
   })
 

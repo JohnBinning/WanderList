@@ -7,26 +7,6 @@ import List from './List'
 import { googleTestLocation, weatherTestHistory, weatherTestLocation } from '../../TestData/TestData'
 import * as handlers from '../../Helpers/App/Handlers'
 
-
-// describe('List instantiation', () => {
-  //let mockList;
-
-// beforeEach(() => {
-  // mockList = [{
-  //   completed: false,
-  //   coordinates: {lat: 39.7392358, lng: -104.990251},
-  //   dreamBody: "eat",
-  //   dreamLocation: "denver",
-  //   id: 1495678862553,
-  //   weatherLocation:  {local: "Denver", regional: "CO"}
-  // }]
-// })
-
-
-//
-
-
-
 describe('List instantiation', () => {
   let mockFn
   let mockList
@@ -66,8 +46,6 @@ describe('List instantiation', () => {
       body: weatherTestLocation
     })
   })
-
-
 
   it('renders without crashing', () => {
     const div = document.createElement('div')
@@ -125,11 +103,13 @@ describe('List instantiation', () => {
                       completeItem={mockFn}/>)
 
     let listItem = wrapper.find('ListItem')
+
     expect(listItem.length).toEqual(1)
+
     const deleteBtn = wrapper.find('.delete-btn')
     deleteBtn.simulate('click')
-    expect(deleteMock.mock.calls[0][0]).toEqual(1495678862553)
 
+    expect(deleteMock.mock.calls[0][0]).toEqual(1495678862553)
   })
 
   it('it should complete items when the complete button is clicked', () => {
@@ -142,11 +122,11 @@ describe('List instantiation', () => {
                       completeItem={mockComplete}/>)
 
     const completeBtn = wrapper.find('.complete-button')
+
     expect(completeBtn.length).toEqual(1)
 
     completeBtn.simulate('click')
+
     expect(mockComplete.mock.calls[0][0]).toEqual(1495678862553)
   })
-
-
 })
