@@ -50,7 +50,10 @@ class App extends Component {
           <button
             className='start-btn'
             onClick={stateHelpers.startApp.bind(this, this)}>
-             Start Wandering
+            <div>
+              <div>Start Wandering</div>
+              <div className='underline'></div>
+            </div>
            </button>
         </main>
       )
