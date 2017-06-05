@@ -11,10 +11,12 @@
   border-radius: 15px;
   box-shadow: 2px 2px 2px black;
   margin: 3px;
+  text-transform: uppercase;
 }
 
 .mc-completed {
   border: 2px solid rgba(37, 173, 135, .75);
+  /*text-transform: uppercase;*/
 }
 
 .mc-not-completed {
