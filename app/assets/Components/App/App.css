@@ -1,3 +1,5 @@
+/*  ---  top section --- */
+
 .title-Wander {
   color: rgba(37, 173, 135, .75);
 }
@@ -5,6 +7,8 @@
 .title-List {
   color: rgba(233, 132, 99, .75);
 }
+
+/* --- drawer menu --- */
 
 .main-body {
   display: flex;
@@ -89,14 +93,31 @@ header {
 }
 
 .start-btn {
-  background-color: rgba(37, 173, 135, .75);
-  border: 1px solid rgb(233, 132, 99);
-  color: rgba(0, 0, 0, 0.8);
+  /*background-color: rgb(37, 173, 135);*/
+  /*border: 1px solid rgb(233, 132, 99);*/
+  color: rgba(255, 255, 255, .8);
+  /*text-shadow: 1px 1px black;*/
+  background-color: rgba(0, 0, 0, 0.8);
   font-size: 2em;
   padding: 10px;
   height: 100px;
-  width: 250px;
-  margin-top: 10%;
+  width: 280px;
+  margin-top: 40px;
+  font-family: 'Pacifico', cursive;
+  border-radius: 10px;
+  box-shadow: 2px 2px 2px black;
+  /*border: 1px solid rgba(37, 173, 135, .8);*/
+  border: 1px solid rgba(233, 132, 99, .8);
+}
+
+.underline {
+  /*display: block;*/
+  width: 94%;
+  height: 2px;
+  margin-left: 3%;
+  margin-top: 6px;
+  margin-bottom: 5px;
+  background-color: rgba(37, 173, 135, .8);
 }
 
 .logo {
@@ -116,6 +137,7 @@ header {
   width: 35%;
   padding: 3%;
   text-align: center;
+  margin-top: 40px;
   border-radius: 25px;
 }
 
@@ -258,5 +280,4 @@ header {
     flex-wrap: nowrap;
     justify-content: space-around;
   }
-
 }
