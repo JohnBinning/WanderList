@@ -14,6 +14,6 @@
   font-family: 'Pacifico', cursive;
   color: rgba(255, 255, 255, .8);
   font-size: 1.5em;
-  border-top: 1px solid rgba(37, 173, 135, .8);
-  border-bottom: 1px solid rgba(233, 132, 99, .8);
+  border-top: 3px solid rgba(37, 173, 135, .8);
+  border-bottom: 3px solid rgba(233, 132, 99, .8);
 }

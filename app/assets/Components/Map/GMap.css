@@ -1,0 +1,22 @@
+.marker-location {
+  font-size: 1.5em;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.marker-contents {
+  background-color: rgba(0,0,0,0.8);
+  color: white;
+  padding: 5px;
+  border-radius: 15px;
+  box-shadow: 2px 2px 2px black;
+  margin: 3px;
+}
+
+.mc-completed {
+  border: 2px solid rgba(37, 173, 135, .75);
+}
+
+.mc-not-completed {
+  border: 2px solid rgba(233, 132, 99, .75);
+}

@@ -34,7 +34,7 @@ class ListItem extends Component {
         <div className={`status status-${completedClass}`}>{status}</div>
         <div className={`divider-div dd-${completedClass}`}></div>
           <div className='idea-wrapper'>
-            <div className='bucket-list-idea'>
+            <div className={`bucket-list-idea bli-${completedClass}`}>
               <h3 className="list-item-location">{location}</h3>
               <p className="list-item-body">{body}</p>
             </div>
