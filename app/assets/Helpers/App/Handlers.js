@@ -104,7 +104,7 @@ export const menuDisplays = (app) => {
           Completed
         </button>
       </article>
-          )
+    )
   }
   return (
     <div></div>

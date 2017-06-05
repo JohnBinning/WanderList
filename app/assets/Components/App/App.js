@@ -117,15 +117,5 @@ class App extends Component {
     )
   }
 }
-{/* <article className="filter-buttons-container">
-  <button
-    onClick={stateHelpers.filterCompleted.bind(this, this, 'showAll')}
-    className="filter-buttons show-all-btn">Show All things</button>
-  <button
-    onClick={stateHelpers.filterCompleted.bind(this, this, 'showInProgress')}
-    className="filter-buttons in-prog-btn">Show In progress</button>
-  <button
-    onClick={stateHelpers.filterCompleted.bind(this, this, 'showCompleted')}
-    className="filter-buttons completed-btn">Show Completed</button>
-</article> */}
+
 export default App

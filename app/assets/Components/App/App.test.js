@@ -50,7 +50,6 @@ describe('App instantiation', () => {
         currentFilter: 'showAll',
         bucketList: [
           {completed: true, coordinates: {lat: 39.7392358, lng: -104.990251}, dreamBody: 'eat', dreamLocation: 'Denver', id: 1496169687545, weatherLocation: {local: "Denver", regional: "CO"}},
-          // {completed: false, coordinates: {lat: 60.124167, lng: 6.74}, dreamBody: 'hike', dreamLocation: 'Trolltunga', id: 1496169692648, weatherLocation: {local: "Trolltunga", regional: "Hordaland"}},
         ]
       }
     }
@@ -109,6 +108,9 @@ describe('App instantiation', () => {
 
     const togBtn = wrapper.find('.menu-toggle-btn')
     togBtn.simulate('click')
+    const filterDisp = wrapper.find('.filter-display-btn')
+    filterDisp.simulate('click')
+
 
     expect(wrapper.state().showMenu).toEqual(true)
 
