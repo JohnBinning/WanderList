@@ -25,7 +25,6 @@ class MapContainer extends Component  {
         createMarkers={(marker) => helper.createMarkers(marker, this)}
         className="g-map"
       />
-
       </div>
     )
   }

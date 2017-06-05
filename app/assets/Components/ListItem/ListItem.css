@@ -74,7 +74,6 @@
   border-bottom: 1px solid #ccc;
   margin: 5px;
   padding-bottom: 5px;
-  /*padding-top : 5px;*/
 }
 
 .show-weather-btn {
@@ -130,14 +129,12 @@
   height: 2px;
   width: 90%;
   margin: 25px 5%;
-  /*margin-top: 15px;*/
 }
 
 .divider-div-top {
   height: 2px;
   width: 90%;
   margin: 25px 5%;
-  /*margin-top: 25px;*/
 }
 
 .dd-completed {
