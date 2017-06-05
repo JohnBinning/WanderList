@@ -3,6 +3,9 @@ import React from 'react'
 import { weatherLocationFetch } from './ListItem'
 
 export const displayWeather = (ListItem) => {
+  if(ListItem.state.dailyWeather.conditions === 'sad-weather-response') {
+    return <div className='sad-weather'>Sorry! Unable to find weather for this location.</div>
+  }
   if(ListItem.state.weatherFetched) {
     return (
       <section className="weather-details">
