@@ -9,7 +9,10 @@ class List extends Component {
     const { handleHover, handleUnHover } = this.props
 
     return(
-      <section className="list-grid">{createListItem(this, handleHover, handleUnHover)}</section>
+      <section className="list-grid">
+        <div className='the-list'>The List:</div>
+        {createListItem(this, handleHover, handleUnHover)}
+      </section>
     )
   }
 }

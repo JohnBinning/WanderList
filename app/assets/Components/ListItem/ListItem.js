@@ -32,6 +32,7 @@ class ListItem extends Component {
         onMouseEnter={() => handleHover(id)}
         className={`list-item li-${completedClass}`}>
         <div className={`status status-${completedClass}`}>{status}</div>
+        <div className={`divider-div dd-${completedClass}`}></div>
           <div className='idea-wrapper'>
             <div className='bucket-list-idea'>
               <h3 className="list-item-location">{location}</h3>
