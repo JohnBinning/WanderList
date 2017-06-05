@@ -27,7 +27,7 @@
 .complete-btn-not-completed {
   border: none;
   background-color: rgb(233, 132, 99);
-  box-shadow: 0px 2px 0px 0px #c96f54
+  box-shadow: 0px 2px 0px 0px #c96f54;
 }
 
 .list-btn {
