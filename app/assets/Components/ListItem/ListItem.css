@@ -1,9 +1,6 @@
 .list-item {
-  /*background-color: rgba(37, 173, 135, .75);*/
   background-color: #fcf9f9;
   margin: 10px;
-  /*box-shadow: 2px 2px 2px gray;*/
-  /*box-shadow: 0 4px 8px 0 rgba(255, 255, 255, 0.8);*/
 }
 
 .li-not-completed {
@@ -13,9 +10,12 @@
 
 .li-completed {
   color: rgb(128, 128, 128);
-  /*border: 2px solid rgba(128, 128, 128, .75);*/
   border: 2px solid rgba(233, 132, 99, .75);
   background-color: #e8e5e5;
+}
+
+.bli-not-completed {
+  color: black;
 }
 
 .complete-btn-completed {
@@ -50,7 +50,7 @@
   border-bottom: 1px solid #ccc;
   margin-left: 15px;
   margin-right: 15px;
-  margin-top: 5px;
+  margin-top: 10px;
   font-family: 'Pacifico', cursive;
   background-color: rgba(0,0,0,0.8);
 }

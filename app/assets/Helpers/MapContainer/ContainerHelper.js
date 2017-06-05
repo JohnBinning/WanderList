@@ -67,20 +67,21 @@ export const createMarkers = (marker, app) => {
   if (marker.region === "China" || marker.region === 'Beijing') {
     url = '/assets/images/da.png'
   }
-
   if (marker.id === app.state.clickedMarker) {
     const windowKey = marker.id*2
     const completedStatus = marker.completed ? 'Great Memory' : 'Some Day Soon'
+    const completedClass = marker.completed ? 'completed' : 'not-completed'
 
     return (
       <div key={windowKey}>
         <InfoWindow
+          className="info-window-comp"
           onClick={() => {console.log('x');}}
           position={marker.coordinates}>
-          <div>
-            <h4>{marker.dreamLocation}</h4>
-            <p>{marker.dreamBody}</p>
-            <p>Status: {completedStatus}</p>
+          <div className={`marker-contents mc-${completedClass}`}>
+            <h4 className='marker-location'>{marker.dreamLocation}</h4>
+            <p className='marker-body'>{marker.dreamBody}</p>
+            <p className='marker-status'>Status: {completedStatus}</p>
           </div>
         </InfoWindow>
         <Marker
