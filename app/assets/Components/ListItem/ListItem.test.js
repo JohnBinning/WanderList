@@ -193,7 +193,6 @@ describe('ListItem instantiation', () => {
 
     const itemLocation = wrapper.find('.list-item-location')
     const itemBody = wrapper.find('.list-item-body')
-    console.log(wrapper.debug())
 
     expect(itemLocation.text()).toEqual('denver')
     expect(itemBody.text()).toEqual('eat')

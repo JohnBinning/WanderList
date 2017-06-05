@@ -51,6 +51,38 @@ describe('App Handler Helpers', () => {
     }
   }
 
+  it('should create a location', () => {
+    const expectedLocation = {"local": "Denver", "regional": "CO"}
+
+    expect(handlers.makeLocat(googleTestLocation)).toEqual(expectedLocation)
+  })
+
+  it('should create a dream', () => {
+    const weaLocation = {local: 'Denver', regional: 'CO'}
+    const inp = {dreamLocation: "denver", dreamBody: "eat"}
+    const expectedDream = {
+      "completed": false,
+      "coordinates": {
+        "lat": 39.7392358,
+        "lng": -104.990251,
+      },
+      "dreamBody": "eat",
+      "dreamLocation": "denver",
+      "id": 1,
+      "region": "Colorado",
+      "selected": false,
+      "showInfoWindow": false,
+      "weatherLocation": {
+        "local": "Denver",
+        "regional": "CO",
+      },
+    }
+
+    let testDream = handlers.makeDream(googleTestLocation, inp, weaLocation)
+    testDream.id = 1
+
+    expect(testDream).toEqual(expectedDream)
+  })
 
   it('generateID should generate a date.now id', () => {
     mockCalls()

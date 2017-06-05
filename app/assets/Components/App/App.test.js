@@ -109,6 +109,9 @@ describe('App instantiation', () => {
 
     const togBtn = wrapper.find('.menu-toggle-btn')
     togBtn.simulate('click')
+    const filterDisp = wrapper.find('.filter-display-btn')
+    filterDisp.simulate('click')
+
 
     expect(wrapper.state().showMenu).toEqual(true)
 
