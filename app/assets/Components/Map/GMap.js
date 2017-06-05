@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 
 import { withScriptJs, withGoogleMap, HeatmapLayer, GoogleMap, Marker } from 'react-google-maps'
 import * as helper  from '../../Helpers/MapContainer/ContainerHelper'
+import { mapStyle, silverMapStyle } from './MapStyle'
 
 const GMap = withGoogleMap((props) => {
   let { onMapLoad, markers, createMarkers } = props
@@ -10,6 +11,7 @@ const GMap = withGoogleMap((props) => {
     <div>
     <GoogleMap
       ref={onMapLoad}
+      defaultOptions={{ styles: mapStyle}}
       defaultZoom={2}
       defaultCenter={{ lat: 21.9071923, lng: -45.0368707 }}>
           {markers.map(createMarkers)}
