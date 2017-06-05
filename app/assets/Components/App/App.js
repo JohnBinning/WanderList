@@ -63,12 +63,13 @@ class App extends Component {
           <h1 className='title-Wander loaded-title'>Wander<img className="logo" alt="main logo" src="https://res.cloudinary.com/crunchbase-production/image/upload/v1482176851/rtpxwpj5cfo654mpbolu.png"/><span className='title-List'>List</span></h1>
           <button
             onClick={() => stateHelpers.toggleMenu(this)}
-            className="menu-toggle-btn">
-
-            <img
-              className='tracking-logo'
-              src='/assets/images/Walking-logo-border.png'/>
-             Track Your Travels
+            className="menu-toggle-btn desktop-btn">
+            <div className='menu-btn-wrapper'>
+              <img
+                className='tracking-logo'
+                src='/assets/images/Walking-logo-border.png'/>
+                <div className='menu-btn-text'>Track Your Travels</div>
+            </div>
           </button>
         </header>
         <section className="main-body">
@@ -95,6 +96,16 @@ class App extends Component {
                 <button
                   onClick={() => stateHelpers.filterMenu(this, 'list')}
                   className="list-display-btn nav-btns">List</button>
+                  <button
+                    onClick={() => stateHelpers.toggleMenu(this)}
+                    className="menu-toggle-btn mobile-btn">
+                    <div className='menu-btn-wrapper'>
+                      <img
+                        className='tracking-logo'
+                        src='/assets/images/Walking-logo-border.png'/>
+                        <div className='menu-btn-text'>Track Your Travels</div>
+                    </div>
+                  </button>
               </section>
               <section>
                 {handlers.menuDisplays(this)}

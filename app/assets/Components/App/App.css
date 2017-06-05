@@ -71,6 +71,12 @@ header {
 .loaded-header {
   display: flex;
   justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.menu-btn-wrapper {
+  display: flex;
+  align-items: center;
 }
 
 .background-img {
@@ -204,4 +210,53 @@ header {
   margin: 30px;
   background-color: black;
   border: 2px solid gray;
+}
+
+.mobile-btn {
+  display: none;
+}
+
+.desktop-btn {
+  height: 52px;
+}
+
+
+@media screen and (max-width: 560px) {
+
+  .menu-btn-text {
+    display: none;
+  }
+
+  .tracking-logo {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+
+  .title-Wander {
+    order: 2
+  }
+
+  .menu-toggle-btn {
+    box-shadow: 0px 5px 0px 0px #545353;
+  }
+
+  .mobile-btn {
+    box-shadow: 0px 3px 0px 0px #545353;
+    display: flex;
+    margin: 5px;
+    margin-top: 10px;
+  }
+
+  .nav-btns {
+    margin: 5px;
+    margin-top: 10px;
+  }
+
+  .menu-nav {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+  }
+
 }
