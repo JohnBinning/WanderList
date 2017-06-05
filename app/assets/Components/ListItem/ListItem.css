@@ -1,3 +1,6 @@
+
+/* --- general ---*/
+
 .list-item {
   background-color: #fcf9f9;
   margin: 10px;
@@ -18,29 +21,8 @@
   color: black;
 }
 
-.complete-btn-completed {
-  background-color: rgb(37, 173, 135);
-  box-shadow: 0px 2px 0px 0px #1e755b;
-  border: none;
-}
+/* --- top --- */
 
-.complete-btn-not-completed {
-  border: none;
-  background-color: rgb(233, 132, 99);
-  box-shadow: 0px 2px 0px 0px #c96f54;
-}
-
-.list-btn {
-  border-radius: 5px;
-  padding: 4px 8px;
-  font-size: .9em;
-  text-decoration: none;
-  margin: 5px;
-  color: #fff;
-  position: relative;
-  display: inline-block;
-  border: none;
-}
 
 .status {
   padding: 4px;
@@ -76,10 +58,29 @@
   padding-bottom: 5px;
 }
 
-.show-weather-btn {
-  margin-top: 10px;
-  margin-bottom: 10px;
+    /* - divider - */
+
+.divider-div {
+  height: 2px;
+  width: 90%;
+  margin: 25px 5%;
 }
+
+.divider-div-top {
+  height: 2px;
+  width: 90%;
+  margin: 25px 5%;
+}
+
+.dd-completed {
+  background-color: #e98463;
+}
+
+.dd-not-completed {
+  background-color: rgb(37, 173, 135);
+}
+
+/* --- status --- */
 
 .track-status {
   margin: 10px 3px;
@@ -95,15 +96,6 @@
 
 .ts-completed {
   color:  rgb(37, 173, 135);
-}
-
-.item-input-container {
-  margin: 10px;
-  padding: 10px;
-  background-color: rgba(0,0,0,0.8);
-  border: 2px solid #e98463;
-  border-radius: 10px;
-  box-shadow: 2px 2px 2px black;
 }
 
 .item-status-button-container {
@@ -125,25 +117,57 @@
   border: 2px solid rgb(37, 173, 135);
 }
 
-.divider-div {
-  height: 2px;
-  width: 90%;
-  margin: 25px 5%;
-}
 
-.divider-div-top {
-  height: 2px;
-  width: 90%;
-  margin: 25px 5%;
-}
+/* --- buttons --- */
 
-.dd-completed {
-  background-color: #e98463;
-}
-
-.dd-not-completed {
+.complete-btn-completed {
   background-color: rgb(37, 173, 135);
+  box-shadow: 0px 2px 0px 0px #1e755b;
+  border: none;
 }
+
+.complete-btn-not-completed {
+  border: none;
+  background-color: rgb(233, 132, 99);
+  box-shadow: 0px 2px 0px 0px #c96f54;
+}
+
+.list-btn {
+  border-radius: 5px;
+  padding: 4px 8px;
+  font-size: .9em;
+  text-decoration: none;
+  margin: 5px;
+  color: #fff;
+  position: relative;
+  display: inline-block;
+  border: none;
+}
+
+.show-weather-btn {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+
+.weather-btn {
+  color: white;
+  display: block;
+  margin-left: 95px;
+  margin-top: 5px;
+}
+
+
+.item-input-container {
+  margin: 10px;
+  padding: 10px;
+  background-color: rgba(0,0,0,0.8);
+  border: 2px solid #e98463;
+  border-radius: 10px;
+  box-shadow: 2px 2px 2px black;
+}
+
+/* --- weather --- */
 
 .date-info-instructions {
   display: block;
@@ -169,13 +193,6 @@
 
 .weather-low {
   color: dodgerblue;
-}
-
-.weather-btn {
-  color: white;
-  display: block;
-  margin-left: 95px;
-  margin-top: 5px;
 }
 
 .list-item-location {

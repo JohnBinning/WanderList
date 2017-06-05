@@ -3,6 +3,7 @@ import * as $ from 'jquery'
 import { setWeatherFetch } from './ListItemState'
 
 export const createWeatherObj = (res) => {
+  console.log(res, 'weobj');
   return {
     conditions: res.history.observations[11].conds,
     high: res.history.dailysummary[0].maxtempi,
@@ -21,6 +22,7 @@ export const weatherFetch = (ListItem) => {
   .then( response  => {
     response.json()
     .then( res => {
+      console.log(res, ' fetch');
       const weatherObj = createWeatherObj(res)
       setWeatherFetch(weatherObj, ListItem)
     })
