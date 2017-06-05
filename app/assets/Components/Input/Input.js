@@ -19,7 +19,7 @@ class Input extends Component {
     }
     return(
       <section className={inputVis}>
-        <p className='instructions'>Add to your WanderList!</p>
+        <p className='instructions'>Add to your Wander<span className='inst-list'>List!</span></p>
         <input
             value={this.state.dreamLocation}
             className="input-location user-inputs"

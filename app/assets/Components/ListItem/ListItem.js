@@ -30,22 +30,31 @@ class ListItem extends Component {
       <article
         onMouseLeave={() => handleUnHover()}
         onMouseEnter={() => handleHover(id)}
-        className={`list-item ${completedClass}`}>
-        <div className='status'>Status: {status}</div>
-        <h3 className="list-item-location">{location}</h3>
-        <p className="list-item-body">{body}</p>
-        <p className='track-status'>Track the status of your items:</p>
+        className={`list-item li-${completedClass}`}>
+        <div className={`status status-${completedClass}`}>{status}</div>
+        <div className={`divider-div dd-${completedClass}`}></div>
+          <div className='idea-wrapper'>
+            <div className='bucket-list-idea'>
+              <h3 className="list-item-location">{location}</h3>
+              <p className="list-item-body">{body}</p>
+            </div>
+        </div>
+        <p className={`track-status ts-${completedClass}`}>Track the status of your items:</p>
         <section className="list-item-bottom">
-          <button
-            onClick={this.props.deleteItem.bind(this, id)}
-            className={`complete-btn-${completedClass} delete-btn list-btn`}>delete
-          </button>
-          <button
-            onClick={this.props.completeItem.bind(this, id)}
-            className={`list-btn complete-button complete-btn-${completedClass}`}>{completedText}
-          </button>
+          <div className={`item-status-button-container isb-${completedClass}`}>
+            <button
+              onClick={this.props.deleteItem.bind(this, id)}
+              className={`complete-btn-${completedClass} delete-btn list-btn`}>delete
+            </button>
+            <button
+              onClick={this.props.completeItem.bind(this, id)}
+              className={`list-btn complete-button complete-btn-${completedClass}`}>{completedText}
+            </button>
+          </div>
+          <div className={`divider-div dd-${completedClass}`}></div>
           <section className='date-info'>
-            <h4>Input a date to see historical weather info</h4>
+            <h4 className='date-info-instructions'>Want to know when to go?</h4>
+            <h4 className='date-info-instructions-bottom'>Input a date to see historical weather info!</h4>
             <button
               className={`list-btn show-weather-btn complete-btn-${completedClass}`}
               onClick={toggleInput.bind(this, this)}>
