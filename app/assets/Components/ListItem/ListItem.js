@@ -68,7 +68,7 @@ class ListItem extends Component {
     let completedClass = completedStatus ? 'completed' : 'not-completed'
     let completedText = completedStatus ? 'Completed' : 'Mark Completed'
     let status = completedStatus ? 'Great Memory' : 'Some Day Soon'
-
+    let arrow = this.state.expanded ?  '˄' :  '˅'
     return (
       <article
         onMouseLeave={() => handleUnHover()}
@@ -83,9 +83,9 @@ class ListItem extends Component {
             </div>
         </div>
         <button
-          className={`lower-card-btn`}
+          className={`lower-card-btn lc-${completedClass}`}
           onClick={this.toggleLowerCard.bind(this)}>
-          Show Bottom
+          <div className={`more-options`}>MORE OPTIONS</div> <div className='arrow'>{arrow}</div>
         </button>
         <section>
           {this.displayLowerCard(completedClass, completedText)}
