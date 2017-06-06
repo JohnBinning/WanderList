@@ -83,7 +83,9 @@ describe('List instantiation', () => {
                       deleteItem={mockFn}
                       dreams={mockList}
                       completeItem={mockFn}/>)
-
+                      
+    const showBtn = wrapper.find('.lower-card-btn')
+    showBtn.simulate('click')
     const listItem = wrapper.find('ListItem')
     const itemLocation = wrapper.find('.list-item-location')
     const itemBody = wrapper.find('.list-item-body')
@@ -102,6 +104,8 @@ describe('List instantiation', () => {
                       dreams={mockList}
                       completeItem={mockFn}/>)
 
+    const showBtn = wrapper.find('.lower-card-btn')
+    showBtn.simulate('click')
     let listItem = wrapper.find('ListItem')
 
     expect(listItem.length).toEqual(1)
@@ -120,6 +124,9 @@ describe('List instantiation', () => {
                       deleteItem={mockFn}
                       dreams={mockList}
                       completeItem={mockComplete}/>)
+
+    const showBtn = wrapper.find('.lower-card-btn')
+    showBtn.simulate('click')
 
     const completeBtn = wrapper.find('.complete-button')
 

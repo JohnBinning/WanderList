@@ -67,8 +67,10 @@ describe('ListItem instantiation', () => {
                       completeItem={mockFn}
                       id={1495678862553}/>)
 
+    const showBtn = wrapper.find('.lower-card-btn')
+    showBtn.simulate('click')
     const completeBtn = wrapper.find('.complete-button')
-    
+
     expect(completeBtn.length).toEqual(1)
   })
 
@@ -84,6 +86,8 @@ describe('ListItem instantiation', () => {
                       completeItem={completeFn}
                       id={ideaId}/>)
 
+    const showBtn = wrapper.find('.lower-card-btn')
+    showBtn.simulate('click')
     const completeBtn = wrapper.find('.complete-button')
     completeBtn.simulate('click')
 
@@ -100,6 +104,8 @@ describe('ListItem instantiation', () => {
                       completeItem={mockFn}
                       id={1495678862553}/>)
 
+    const showBtn = wrapper.find('.lower-card-btn')
+    showBtn.simulate('click')
     const deleteBtn = wrapper.find('.delete-btn')
 
     expect(deleteBtn.length).toEqual(1)
@@ -117,6 +123,8 @@ describe('ListItem instantiation', () => {
                       completeItem={mockFn}
                       id={ideaId}/>)
 
+    const showBtn = wrapper.find('.lower-card-btn')
+    showBtn.simulate('click')
     const deleteBtn = wrapper.find('.delete-btn')
     deleteBtn.simulate('click')
 
@@ -133,6 +141,8 @@ describe('ListItem instantiation', () => {
                       completeItem={mockFn}
                       id={1495678862553}/>)
 
+    const lowBtn = wrapper.find('.lower-card-btn')
+    lowBtn.simulate('click')
     const showBtn = wrapper.find('.show-weather-btn')
 
     expect(showBtn.length).toEqual(1)
@@ -148,6 +158,8 @@ describe('ListItem instantiation', () => {
                       completeItem={mockFn}
                       id={1495678862553}/>)
 
+    const lowBtn = wrapper.find('.lower-card-btn')
+    lowBtn.simulate('click')
     const showBtn = wrapper.find('.show-weather-btn')
     showBtn.simulate('click')
     const year = wrapper.find('.year')
@@ -169,6 +181,8 @@ describe('ListItem instantiation', () => {
                       completeItem={mockFn}
                       id={1495678862553}/>)
 
+    const lowBtn = wrapper.find('.lower-card-btn')
+    lowBtn.simulate('click')
     const showBtn = wrapper.find('.show-weather-btn')
     showBtn.simulate('click')
     const year = wrapper.find('.year')
@@ -194,6 +208,8 @@ describe('ListItem instantiation', () => {
                       completeItem={mockFn}
                       id={1495678862553}/>)
 
+    const lowBtn = wrapper.find('.lower-card-btn')
+    lowBtn.simulate('click')
     const itemLocation = wrapper.find('.list-item-location')
     const itemBody = wrapper.find('.list-item-body')
 
