@@ -11,7 +11,7 @@ const GMap = withGoogleMap((props) => {
     <div>
     <GoogleMap
       ref={onMapLoad}
-      defaultOptions={{ styles: mapStyle}}
+      //defaultOptions={{ styles: mapStyle}}
       defaultZoom={2}
       defaultCenter={{ lat: 21.9071923, lng: -45.0368707 }}>
           {markers.map(createMarkers)}
