@@ -21,6 +21,28 @@ export const setFilter = (app) => {
   return newArray
 }
 
+export const setUrl = (marker) => {
+  console.log(marker, 'marker');
+  let url = '/assets/images/inCompletePin.png'
+  const { completed, selected, region } = marker
+
+  if (marker.completed && !marker.selected) {
+    url = '/assets/images/completePin.png'
+  } else if (marker.completed && marker.selected) {
+    url = '/assets/images/compHover.png'
+  } else if (!marker.completed && marker.selected) {
+    url = '/assets/images/incompHover.png'
+  }
+  if (marker.region === "China" || marker.region === 'Beijing') {
+    url = '/assets/images/da.png'
+  }
+  if (marker.region === "Marylebone"){
+    url = '/assets/images/Sherlock.png'
+  }
+  
+  return url
+}
+
 export const createMarkers = (marker, app) => {
   // const incompHover = 'http://i.imgur.com/r8EACEq.png'
   // const compHover = 'http://i.imgur.com/euFP0wD.png'
@@ -37,17 +59,19 @@ export const createMarkers = (marker, app) => {
       clickedMarker: marker.id
     })
   }
-  let url = '/assets/images/inCompletePin.png'
-  if (marker.completed && !marker.selected) {
-    url = '/assets/images/completePin.png'
-  } else if (marker.completed && marker.selected) {
-    url = '/assets/images/compHover.png'
-  } else if (!marker.completed && marker.selected) {
-    url = '/assets/images/incompHover.png'
-  }
-  if (marker.region === "China" || marker.region === 'Beijing') {
-    url = '/assets/images/da.png'
-  }
+  // let url = '/assets/images/inCompletePin.png'
+  // if (marker.completed && !marker.selected) {
+  //   url = '/assets/images/completePin.png'
+  // } else if (marker.completed && marker.selected) {
+  //   url = '/assets/images/compHover.png'
+  // } else if (!marker.completed && marker.selected) {
+  //   url = '/assets/images/incompHover.png'
+  // }
+  // if (marker.region === "China" || marker.region === 'Beijing') {
+  //   url = '/assets/images/da.png'
+  // }
+
+  const url = setUrl(marker)
   if (marker.id === app.state.clickedMarker) {
     const windowKey = marker.id*2
     const completedStatus = marker.completed ? 'Great Memory' : 'Some Day Soon'
