@@ -16,7 +16,50 @@ class ListItem extends Component {
       day: '',
       dailyWeather: {},
       weatherFetched: false,
-      showInput: false
+      showInput: false,
+      expanded: false
+    }
+  }
+
+  toggleLowerCard() {
+    const newExpandedStatus = !this.state.expanded
+    this.setState({
+      expanded: newExpandedStatus
+    })
+  }
+
+  displayLowerCard(completedClass, completedText) {
+    if(this.state.expanded) {
+      const { id } = this.props
+      return (
+        <section>
+          <p className={`track-status ts-${completedClass}`}>Track the status of your items:</p>
+          <section className="list-item-bottom">
+            <div className={`item-status-button-container isb-${completedClass}`}>
+              <button
+                onClick={this.props.deleteItem.bind(this, id)}
+                className={`complete-btn-${completedClass} delete-btn list-btn`}>delete
+              </button>
+              <button
+                onClick={this.props.completeItem.bind(this, id)}
+                className={`list-btn complete-button complete-btn-${completedClass}`}>{completedText}
+              </button>
+            </div>
+            <div className={`divider-div dd-${completedClass}`}></div>
+            <section className='date-info'>
+              <h4 className='date-info-instructions'>Want to know when to go?</h4>
+              <h4 className='date-info-instructions-bottom'>Input a date to see historical weather info!</h4>
+              <button
+                className={`list-btn show-weather-btn complete-btn-${completedClass}`}
+                onClick={toggleInput.bind(this, this)}>
+                Click to Show Weather Input
+              </button>
+              {displayInput(this)}
+            </section>
+          </section>
+        </section>
+
+      )
     }
   }
 
@@ -25,7 +68,7 @@ class ListItem extends Component {
     let completedClass = completedStatus ? 'completed' : 'not-completed'
     let completedText = completedStatus ? 'Completed' : 'Mark Completed'
     let status = completedStatus ? 'Great Memory' : 'Some Day Soon'
-
+    let arrow = this.state.expanded ?  '˄' :  '˅'
     return (
       <article
         onMouseLeave={() => handleUnHover()}
@@ -39,29 +82,13 @@ class ListItem extends Component {
               <p className="list-item-body">{body}</p>
             </div>
         </div>
-        <p className={`track-status ts-${completedClass}`}>Track the status of your items:</p>
-        <section className="list-item-bottom">
-          <div className={`item-status-button-container isb-${completedClass}`}>
-            <button
-              onClick={this.props.deleteItem.bind(this, id)}
-              className={`complete-btn-${completedClass} delete-btn list-btn`}>delete
-            </button>
-            <button
-              onClick={this.props.completeItem.bind(this, id)}
-              className={`list-btn complete-button complete-btn-${completedClass}`}>{completedText}
-            </button>
-          </div>
-          <div className={`divider-div dd-${completedClass}`}></div>
-          <section className='date-info'>
-            <h4 className='date-info-instructions'>Want to know when to go?</h4>
-            <h4 className='date-info-instructions-bottom'>Input a date to see historical weather info!</h4>
-            <button
-              className={`list-btn show-weather-btn complete-btn-${completedClass}`}
-              onClick={toggleInput.bind(this, this)}>
-              Click to Show Weather Input
-            </button>
-            {displayInput(this)}
-          </section>
+        <button
+          className={`lower-card-btn lc-${completedClass}`}
+          onClick={this.toggleLowerCard.bind(this)}>
+          <div className={`more-options`}>MORE OPTIONS</div> <div className='arrow'>{arrow}</div>
+        </button>
+        <section>
+          {this.displayLowerCard(completedClass, completedText)}
         </section>
       </article>
     )
