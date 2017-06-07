@@ -31,6 +31,35 @@ export const mountainIconManager = (address) => {
   return match
 }
 
+export const setRegionPin = (region, prevUrl) => {
+  let url = prevUrl
+  
+  if (region === "China" || region === 'Beijing' || region === 'Balboa Park') {
+    url = MarkerUrls.da
+  }
+  if (region === "Marylebone") {
+    url = MarkerUrls.sherlock
+  }
+
+  return url
+}
+
+export const setFormattedAddressPin = (formattedAddress, prevUrl) => {
+  let url = prevUrl
+
+  if(mountainIconManager(formattedAddress)) {
+    url = MarkerUrls.mountain
+  }
+  if(formattedAddress.toLowerCase().includes('north pole')) {
+    url = MarkerUrls.northPole
+  }
+  if(formattedAddress.toLowerCase().includes('disney') || formattedAddress.includes('77777 Marne-la-Vallée')) {
+    url = MarkerUrls.mouse
+  }
+
+  return url
+}
+
 export const setUrl = (marker) => {
   const { completed, selected, region, dreamLocation, formattedAddress } = marker
   let url
@@ -55,21 +84,8 @@ export const setUrl = (marker) => {
       url = MarkerUrls.notCompletedDefault
   }
 
-  if (region === "China" || region === 'Beijing' || region === 'Balboa Park') {
-    url = MarkerUrls.da
-  }
-  if (region === "Marylebone"){
-    url = MarkerUrls.sherlock
-  }
-  if(mountainIconManager(formattedAddress)) {
-    url = MarkerUrls.mountain
-  }
-  if(formattedAddress.toLowerCase().includes('north pole')) {
-    url = MarkerUrls.northPole
-  }
-  if(formattedAddress.toLowerCase().includes('disney') || formattedAddress.includes('77777 Marne-la-Vallée')) {
-    url = MarkerUrls.mouse
-  }
+  url = setRegionPin(region, url)
+  url = setFormattedAddressPin(formattedAddress, url)
 
   return url
 }
