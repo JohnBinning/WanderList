@@ -68,6 +68,7 @@ describe('App Handler Helpers', () => {
       },
       "dreamBody": "eat",
       "dreamLocation": "denver",
+      "formattedAddress": "Denver, CO, USA",
       "id": 1,
       "region": "Colorado",
       "selected": false,

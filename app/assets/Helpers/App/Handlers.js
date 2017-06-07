@@ -53,7 +53,8 @@ export const makeDream = (resp, input, weatherLocat) => {
     selected: false,
     showInfoWindow: false,
     region: region,
-    weatherLocation: weatherLocat
+    weatherLocation: weatherLocat,
+    formattedAddress: resp.results[0].formatted_address
   })
 }
 

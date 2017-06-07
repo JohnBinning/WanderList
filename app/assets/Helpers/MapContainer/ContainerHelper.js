@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
 import { InfoWindow, Marker, HeatmapLayer } from 'react-google-maps'
 
+import { mountainData } from './mountainData'
+import { MarkerUrls } from './MarkerUrls'
+
 export const setFilter = (app) => {
   let { markers, currentFilter } = app.props
   let newArray = markers
@@ -21,6 +24,72 @@ export const setFilter = (app) => {
   return newArray
 }
 
+export const mountainIconManager = (address) => {
+  let match = mountainData.some( mountain => {
+    return address.includes(mountain)
+  })
+  return match
+}
+
+export const setRegionPin = (region, prevUrl) => {
+  let url = prevUrl
+  
+  if (region === "China" || region === 'Beijing' || region === 'Balboa Park') {
+    url = MarkerUrls.da
+  }
+  if (region === "Marylebone") {
+    url = MarkerUrls.sherlock
+  }
+
+  return url
+}
+
+export const setFormattedAddressPin = (formattedAddress, prevUrl) => {
+  let url = prevUrl
+
+  if(mountainIconManager(formattedAddress)) {
+    url = MarkerUrls.mountain
+  }
+  if(formattedAddress.toLowerCase().includes('north pole')) {
+    url = MarkerUrls.northPole
+  }
+  if(formattedAddress.toLowerCase().includes('disney') || formattedAddress.includes('77777 Marne-la-Vallée')) {
+    url = MarkerUrls.mouse
+  }
+
+  return url
+}
+
+export const setUrl = (marker) => {
+  const { completed, selected, region, dreamLocation, formattedAddress } = marker
+  let url
+
+  switch(completed) {
+
+    case true:
+      selected ? url = MarkerUrls.completedHover : url = MarkerUrls.completedDefault
+      if(formattedAddress.includes('National Park')) {
+        url = MarkerUrls.completedNP
+      }
+      break
+
+    case false:
+      selected ? url = MarkerUrls.notCompletedHover : url = MarkerUrls.notCompletedDefault
+      if(formattedAddress.includes('National Park')) {
+        url = MarkerUrls.notCompletedNP
+      }
+      break
+
+    default:
+      url = MarkerUrls.notCompletedDefault
+  }
+
+  url = setRegionPin(region, url)
+  url = setFormattedAddressPin(formattedAddress, url)
+
+  return url
+}
+
 export const createMarkers = (marker, app) => {
   // const incompHover = 'http://i.imgur.com/r8EACEq.png'
   // const compHover = 'http://i.imgur.com/euFP0wD.png'
@@ -37,17 +106,8 @@ export const createMarkers = (marker, app) => {
       clickedMarker: marker.id
     })
   }
-  let url = '/assets/images/inCompletePin.png'
-  if (marker.completed && !marker.selected) {
-    url = '/assets/images/completePin.png'
-  } else if (marker.completed && marker.selected) {
-    url = '/assets/images/compHover.png'
-  } else if (!marker.completed && marker.selected) {
-    url = '/assets/images/incompHover.png'
-  }
-  if (marker.region === "China" || marker.region === 'Beijing') {
-    url = '/assets/images/da.png'
-  }
+
+  const url = setUrl(marker)
   if (marker.id === app.state.clickedMarker) {
     const windowKey = marker.id*2
     const completedStatus = marker.completed ? 'Great Memory' : 'Some Day Soon'

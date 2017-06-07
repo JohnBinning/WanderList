@@ -1,6 +1,9 @@
 import React from 'react'
 
-import { setFilter } from './ContainerHelper'
+import { setFilter, mountainIconManager, setUrl } from './ContainerHelper'
+import { mountainData } from './mountainData'
+import { MockMarkers } from './MockMarkers'
+
 
 describe('MapContainer helpers', () => {
 
@@ -16,8 +19,20 @@ describe('MapContainer helpers', () => {
     }
   }
 
-  it.skip('should filter', () => {
+  it('should filter mountain status', () => {
+    expect(mountainIconManager('Everest')).toEqual(true)
+    expect(mountainIconManager('K2')).toEqual(true)
+    expect(mountainIconManager('denver')).toEqual(false)
+  })
 
+  it('should set the url', () => {
+    expect(setUrl(MockMarkers.Chengdu)).toEqual('/assets/images/da.png')
+    expect(setUrl(MockMarkers.DenverCompletedNotSelected)).toEqual('/assets/images/completePin.png')
+    expect(setUrl(MockMarkers.DenverNotCompletedSelected)).toEqual('/assets/images/incompHover.png')
+    expect(setUrl(MockMarkers.Sherlock)).toEqual('/assets/images/Sherlock.png')
+    expect(setUrl(MockMarkers.Everest)).toEqual('/assets/images/mountain.png')
+    expect(setUrl(MockMarkers.AcadiaNotCompleted)).toEqual('/assets/images/park_blank.png')
+    expect(setUrl(MockMarkers.AcadiaCompleted)).toEqual('/assets/images/park_blank_comp.png')
   })
 
 })
