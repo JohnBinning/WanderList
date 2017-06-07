@@ -55,6 +55,9 @@ class App extends Component {
               <div className='underline'></div>
             </div>
            </button>
+           <footer>
+              <p className='copyright'>&#169; 2017 John Binning</p>
+           </footer>
         </main>
       )
     }
@@ -127,6 +130,9 @@ class App extends Component {
             </div>
         </Drawer>
         </section>
+        <footer>
+           <p className='copyright'>&#169; 2017 John Binning</p>
+        </footer>
       </main>
     )
   }
