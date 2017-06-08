@@ -1,6 +1,8 @@
 ## WanderList
 An app to plan your dreams
 
+[Check it out here](http://mywanderlist.surge.sh/)
+
 ### Instructions
 First open the menu, then enter something from your bucket list.  Enter where you want to go and what you want to do - (New York - Visit the Statue of Liberty) for example.  A pin will appear on the map so you can see all of the places you want to go on the map.
 
