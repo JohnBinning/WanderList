@@ -250,8 +250,8 @@ header {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 10px;
-  margin-left: 10%;
+  margin: 10px 10% 25px 10%;
+  /*margin-left: 10%;*/
   border: none;
   background-color: #e98463;
   border-bottom: 2px solid #c96f54;
