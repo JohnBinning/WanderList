@@ -6,6 +6,16 @@ First open the menu, then enter something from your bucket list.  Enter where yo
 
 You can also get past years' weather to find out if you are planning your trip during a good season to visit.
 
+### Stack
+
+#### Libraries
+
+React, ReactD3, Google Maps, React-Google-Maps, React-Motion-Drawer
+
+#### APIs
+
+Google Maps, Weather Underground
+
 ### Screen Shot
 
 ![Image](app/assets/images/ScreenShot.png)
