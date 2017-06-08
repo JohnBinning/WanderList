@@ -10,7 +10,8 @@
 }
 
 .the-list{
-  margin: 20px 5% 25px 5%;
+  margin: 30px 5% 40px 5%;
+  padding: 5px;
   font-family: 'Pacifico', cursive;
   color: rgba(255, 255, 255, .8);
   font-size: 1.5em;

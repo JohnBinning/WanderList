@@ -1,5 +1,8 @@
 import React, { Component } from 'react'
 import Drawer from 'react-motion-drawer';
+import { Line } from 'rc-progress';
+import { PieChart } from 'react-d3-components'
+import * as d3 from "d3"
 
 import MapContainer from '../MapContainer/MapContainer'
 import List from '../List/List'
@@ -11,13 +14,17 @@ import * as helper  from '../../Helpers/MapContainer/ContainerHelper'
 class App extends Component {
   constructor() {
     super()
+
     this.state = {
       bucketList: [],
       currentFilter: 'showAll',
       loggedIn: false,
       showMenu: false,
-      navFilter: 'add'
+      navFilter: 'add',
+      percentageComplete: 0,
+      showGraph: false
     }
+
   }
 
   componentDidMount() {
@@ -36,7 +43,46 @@ class App extends Component {
       })
   }
 
+  toggleGraph(){
+    const toggle = !this.state.showGraph
+    this.setState({
+      showGraph: toggle
+    })
+  }
+
+  renderGraph(pieData, pie_colorScale ){
+    if(this.state.showGraph) {
+      return(
+        <div className='charts'>
+          <h5 className='track-progress'>Track Your Progress:</h5>
+          <PieChart
+            hideLabels={true}
+            colorScale={pie_colorScale}
+            data={pieData}
+            width={350}
+            height={260}
+            margin={{top: 10, bottom: 10, left: 20, right: 100}}
+            sort={null}
+          />
+          <div className='pie-chart'>
+          </div>
+          <article className='explaination-wrapper'>
+            <div className='pie-explaination pe-incomp'>Some Day Soon {100 - this.state.percentageComplete}%</div>
+            <div className='pie-explaination pe-comp'>Great Memories {this.state.percentageComplete}%</div>
+          </article>
+        </div>
+      )
+    }
+  }
+
   render() {
+    const pieData = {
+            values: [{x: 'Great Memory', y: this.state.percentageComplete, fill: '#25AD87' }, {x: 'Some Day Soon', y: (100 - this.state.percentageComplete)}]
+    }
+    const pie_colorScale = d3.scale.ordinal()
+      .range(['#25AD87', '#e98463'])
+    let arrow = !this.state.showGraph ?  '˄' :  '˅'
+
     if(!this.state.loggedIn) {
       return (
         <main>
@@ -56,7 +102,7 @@ class App extends Component {
             </div>
            </button>
            <footer>
-              <p className='copyright'>&#169; 2017 John Binning</p>
+              <p className={`copyright cc-${this.state.loggedIn}`}>&#169; 2017 John Binning</p>
            </footer>
         </main>
       )
@@ -116,10 +162,16 @@ class App extends Component {
               <section>
                 {handlers.menuDisplays(this)}
               </section>
-
               <Input
                 visibility={this.state.navFilter}
                 handleClick={this.handleClick.bind(this)}/>
+              <div className='toggle-graph-divider'></div>
+              <button
+                className='toggle-graph'
+                onClick={() => this.toggleGraph()}>
+                <div className={`toggle-text`}>TRACK YOUR PROGRESS</div> <div className='arrow-graph'>{arrow}</div>
+              </button>
+              {this.renderGraph(pieData, pie_colorScale)}
               <List
                 handleUnHover={handlers.handleUnHover.bind(this, this)}
                 handleHover={handlers.handleHover.bind(this, this)}
@@ -131,11 +183,32 @@ class App extends Component {
         </Drawer>
         </section>
         <footer>
-           <p className='copyright'>&#169; 2017 John Binning</p>
+           <p className={`copyright cc-${this.state.loggedIn}`}>&#169; 2017 John Binning</p>
         </footer>
       </main>
     )
   }
 }
+
+//              <Line percent={`${this.state.percentageComplete}`} strokeWidth="4" strokeColor="#D3D3D3" />
+
+//{/* <div className='charts'>
+//  <h5 className='track-progress'>Track Your Progress:</h5>
+  //<PieChart
+    //hideLabels={true}
+    //colorScale={pie_colorScale}
+  //  data={pieData}
+  //  width={350}
+  //  height={260}
+  //  margin={{top: 10, bottom: 10, left: 20, right: 100}}
+  //  sort={null}
+  ///>
+  //<div className='pie-chart'>
+  //</div>
+  //<article className='explaination-wrapper'>
+    //<div className='pie-explaination pe-incomp'>Some Day Soon {100 - this.state.percentageComplete}%</div>
+    //<div className='pie-explaination pe-comp'>Great Memories {this.state.percentageComplete}%</div>
+  //</article>
+//</div> */}
 
 export default App

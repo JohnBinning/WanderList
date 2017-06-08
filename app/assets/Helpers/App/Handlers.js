@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { setListToLocal } from './localStorage'
-import { setBucketList, updateDream, filterCompleted } from './AppState'
+import { setBucketList, updateDream, filterCompleted, setPercentageComplete } from './AppState'
 
 export const handleDelete = (app, id ) => {
   const newList = app.state.bucketList.filter( dream => {
@@ -9,6 +9,7 @@ export const handleDelete = (app, id ) => {
   })
   setBucketList(newList, app)
   setListToLocal(newList)
+  setPercentageComplete(app)
 }
 
 export const generateId = () => Date.now()
@@ -22,6 +23,7 @@ export const handleComplete = (app, id) => {
 
   setBucketList(newList, app)
   setListToLocal(newList)
+  setPercentageComplete(app)
   })
 }
 
