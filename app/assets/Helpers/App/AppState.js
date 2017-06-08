@@ -11,6 +11,20 @@ export const startApp = (app) => {
   app.setState({
     loggedIn: started
   })
+  setPercentageComplete(app)
+}
+
+export const setPercentageComplete = (app) => {
+  let filteredComplete
+  if(app.state.bucketList.length) {
+    filteredComplete = app.state.bucketList.filter( item => {
+      return item.completed === true
+    })
+    let percentComp = Math.round((filteredComplete.length / app.state.bucketList.length) * 100)
+    app.setState({
+      percentageComplete: percentComp
+    })
+  }
 }
 
 export const updateDream = (app, newDream) => {
@@ -20,6 +34,7 @@ export const updateDream = (app, newDream) => {
   newList.push(newDream)
   setListToLocal(newList)
   setBucketList(newList, app)
+  setPercentageComplete(app)
 }
 
 export const startFromLocal = (app) => {

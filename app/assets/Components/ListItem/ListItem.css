@@ -117,7 +117,6 @@
   border: 2px solid rgb(37, 173, 135);
 }
 
-
 /* --- buttons --- */
 
 .complete-btn-completed {
@@ -149,14 +148,12 @@
   margin-bottom: 10px;
 }
 
-
 .weather-btn {
   color: white;
   display: block;
   margin-left: 95px;
   margin-top: 5px;
 }
-
 
 .item-input-container {
   margin: 10px;
