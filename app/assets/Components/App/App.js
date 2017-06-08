@@ -119,7 +119,7 @@ class App extends Component {
             <div className='menu-btn-wrapper'>
               <img
                 className='tracking-logo'
-                src='/assets/images/Walking-logo-border.png'/>
+                src='/app/assets/images/Walking-logo-border.png'/>
                 <div className='menu-btn-text'>Track Your Travels</div>
             </div>
           </button>
@@ -154,7 +154,7 @@ class App extends Component {
                     <div className='menu-btn-wrapper'>
                       <img
                         className='tracking-logo'
-                        src='/assets/images/Walking-logo-border.png'/>
+                        src='/app/assets/images/Walking-logo-border.png'/>
                         <div className='menu-btn-text'>Track Your Travels</div>
                     </div>
                   </button>
