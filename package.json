@@ -1,7 +1,7 @@
 {
   "name": "example-api",
   "version": "1.0.0",
-  "description": "MeatMeet",
+  "description": "An app to track your dreams",
   "scripts": {
     "build": "webpack --config ./webpack.config.js",
     "dev-server": "webpack-dev-server --hot --inline --content-base --history-api-fallback",
