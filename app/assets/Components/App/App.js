@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import Drawer from 'react-motion-drawer';
-import { Line } from 'rc-progress';
 import { PieChart } from 'react-d3-components'
 import * as d3 from "d3"
 
@@ -82,6 +81,7 @@ class App extends Component {
     const pie_colorScale = d3.scale.ordinal()
       .range(['#25AD87', '#e98463'])
     let arrow = !this.state.showGraph ?  '˄' :  '˅'
+    let menuStatus = this.state.showMenu
 
     if(!this.state.loggedIn) {
       return (
@@ -115,12 +115,12 @@ class App extends Component {
           <h1 className='title-Wander loaded-title'>Wander<img className="logo" alt="main logo" src="https://res.cloudinary.com/crunchbase-production/image/upload/v1482176851/rtpxwpj5cfo654mpbolu.png"/><span className='title-List'>List</span></h1>
           <button
             onClick={() => stateHelpers.toggleMenu(this)}
-            className="menu-toggle-btn desktop-btn">
+            className={`menu-toggle-btn desktop-btn mt-${menuStatus}`}>
             <div className='menu-btn-wrapper'>
               <img
                 className='tracking-logo'
                 src='/assets/images/Walking-logo-border.png'/>
-                <div className='menu-btn-text'>Track Your Travels</div>
+                <div className='menu-btn-text'><div className='rotate expand-arrow'>˅</div>Track Your Travels</div>
             </div>
           </button>
         </header>
@@ -134,8 +134,14 @@ class App extends Component {
           </article>
           <Drawer
             open={this.state.showMenu}
+            right={true}
             overlayClassName='overlay'
             className='drawer'>
+            <button
+              onClick={() => stateHelpers.toggleMenu(this)}
+              className={`collapse-menu cm-${menuStatus}`}>
+              <div className='rotate'>˄</div>
+            </button>
 
             <div className="input-list">
               <section className='menu-nav'>
@@ -190,25 +196,5 @@ class App extends Component {
   }
 }
 
-//              <Line percent={`${this.state.percentageComplete}`} strokeWidth="4" strokeColor="#D3D3D3" />
-
-//{/* <div className='charts'>
-//  <h5 className='track-progress'>Track Your Progress:</h5>
-  //<PieChart
-    //hideLabels={true}
-    //colorScale={pie_colorScale}
-  //  data={pieData}
-  //  width={350}
-  //  height={260}
-  //  margin={{top: 10, bottom: 10, left: 20, right: 100}}
-  //  sort={null}
-  ///>
-  //<div className='pie-chart'>
-  //</div>
-  //<article className='explaination-wrapper'>
-    //<div className='pie-explaination pe-incomp'>Some Day Soon {100 - this.state.percentageComplete}%</div>
-    //<div className='pie-explaination pe-comp'>Great Memories {this.state.percentageComplete}%</div>
-  //</article>
-//</div> */}
 
 export default App
