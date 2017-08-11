@@ -117,7 +117,6 @@ export const createMarkers = (marker, app) => {
       <div key={windowKey}>
         <InfoWindow
           className="info-window-comp"
-          onClick={() => {console.log('x');}}
           position={marker.coordinates}>
           <div className={`marker-contents mc-${completedClass}`}>
             <h4 className='marker-location'>{marker.dreamLocation}</h4>

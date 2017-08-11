@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Marker, HeatmapLayer } from 'react-google-maps'
+import { Marker } from 'react-google-maps'
 import PropTypes from 'prop-types'
 
 import GMap from '../Map/GMap'

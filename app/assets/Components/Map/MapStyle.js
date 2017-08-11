@@ -1,13 +1,13 @@
 export const mapStyle = [
-  // {
-  //   "elementType": "geometry",
-  //   "stylers": [
-  //     {
-  //       // terrain
-  //       "color": "#ebe3cd"
-  //     }
-  //   ]
-  // },
+  {
+    "elementType": "geometry",
+    "stylers": [
+      {
+        // terrain
+        "color": "#ebe3cd"
+      }
+    ]
+  },
   {
     "elementType": "labels.text.fill",
     "stylers": [
