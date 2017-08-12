@@ -26,7 +26,6 @@ export const weatherFetch = (ListItem) => {
   .then( response  => {
     response.json()
     .then( res => {
-      console.log(res, ' fetch');
       const weatherObj = createWeatherObj(res)
       setWeatherFetch(weatherObj, ListItem)
     })
