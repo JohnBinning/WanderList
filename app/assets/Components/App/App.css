@@ -85,6 +85,8 @@ header {
 
 .menu-btn-text {
   display: flex;
+  margin-top: 3px;
+  margin-left: 3px;
 }
 
 .background-img {
@@ -261,8 +263,10 @@ header {
 }
 
 .expand-arrow {
-  margin-right: 5px;
+  margin-right: 1px;
+  margin-top: 0px;
   color: white;
+  font-size: 1.8rem;
 }
 
 .filter-description {

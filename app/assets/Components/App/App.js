@@ -120,7 +120,10 @@ class App extends Component {
               <img
                 className='tracking-logo'
                 src='/assets/images/Walking-logo-border.png'/>
-                <div className='menu-btn-text'><div className='rotate expand-arrow'>˅</div>Track Your Travels</div>
+                <div className='menu-btn-text'>
+                  Track Your Travels
+                  <div className='rotate expand-arrow'>˅</div>
+                </div>
             </div>
           </button>
         </header>
