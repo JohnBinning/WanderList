@@ -75,6 +75,8 @@ class App extends Component {
   }
 
   render() {
+    const logoUrl = '/assets/images/Walking-logo-border.png'
+    const deployLogoUrl = '/app/assets/images/Walking-logo-border.png'
     const pieData = {
             values: [{x: 'Great Memory', y: this.state.percentageComplete, fill: '#25AD87' }, {x: 'Some Day Soon', y: (100 - this.state.percentageComplete)}]
     }
@@ -119,7 +121,7 @@ class App extends Component {
             <div className='menu-btn-wrapper'>
               <img
                 className='tracking-logo'
-                src='/assets/images/Walking-logo-border.png'/>
+                src={deployLogoUrl}/>
                 <div className='menu-btn-text'>
                   Track Your Travels
                   <div className='rotate expand-arrow'>˅</div>
@@ -163,7 +165,7 @@ class App extends Component {
                     <div className='menu-btn-wrapper'>
                       <img
                         className='tracking-logo'
-                        src='/assets/images/Walking-logo-border.png'/>
+                        src={deployLogoUrl}/>
                         <div className='menu-btn-text'>Track Your Travels</div>
                     </div>
                   </button>

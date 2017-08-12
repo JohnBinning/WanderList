@@ -1,9 +1,18 @@
-@import url('../components/App/App.css');
+/*@import url('../components/App/App.css');
 @import url('../components/Input/Input.css');
 @import url('../components/ListItem/ListItem.css');
 @import url('../components/Map/GMap.css');
 @import url('../components/MapContainer/MapContainer.css');
-@import url('../components/List/List.css');
+@import url('../components/List/List.css');*/
+
+/* dev ^ */
+
+@import url('/app/assets/Components/App/App.css');
+@import url('/app/assets/Components/Input/Input.css');
+@import url('/app/assets/Components/ListItem/ListItem.css');
+@import url('/app/assets/Components/Map/GMap.css');
+@import url('/app/assets/Components/MapContainer/MapContainer.css');
+@import url('/app/assets/Components/List/List.css');
 
 body {
   background-blend-mode: multiply;
