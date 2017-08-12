@@ -28,7 +28,7 @@ export const displayInput = (ListItem) => {
   if(ListItem.state.showInput){
     return (
       <div>
-        <h5>Pick a year, month, and date to see weather for that day</h5>
+        <h5>Pick a year, month, and date to see how the weather was that day</h5>
         <section className="item-input-container">
           <input
             maxLength='4'
