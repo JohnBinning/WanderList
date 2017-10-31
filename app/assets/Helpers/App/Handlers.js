@@ -99,7 +99,7 @@ export const menuDisplays = (app) => {
         <button
           onClick={filterCompleted.bind(app, app, 'showInProgress')}
           className="filter-buttons in-prog-btn">
-          In progress
+          In Progress
         </button>
         <button
           onClick={filterCompleted.bind(app, app, 'showCompleted')}
