@@ -21908,7 +21908,6 @@
 	      percentageComplete: 0,
 	      showGraph: false
 	    };
-	
 	    return _this;
 	  }
 	
@@ -21916,7 +21915,6 @@
 	    key: 'componentDidMount',
 	    value: function componentDidMount() {
 	      // INSERT API CALL TO YOUR INTERNAL API
-	
 	      stateHelpers.startFromLocal(this);
 	    }
 	  }, {
@@ -63899,7 +63897,7 @@
 	        {
 	          onClick: _AppState.filterCompleted.bind(app, app, 'showInProgress'),
 	          className: 'filter-buttons in-prog-btn' },
-	        'In progress'
+	        'In Progress'
 	      ),
 	      _react2.default.createElement(
 	        'button',

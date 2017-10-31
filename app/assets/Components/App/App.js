@@ -13,7 +13,6 @@ import * as helper  from '../../Helpers/MapContainer/ContainerHelper'
 class App extends Component {
   constructor() {
     super()
-
     this.state = {
       bucketList: [],
       currentFilter: 'showAll',
@@ -23,12 +22,10 @@ class App extends Component {
       percentageComplete: 0,
       showGraph: false
     }
-
   }
 
   componentDidMount() {
     // INSERT API CALL TO YOUR INTERNAL API
-
     stateHelpers.startFromLocal(this)
   }
 
@@ -78,7 +75,7 @@ class App extends Component {
     const logoUrl = '/assets/images/Walking-logo-border.png'
     const deployLogoUrl = '/app/assets/images/Walking-logo-border.png'
     const pieData = {
-            values: [{x: 'Great Memory', y: this.state.percentageComplete, fill: '#25AD87' }, {x: 'Some Day Soon', y: (100 - this.state.percentageComplete)}]
+      values: [{x: 'Great Memory', y: this.state.percentageComplete, fill: '#25AD87' }, {x: 'Some Day Soon', y: (100 - this.state.percentageComplete)}]
     }
     const pie_colorScale = d3.scale.ordinal()
       .range(['#25AD87', '#e98463'])
@@ -200,6 +197,5 @@ class App extends Component {
     )
   }
 }
-
 
 export default App
