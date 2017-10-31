@@ -9,7 +9,7 @@
     "start": "npm build && nodemon src/app.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "John Binning",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.16.0",
