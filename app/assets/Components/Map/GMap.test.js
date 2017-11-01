@@ -6,7 +6,6 @@ import { Marker, HeatmapLayer } from 'react-google-maps'
 
 import GMap from '../Map/GMap'
 
-
 describe('GMap instantiation', () => {
 
   it.skip('should placeholder', () => {
