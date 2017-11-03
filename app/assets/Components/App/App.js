@@ -25,7 +25,6 @@ class App extends Component {
   }
 
   componentDidMount() {
-    // INSERT API CALL TO YOUR INTERNAL API
     stateHelpers.startFromLocal(this)
   }
 
@@ -46,14 +45,14 @@ class App extends Component {
     })
   }
 
-  renderGraph(pieData, pie_colorScale ){
+  renderGraph(pieData, pieColorScale ){
     if(this.state.showGraph) {
       return(
         <div className='charts'>
           <h5 className='track-progress'>Track Your Progress:</h5>
           <PieChart
             hideLabels={true}
-            colorScale={pie_colorScale}
+            colorScale={pieColorScale}
             data={pieData}
             width={350}
             height={260}
@@ -77,7 +76,7 @@ class App extends Component {
     const pieData = {
       values: [{x: 'Great Memory', y: this.state.percentageComplete, fill: '#25AD87' }, {x: 'Some Day Soon', y: (100 - this.state.percentageComplete)}]
     }
-    const pie_colorScale = d3.scale.ordinal()
+    const pieColorScale = d3.scale.ordinal()
       .range(['#25AD87', '#e98463'])
     let arrow = !this.state.showGraph ?  '˄' :  '˅'
     let menuStatus = this.state.showMenu
@@ -179,7 +178,7 @@ class App extends Component {
                 onClick={() => this.toggleGraph()}>
                 <div className={`toggle-text`}>TRACK YOUR PROGRESS</div> <div className='arrow-graph'>{arrow}</div>
               </button>
-              {this.renderGraph(pieData, pie_colorScale)}
+              {this.renderGraph(pieData, pieColorScale)}
               <List
                 handleUnHover={handlers.handleUnHover.bind(this, this)}
                 handleHover={handlers.handleHover.bind(this, this)}
